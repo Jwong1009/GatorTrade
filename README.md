@@ -15,7 +15,7 @@
 
 | Student Name | Student Email | GitHub Username |
 |    :---:     |     :---:     |     :---:       |
-| member1      |               |                 |
+| Ze Lei      |     zlei1@mail.sfsu.edu          |     Frogger-Software            |
 | member2      |               |                 |
 | member3      |               |                 |
 | member4      |               |                 |
