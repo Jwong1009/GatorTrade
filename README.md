@@ -17,7 +17,7 @@
 |    :---:     |     :---:     |     :---:       |
 | Ze Lei      |     zlei1@mail.sfsu.edu          |     Frogger-Software            |
 | Joanne Wong      | jwong45@mail.sfsu.edu              | Jwong1009                |
-| member3      |               |                 |
+| Kishan Patel      | kpatel10@sfsu.edu              | kp-4137                |
 | member4      |               |                 |
 | member5      |               |                 |
 | member6      |               |                 |
