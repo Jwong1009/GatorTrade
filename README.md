@@ -16,7 +16,7 @@
 | Student Name | Student Email | GitHub Username |
 |    :---:     |     :---:     |     :---:       |
 | Ze Lei      |     zlei1@mail.sfsu.edu          |     Frogger-Software            |
-| member2      |               |                 |
+| Joanne Wong      | jwong45@mail.sfsu.edu              | Jwong1009                |
 | member3      |               |                 |
 | member4      |               |                 |
 | member5      |               |                 |
