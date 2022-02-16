@@ -1,10 +1,33 @@
-html
+html,body
 {
-    height: 100%;
     height: 100vh;
 }
 
-body{
-    height: 100%;
-    height: 100vh;
+#aboutNavbar{
+    height: 10%;
+}
+
+#aboutContainer{
+    background: lightblue;
+    height: 90%;
+}
+
+#aboutContainer .row{
+    display: flex;
+    align-items: center;
+}
+
+#aboutCard{
+    height: 90%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#aboutImg{
+    height: 275px;
+    width: 275px;
+    border-radius: 50%;
 }
