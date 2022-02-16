@@ -1,15 +1,25 @@
 html,body
 {
     height: 100vh;
+    box-sizing: border-box;
 }
 
-#aboutNavbar{
+a{
+    text-decoration: none;
+}
+
+.navbar{
     height: 10%;
 }
 
-#aboutContainer{
+#aboutContainer,
+#homeContainer{
     background: lightblue;
     height: 90%;
+}
+
+#homeContainer{
+    padding-top: 15px;
 }
 
 #aboutContainer .row{
