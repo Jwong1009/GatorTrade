@@ -9,8 +9,9 @@
 
 1. Server URL or IP
 http://ec2-44-202-110-149.compute-1.amazonaws.com:3000/
-2. SSH username - Team05Guest
-3. SSH password or key. - Team05Guest!
+2. SSH username 
+ssh -i "csc648-team05.pem" ubuntu@ec2-44-202-110-149.compute-1.amazonaws.com
+3. SSH key - included in folder
     <br> If a ssh key is used please upload the key to the credentials folder.
 4. Database URL or IP and port used.
     <br><strong> NOTE THIS DOES NOT MEAN YOUR DATABASE NEEDS A PUBLIC FACING PORT.</strong> But knowing the IP and port number will help with SSH tunneling into the database. The default port is more than sufficient for this class.
@@ -18,6 +19,12 @@ http://ec2-44-202-110-149.compute-1.amazonaws.com:3000/
 6. Database password 
 7. Database name (basically the name that contains all your tables)
 8. Instructions on how to use the above information.
+Using a terminal, navigate to the location where the SSH key is stored. Then use the command listed under SSH username to access the server
+
+AWS Sign In:
+Account ID: 278286693302
+Username: Team05Guest
+Password: Team05Guest!
 
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
