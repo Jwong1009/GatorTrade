@@ -1,0 +1,43 @@
+html,body
+{
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+.navbar{
+    height: 10%;
+}
+
+#aboutContainer,
+#homeContainer{
+    background: lightblue;
+    height: 90%;
+}
+
+#homeContainer{
+    padding-top: 15px;
+}
+
+#aboutContainer .row{
+    display: flex;
+    align-items: center;
+}
+
+#aboutCard{
+    height: 90%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#aboutImg{
+    height: 275px;
+    width: 275px;
+    border-radius: 50%;
+}
