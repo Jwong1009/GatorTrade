@@ -4,16 +4,17 @@
     <title><%= title %></title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/form.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   </head>
   <body class="bg-dark bg-gradient bg-opacity-80">
 
     <nav class="navbar navbar-expand-xl dropdown-menu-dark navbar-dark px-5">
         <ul class="navbar-nav mt-lg-0 w-50 row">
             <li class="nav-item d-flex align-items-center col-md-4">
-                <a class="nav-link fs-4 active" href="/">Team 5</a>
+                <a class="nav-link fs-4" href="/">Team 5</a>
             </li>
             <li class="nav-item d-flex align-items-center col-md-4">
-                <a class="nav-link fs-4" href="/test_homepage">Home</a>
+                <a class="nav-link fs-4 active" href="/test_homepage">Home</a>
             </li>
             <li class="nav-item d-flex align-items-center col-md-4">
                 <a class="nav-link fs-4" href="#">About</a>
@@ -30,15 +31,21 @@
                     Team 5
                 </h1>
             </div>
-        
-            <div class="row justify-content-center mt-5">
-                <div class="col-3 m-3 border border-4 border-dark bg-dark text-white rounded-3 text-center fs-3 "><a href="/about/patel">Kishan Patel</a></div>
-                <div class="col-3 m-3 border border-4 border-dark bg-dark text-white rounded-3 text-center fs-3"><a href="/about/lei">Ze Lei</a></div>
-                <div class="col-3 m-3 border border-4 border-dark bg-dark text-white rounded-3 text-center fs-3"><a href="/about/zaheer">Faisal Zaheer</a></div>
-                <div class="col-3 m-3 border border-4 border-dark bg-dark text-white rounded-3 text-center fs-3"><a href="/about/hernandez">Juan Hernandez</a></div>
-                <div class="col-3 m-3 border border-4 border-dark bg-dark text-white rounded-3 text-center fs-3"><a href="/about/wong">Joanne Wong</a></div>
-                <div class="col-3 m-3 border border-4 border-dark bg-dark text-white rounded-3 text-center fs-3"><a href="/about/cheung">Michael Cheung</a></div>
-            </div>
+
+            <form action="" class="d-flex justify-content-center mt-5">
+                <div class="input-group w-50 rounded overflow-hidden">
+                    <select name="categories" id="categories" class="bg-secondary border-0 text-light px-2">
+                        <option value="one">All</option>
+                        <option value="one">One</option>
+                        <option value="two">Two</option>
+                        <option value="fifteen">Fifteen</option>
+                    </select>
+                    <input type="search" placeholder="Search" class="form-control border-0"/>
+                    <button type="button" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
