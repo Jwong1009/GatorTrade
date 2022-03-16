@@ -1,10 +1,21 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const db = require('../db');
+const router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
   res.render('index', { title: 'Team 05 Home Page' });
 });
+
+// router.get('/dbtest', async function(req, res, next) {
+//   try {
+//     let results = await db.all();
+//     res.json(results);
+//   } catch(e) {
+//     console.log(e);
+//     res.sendStatus(500);
+//   }
+// });
 
 router.get('/test_homepage', function(req, res, next) {
   res.render('test_homepage', { title: 'Team 05 Home Page' });
