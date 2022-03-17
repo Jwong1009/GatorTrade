@@ -3,19 +3,9 @@ const db = require('../db');
 const router = express.Router();
 
 /* GET home page. */
-router.get('/', async function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('index', { title: 'Team 05 Home Page' });
 });
-
-// router.get('/dbtest', async function(req, res, next) {
-//   try {
-//     let results = await db.all();
-//     res.json(results);
-//   } catch(e) {
-//     console.log(e);
-//     res.sendStatus(500);
-//   }
-// });
 
 router.get('/test_homepage', function(req, res, next) {
   res.render('test_homepage', { title: 'Team 05 Home Page' });
@@ -23,6 +13,16 @@ router.get('/test_homepage', function(req, res, next) {
 
 router.get('/test_results', function(req, res, next) {
   res.render('test_results', { title: 'Team 05 Home Page' });
+});
+
+router.post('/test_results/:item', function(req, res, next) {
+  // res.render('test_results', { title: 'Team 05 Home Page' });
+  const { item } = req.params;
+  // console.log(item);
+  db.query(`SELECT * FROM items WHERE title LIKE '${item}%' ORDER BY title;`, (err, results, fields) => {
+    // console.log(results);
+    res.send(results);
+  });
 });
 
 router.get('/about/patel', function(req, res, next) {
