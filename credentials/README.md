@@ -24,7 +24,7 @@
 <br>GatorTrade
 10. Instructions on how to use the above information.
 Using a terminal, navigate to the location where the SSH key is stored. Then use the command listed under SSH username to access the server
-<br>To access the database navigate to the db folder (cd app/application/db) then use sudo mysql -u root
+<br>To access the database navigate to the db folder (cd app/application/db) then use sudo mysql -u root -p, then paste the password
 
 AWS Sign In:
 <br>Account ID: 278286693302
