@@ -1,3 +1,5 @@
+// UNUSED FILE AS OF 3/17/2022. Refactored code into form's action attribute to router.
+
 function getInputValue(){
     // Selecting the input element and get its value 
     var searchTerm = document.getElementById("searchInput").value;
