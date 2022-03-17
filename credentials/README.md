@@ -8,7 +8,7 @@
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 
 1. Server URL or IP
-<br>http://ec2-44-202-110-149.compute-1.amazonaws.com:3000/
+<br>http://ec2-54-234-226-175.compute-1.amazonaws.com:3000
 2. SSH username 
 <br>ssh -i "csc648-team05.pem" ubuntu@ec2-44-202-110-149.compute-1.amazonaws.com
 3. SSH key - included in folder
