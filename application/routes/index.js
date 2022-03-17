@@ -12,21 +12,31 @@ router.get('/test_homepage', function(req, res, next) {
 });
 
 router.get('/test_results', function(req, res, next) {
-  const { search } = req.query;
-  db.query(`SELECT * FROM items WHERE title LIKE '${search}%' ORDER BY title;`, (err, results, fields) => {
-    res.render('test_results', { title: 'Team 05 Home Page', results: results});
-  });
+  const { search, category } = req.query;
+  let categoryId = parseInt(category);
+  // Selected "All" for Category. No need to factor category into search.
+  if(categoryId == 0) {
+    db.query(`SELECT * FROM items WHERE title LIKE '${search}%' ORDER BY title;`, (err, results, fields) => {
+      res.render('test_results', { title: 'Team 05 Home Page', results: results});
+    });
+  }
+  // Filter results based on category chosen.
+  else if(categoryId > 0) {
+    db.query(`SELECT * FROM items WHERE title LIKE '${search}%' AND category=${categoryId} ORDER BY title;`, (err, results, fields) => {
+      res.render('test_results', { title: 'Team 05 Home Page', results: results});
+    });
+  }
 });
 
-router.get('/test_results/:item', function(req, res, next) {
-  // res.render('test_results', { title: 'Team 05 Home Page' });
-  const { item } = req.params;
-  // console.log(item);
-  db.query(`SELECT * FROM items WHERE title LIKE '${item}%' ORDER BY title;`, (err, results, fields) => {
-    // console.log(results);
-    res.render('test_results', {results: results});
-  });
-});
+// router.get('/test_results/:item', function(req, res, next) {
+//   // res.render('test_results', { title: 'Team 05 Home Page' });
+//   const { item } = req.params;
+//   // console.log(item);
+//   db.query(`SELECT * FROM items WHERE title LIKE '${item}%' ORDER BY title;`, (err, results, fields) => {
+//     // console.log(results);
+//     res.render('test_results', {results: results});
+//   });
+// });
 
 router.get('/about/patel', function(req, res, next) {
   res.render('about_patel');

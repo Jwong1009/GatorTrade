@@ -1,11 +1,6 @@
 function getInputValue(){
     // Selecting the input element and get its value 
     var searchTerm = document.getElementById("searchInput").value;
-    
-    // Displaying the value
-    // alert(inputVal);
-
-    // window.location.replace('/test_results');
 
     // Makes call to server to get all searchTerm related items from database.
     fetch(`/test_results/${searchTerm}`, { method: 'get' })
