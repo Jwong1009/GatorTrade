@@ -32,7 +32,7 @@
                 </h1>
             </div>
             
-            <form action="" class="d-flex justify-content-center mt-5">
+            <form action="/test_results" class="d-flex justify-content-center mt-5">
                 <div class="input-group w-50 rounded overflow-hidden">
                     <select name="categories" id="categories" class="bg-secondary border-0 text-light px-2">
                         <option value="one">All</option>
@@ -40,8 +40,9 @@
                         <option value="two">Two</option>
                         <option value="fifteen">Fifteen</option>
                     </select>
-                    <input id="searchInput" type="search" placeholder="Search" class="form-control border-0"/>
-                    <button type="button" class="btn btn-primary" onclick="getInputValue();">
+                    <input id="searchInput" name="search" type="search" placeholder="Search" class="form-control border-0"/>
+                    <!-- <input type="button" class="btn btn-primary"> -->
+                    <button type="submit" class="btn btn-primary">
                         <a href="" class="text-light"><i class="fas fa-search"></i></a>
                     </button>
                 </div>

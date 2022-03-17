@@ -35,6 +35,22 @@
                 <p>Showing 6 out of 10 items.</p>
             </div>
             <div id="results">
+                <% if(results) { %>
+                    <% for(var i = 0; i < results.length; i++) { %>
+                        <div class="col-4">
+                            <div class="card" style="width: 18rem;">
+                                <img src="https://www.petmd.com/sites/default/files/2020-11/picture-of-golden-retriever-dog_0.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                <h5 class="card-title"><%= results[i].title %></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"><%= results[i].seller %></h6>
+                                <p class="card-text"><%= results[i].description %></p>
+                                <span class="border border-primary rounded-2 px-4 pv-2 fs-5"><%= results[i].price %></span>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } %>
+
                 <!-- <div class="row mb-5">
                     <div class="col-4">
                         <div class="card" style="width: 18rem;">

@@ -8,17 +8,17 @@ function getInputValue(){
     // window.location.replace('/test_results');
 
     // Makes call to server to get all searchTerm related items from database.
-    fetch(`/test_results/${searchTerm}`, { method: 'post' })
+    fetch(`/test_results/${searchTerm}`, { method: 'get' })
     .then((response) => response.json())
     .then((results) => {
         //[{"idItems":1,"category":2,"seller":1,"photopath":null,"description":null,"title":"Lord of The Rings","price":null,"approved":0}]
         console.log("Results:\n"+results);
-        let resultsListing = document.getElementById('results');
-        let newResultsListing = '';
-        for(let i = 0; i < results.length; i++) {
-            newResultsListing += createResultListing(results[i].title, results[i].seller, results[i].description, results[i].price);
-        }
-        resultsListing.innerHTML = newResultsListing;
+        // let resultsListing = document.getElementById('results');
+        // let newResultsListing = '';
+        // for(let i = 0; i < results.length; i++) {
+        //     newResultsListing += createResultListing(results[i].title, results[i].seller, results[i].description, results[i].price);
+        // }
+        // resultsListing.innerHTML = newResultsListing;
     });
 
 
