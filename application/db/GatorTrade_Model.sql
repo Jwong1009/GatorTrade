@@ -106,18 +106,19 @@ DROP TABLE IF EXISTS `GatorTrade`.`Messages` ;
 
 CREATE TABLE IF NOT EXISTS `GatorTrade`.`Messages` (
   `idMessages` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `messager` INT UNSIGNED NOT NULL,
-  `messagee` INT UNSIGNED NOT NULL,
+  `sender` INT UNSIGNED NOT NULL,
+  `receiver` INT UNSIGNED NOT NULL,
+  `body` VARCHAR(128) NULL,
   PRIMARY KEY (`idMessages`),
-  INDEX `MESSAGER_USERS_FK_idx` (`messager` ASC),
-  INDEX `MESSAGEE_USERS_FK_idx` (`messagee` ASC),
-  CONSTRAINT `MESSAGER_USERS_FK`
-    FOREIGN KEY (`messager`)
+  INDEX `SENDER_USERS_FK_idx` (`sender` ASC),
+  INDEX `MESSAGEE_USERS_FK_idx` (`receiver` ASC),
+  CONSTRAINT `SENDER_USERS_FK`
+    FOREIGN KEY (`sender`)
     REFERENCES `GatorTrade`.`Users` (`idUsers`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-  CONSTRAINT `MESSAGEE_USERS_FK`
-    FOREIGN KEY (`messagee`)
+  CONSTRAINT `RECEIVER_USERS_FK`
+    FOREIGN KEY (`receiver`)
     REFERENCES `GatorTrade`.`Users` (`idUsers`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
