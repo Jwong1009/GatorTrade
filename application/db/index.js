@@ -9,4 +9,10 @@ const pool = mysql.createPool({
     debug: true
 });
 
+pool.connect(function(err) {
+    if(err){
+        console.log(err.message)
+    }
+})
+
 module.exports = pool;
