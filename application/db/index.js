@@ -9,10 +9,13 @@ const pool = mysql.createPool({
     debug: true
 });
 
-pool.connect(function(err) {
-    if(err){
-        console.log(err.message)
+pool.query("SELECT * FROM Items",(err, data) => {
+    if(err) {
+        console.error(err);
+        return;
     }
-})
+    // rows fetch
+    console.log(data);
+});
 
 module.exports = pool;
