@@ -6,7 +6,7 @@ const pool = mysql.createPool({
     password: 'Team05Guest!', // Insert your MySQL password here
     database: 'GatorTrade', 
     connectionLimit: 50,
-    debug: false
+    debug: true
 });
 
 module.exports = pool;
