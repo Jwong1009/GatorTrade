@@ -18,7 +18,7 @@ pool.query("SELECT * FROM Items",(err, data) => {
     console.log(data);
 });
 
-pool.query("SELECT * FROM items WHERE title LIKE '' ORDER BY title;",(err, data) => {
+pool.query("SELECT * FROM Items WHERE title LIKE '' ORDER BY title;",(err, data) => {
     if(err) {
         console.error(err);
         return;
