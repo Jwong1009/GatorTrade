@@ -6,7 +6,7 @@ const pool = mysql.createPool({
     password: 'Team05Guest!', // Insert your MySQL password here
     database: 'GatorTrade', 
     connectionLimit: 50,
-    debug: true
+    debug: false
 });
 
 pool.query("SELECT * FROM Items",(err, data) => {
