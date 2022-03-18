@@ -9,15 +9,6 @@ const pool = mysql.createPool({
     debug: false
 });
 
-pool.query("SELECT * FROM Items",(err, data) => {
-    if(err) {
-        console.error(err);
-        return;
-    }
-    // rows fetch
-    console.log(data);
-});
-
 pool.query("SELECT * FROM Items WHERE title LIKE '' ORDER BY title;",(err, data) => {
     if(err) {
         console.error(err);

@@ -18,21 +18,21 @@ router.get('/test_results', function(req, res, next) {
   let totalItemCount = 0;
 
   // Gets total count of items in database to display on /test_results page.
-  db.query('SELECT COUNT(*) AS length FROM items;', (err, results, fields) => {
+  db.query('SELECT COUNT(*) AS length FROM Items;', (err, results, fields) => {
     console.log(results[0].length);
     totalItemCount = results[0].length;
   });
 
   // Selected "All" for Category. No need to factor category into search.
   if(categoryId == 0) {
-    db.query(`SELECT * FROM items WHERE title LIKE '${search}%' ORDER BY title;`, (err, results, fields) => {
+    db.query(`SELECT * FROM Items WHERE title LIKE '${search}%' ORDER BY title;`, (err, results, fields) => {
       res.render('test_results', { title: 'Team 05 Home Page', results: results, total: totalItemCount});
     });
   }
 
   // Filter results based on category chosen.
   else if(categoryId > 0) {
-    db.query(`SELECT * FROM items WHERE title LIKE '${search}%' AND category=${categoryId} ORDER BY title;`, (err, results, fields) => {
+    db.query(`SELECT * FROM Items WHERE title LIKE '${search}%' AND category=${categoryId} ORDER BY title;`, (err, results, fields) => {
       res.render('test_results', { title: 'Team 05 Home Page', results: results, total: totalItemCount});
     });
   }
