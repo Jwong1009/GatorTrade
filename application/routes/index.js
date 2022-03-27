@@ -20,22 +20,21 @@ router.get('/test_results', function (req, res, next) {
   // Gets total count of items in database to display on /test_results page.
   db.query('SELECT COUNT(*) AS length FROM Items;', (err, results, fields) => {
     totalItemCount = results[0].length;
+    // Selected "All" for Category. No need to factor category into search.
+    if (categoryId == 0) {
+      db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' ORDER BY title;`, (err, results, fields) => {
+        res.render('test_results', { title: 'Team 05 Home Page', results: results, total: totalItemCount });
+        // console.log(totalItemCount);
+      });
+    }
+
+    // Filter results based on category chosen.
+    else if (categoryId > 0) {
+      db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' AND category=${categoryId} ORDER BY title;`, (err, results, fields) => {
+        res.render('test_results', { title: 'Team 05 Home Page', results: results, total: totalItemCount });
+      });
+    }
   });
-
-  // Selected "All" for Category. No need to factor category into search.
-  if (categoryId == 0) {
-    db.query(`SELECT * FROM Items WHERE title LIKE '${search}%' ORDER BY title;`, (err, results, fields) => {
-      res.render('test_results', { title: 'Team 05 Home Page', results: results, total: totalItemCount });
-      // console.log(totalItemCount);
-    });
-  }
-
-  // Filter results based on category chosen.
-  else if (categoryId > 0) {
-    db.query(`SELECT * FROM Items WHERE title LIKE '${search}%' AND category=${categoryId} ORDER BY title;`, (err, results, fields) => {
-      res.render('test_results', { title: 'Team 05 Home Page', results: results, total: totalItemCount });
-    });
-  }
 });
 
 router.get('/about/patel', function (req, res, next) {
