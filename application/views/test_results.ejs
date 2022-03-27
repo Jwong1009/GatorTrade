@@ -68,7 +68,26 @@
                                 <img src="https://www.petmd.com/sites/default/files/2020-11/picture-of-golden-retriever-dog_0.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                 <h5 class="card-title"><%= results[i].title %></h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Category: <%= results[i].category %></h6>
+                                <h6 class="card-subtitle mb-2 text-muted">Category: 
+                                    <% switch (results[i].category) {
+                                        case 1: %>
+                                        Electronics
+                                      <% break;
+                                        case 2: %>
+                                        Textbooks
+                                      <% break;
+                                        case 3: %>
+                                        Handicraft
+                                      <% break;
+                                        case 4: %>
+                                        Education Supplies
+                                      <% break;
+                                        case 5: %>
+                                        Food
+                                      <% break;
+                                        default:
+                                        break; } %>
+                                </h6>
                                 <h6 class="card-subtitle mb-2 text-muted"><%= results[i].seller %></h6>
                                 <p class="card-text"><%= results[i].description %></p>
                                 <span class="border border-primary rounded-2 px-4 pv-2 fs-5"><%= results[i].price %></span>
