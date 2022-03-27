@@ -21,21 +21,21 @@ router.get('/test_results', function(req, res, next) {
   db.query('SELECT COUNT(*) AS length FROM items;', (err, results, fields) => {
     console.log(results[0].length);
     totalItemCount = results[0].length;
+
+    // Selected "All" for Category. No need to factor category into search.
+    if(categoryId == 0) {
+      db.query(`SELECT * FROM items WHERE title LIKE '${search}%' ORDER BY title;`, (err, results, fields) => {
+        res.render('test_results', { title: 'Team 05 Home Page', results: results, total: totalItemCount});
+      });
+    }
+
+    // Filter results based on category chosen.
+    else if(categoryId > 0) {
+      db.query(`SELECT * FROM items WHERE title LIKE '${search}%' AND category=${categoryId} ORDER BY title;`, (err, results, fields) => {
+        res.render('test_results', { title: 'Team 05 Home Page', results: results, total: totalItemCount});
+      });
+    }
   });
-
-  // Selected "All" for Category. No need to factor category into search.
-  if(categoryId == 0) {
-    db.query(`SELECT * FROM items WHERE title LIKE '${search}%' ORDER BY title;`, (err, results, fields) => {
-      res.render('test_results', { title: 'Team 05 Home Page', results: results, total: totalItemCount});
-    });
-  }
-
-  // Filter results based on category chosen.
-  else if(categoryId > 0) {
-    db.query(`SELECT * FROM items WHERE title LIKE '${search}%' AND category=${categoryId} ORDER BY title;`, (err, results, fields) => {
-      res.render('test_results', { title: 'Team 05 Home Page', results: results, total: totalItemCount});
-    });
-  }
 });
 
 router.get('/about/patel', function(req, res, next) {
