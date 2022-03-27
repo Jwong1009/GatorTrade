@@ -30,7 +30,7 @@ router.get('/test_results', function (req, res, next) {
 
     // Filter results based on category chosen.
     else if (categoryId > 0) {
-      db.query(`SELECT * FROM Items WHERE title LIKE '${search}%' AND category=${categoryId} ORDER BY title;`, (err, results, fields) => {
+      db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' AND category=${categoryId} ORDER BY title;`, (err, results, fields) => {
         res.render('test_results', { title: 'Team 05 Home Page', results: results, total: totalItemCount });
       });
     }
