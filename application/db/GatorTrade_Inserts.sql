@@ -1,7 +1,38 @@
-INSERT INTO `GatorTrade`.`Categories` (`title`) VALUES ("Electronics"),( "Text"), ("Handicraft"), ("Edu_supply"), ("Food");
-INSERT INTO `GatorTrade`.`Users` (`password`, `email`) VALUES ("Password", "student@mail.sfsu.edu"), ("Password", "student2@mail.sfsu.edu"), ("Password", "student3@mail.sfsu.edu"), ("Password", "student4@mail.sfsu.edu"), ("Password", "student5@mail.sfsu.edu");
-INSERT INTO `GatorTrade`.`Items` (`category`, `seller`, `photopath`, `description`, `title`) VALUES (2, 1, NULL, NULL, "Lord of The Rings"), (2, 1, NULL, NULL, "Harry Potter"), (2, 1, NULL, NULL, "Percy Jackson"), (2, 1, NULL, NULL, "Artemis Fowl"), (2, 1, NULL, NULL, "Divergent");
-INSERT INTO `GatorTrade`.`Items` (`category`, `seller`, `photopath`, `description`, `title`) VALUES (1, 1, NULL, NULL, "iPad"), (1, 1, NULL, NULL, "iPhone"), (1, 1, NULL, NULL, "Samsung S22"), (1, 1, NULL, NULL, "Razer Orochi Mouse"), (1, 1, NULL, NULL, "Logitech Lightspeed Mouse");
-INSERT INTO `GatorTrade`.`Items` (`category`, `seller`, `photopath`, `description`, `title`) VALUES (3, 1, NULL, NULL, "Crochet Plush"), (3, 1, NULL, NULL, "Hoodies"), (3, 1, NULL, NULL, "Wallet"), (3, 1, NULL, NULL, "Blanket"), (3, 1, NULL, NULL, "Earrings");
-INSERT INTO `GatorTrade`.`Items` (`category`, `seller`, `photopath`, `description`, `title`) VALUES (4, 1, NULL, NULL, "CSC648 Textbook"), (4, 1, NULL, NULL, "CSC600 Textbook"), (4, 1, NULL, NULL, "BIOL101 Textbook"), (4, 1, NULL, NULL, "Lab Goggles"), (4, 1, NULL, NULL, "Lab Coat");
-INSERT INTO `GatorTrade`.`Items` (`category`, `seller`, `photopath`, `description`, `title`) VALUES (5, 1, NULL, NULL, "Spaghetti"), (5, 1, NULL, NULL, "Meatballs"), (5, 1, NULL, NULL, "Cupcakes"), (5, 1, NULL, NULL, "Italian Coffee"), (5, 1, NULL, NULL, "Apple Pie");
+INSERT INTO `GatorTrade`.`Categories` (`title`) VALUES 
+("Electronics"),( "Text"), ("Handicraft"), ("Edu_supply"), ("Food");
+INSERT INTO `GatorTrade`.`Users` (`password`, `email`) VALUES 
+("Password", "student@mail.sfsu.edu"), 
+("Password", "student2@mail.sfsu.edu"), 
+("Password", "student3@mail.sfsu.edu"), 
+("Password", "student4@mail.sfsu.edu"), 
+("Password", "student5@mail.sfsu.edu");
+INSERT INTO `GatorTrade`.`Items` (`category`, `seller`, `photopath`, `description`, `title`, `price`) VALUES 
+(2, 1, NULL, "A fantasy book", "Lord of The Rings", 10),
+ (2, 1, NULL, "A magical book", "Harry Potter", 10), 
+ (2, 1, NULL, "A mythology book", "Percy Jackson", 10), 
+ (2, 1, NULL, "A book with a horrible movie", "Artemis Fowl", 10), 
+ (2, 1, NULL, "A dystopian book", "Divergent", 10);
+INSERT INTO `GatorTrade`.`Items` (`category`, `seller`, `photopath`, `description`, `title`, `price`) VALUES 
+(1, 1, NULL, "Like New", "iPad", 200), 
+(1, 1, NULL, "Like New", "iPhone", 400), 
+(1, 1, NULL, "Like New", "Samsung S22", 400), 
+(1, 1, NULL, "Like New", "Razer Orochi Mouse", 40), 
+(1, 1, NULL, "Like New", "Logitech Lightspeed Mouse", 10);
+INSERT INTO `GatorTrade`.`Items` (`category`, `seller`, `photopath`, `description`, `title`, `price`) VALUES 
+(3, 1, NULL, "Cotton", "Crochet Plush", 10), 
+(3, 1, NULL, "Cotton", "Hoodies", 10), 
+(3, 1, NULL, "Leather", "Wallet", 10), 
+(3, 1, NULL, "Cotton", "Blanket", 10), 
+(3, 1, NULL, "Silver", "Earrings", 10);
+INSERT INTO `GatorTrade`.`Items` (`category`, `seller`, `photopath`, `description`, `title`, `price`) VALUES 
+(4, 1, NULL, "Like New", "CSC648 Textbook", 10), 
+(4, 1, NULL, "Like New", "CSC600 Textbook", 10), 
+(4, 1, NULL, "Like New", "BIOL101 Textbook", 10), 
+(4, 1, NULL, "Like New", "Lab Goggles", 10), 
+(4, 1, NULL, "Like New", "Lab Coat", 10);
+INSERT INTO `GatorTrade`.`Items` (`category`, `seller`, `photopath`, `description`, `title`, `price`) VALUES 
+(5, 1, NULL, "Tastes Good", "Spaghetti", 10), 
+(5, 1, NULL, "Tastes Good", "Meatballs", 10), 
+(5, 1, NULL, "Tastes Good", "Cupcakes", 10), 
+(5, 1, NULL, "Tastes Good", "Italian Coffee", 10), 
+(5, 1, NULL, "Tastes Good", "Apple Pie", 10);

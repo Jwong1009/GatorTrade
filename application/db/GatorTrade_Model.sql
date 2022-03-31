@@ -16,8 +16,7 @@ CREATE TABLE IF NOT EXISTS `GatorTrade`.`Categories` (
   `idCategories` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idCategories`),
-  UNIQUE INDEX `idCategories_UNIQUE` (`idCategories` ASC),
-  UNIQUE INDEX `name_UNIQUE` (`title` ASC))
+  UNIQUE INDEX `idCategories_UNIQUE` (`idCategories` ASC))
 ENGINE = InnoDB;
 
 
@@ -76,7 +75,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `GatorTrade`.`Reviews` ;
 
 CREATE TABLE IF NOT EXISTS `GatorTrade`.`Reviews` (
-  `idReviews` INT NOT NULL,
+  `idReviews` INT UNSIGNED NOT NULL,
   `reviewer` INT UNSIGNED NOT NULL,
   `reviewee` INT UNSIGNED NOT NULL,
   `rating` TINYINT(5) UNSIGNED NOT NULL,
@@ -106,12 +105,15 @@ DROP TABLE IF EXISTS `GatorTrade`.`Messages` ;
 
 CREATE TABLE IF NOT EXISTS `GatorTrade`.`Messages` (
   `idMessages` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `item` INT UNSIGNED NOT NULL,
   `sender` INT UNSIGNED NOT NULL,
   `receiver` INT UNSIGNED NOT NULL,
   `body` VARCHAR(128) NULL,
   PRIMARY KEY (`idMessages`),
   INDEX `SENDER_USERS_FK_idx` (`sender` ASC),
   INDEX `MESSAGEE_USERS_FK_idx` (`receiver` ASC),
+  UNIQUE INDEX `idMessages_UNIQUE` (`idMessages` ASC),
+  INDEX `MESSAGES_ITEMS_FK_idx` (`item` ASC),
   CONSTRAINT `SENDER_USERS_FK`
     FOREIGN KEY (`sender`)
     REFERENCES `GatorTrade`.`Users` (`idUsers`)
@@ -120,6 +122,11 @@ CREATE TABLE IF NOT EXISTS `GatorTrade`.`Messages` (
   CONSTRAINT `RECEIVER_USERS_FK`
     FOREIGN KEY (`receiver`)
     REFERENCES `GatorTrade`.`Users` (`idUsers`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `MESSAGES_ITEMS_FK`
+    FOREIGN KEY (`item`)
+    REFERENCES `GatorTrade`.`Items` (`idItems`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
