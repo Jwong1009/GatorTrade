@@ -19,7 +19,7 @@
 5. Database username 
 <br>root
 7. Database password 
-<br>Team05Guest!
+<br>student
 8. Database name (basically the name that contains all your tables)
 <br>GatorTrade
 10. Instructions on how to use the above information.
