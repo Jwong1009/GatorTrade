@@ -1,3 +1,10 @@
+/**********************************************************
+ * FILE: routes/users.js
+ * 
+ * DESCRIPTION: Application's endpoints from this file will
+ * start with "/users".
+**********************************************************/
+
 var express = require('express');
 var router = express.Router();
 

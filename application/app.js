@@ -1,14 +1,22 @@
+/**********************************************************
+ * FILE: app.js
+ * 
+ * DESCRIPTION: (TO UPDATE)
+**********************************************************/
+
 var express = require('express');
 var createError = require('http-errors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// Routers:
 var indexRouter = require('./routes/index');
+var aboutRouter = require('./routes/about');
 var usersRouter = require('./routes/users');
 var dbRouter = require('./routes/dbtest');
 
-const PORT = 3001;
+const PORT = 3001; // Ex: localhost:3001
 var app = express();
 
 // view engine setup
@@ -22,21 +30,22 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/about', aboutRouter);
 app.use('/users', usersRouter);
 app.use('/dbtest', dbRouter);
 
-// catch 404 and forward to error handler
+// Catches 404 and forwards to error handler.
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
-// error handler
+// Error handler:
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
+  // Sets locals, only providing error in development.
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+  // Renders the error page.
   res.status(err.status || 500);
   res.render('error');
 });
