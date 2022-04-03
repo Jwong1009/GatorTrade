@@ -23,7 +23,8 @@
 8. Database name (basically the name that contains all your tables)
 <br>GatorTrade
 10. Instructions on how to use the above information.
-Using a terminal, navigate to the location where the SSH key is stored. Then use the command
+Using a terminal, navigate to the location where the SSH key is stored. For the first use, use the command 
+chmod 400 csc648-team05.pem. Then use the command
 ssh -i "csc648-team05.pem" ubuntu@ec2-54-84-192-86.compute-1.amazonaws.com to access the server
 <br>To access the database navigate to the db folder (cd app/application/db) then use sudo mysql -u root -p, then paste the password
 
