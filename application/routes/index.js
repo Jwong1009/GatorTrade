@@ -47,6 +47,10 @@ router.get('/test_results', function (req, res, next) {
   });
 });
 
+router.get('/login', function(req, res, next){
+  res.render('login', { title: 'Team 05 Home Page' });
+});
+
 /* TEAM 5 About Me Pages */
 // REFACTOR: Make general template about page with injected EJS parameters for details.
 

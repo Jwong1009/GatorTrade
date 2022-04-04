@@ -1,0 +1,192 @@
+button {
+    width: 180px;
+    height: 25px;
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+button > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.btn {
+    cursor: pointer;
+    background-color: #262626;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+}
+
+.btn:hover {
+    transform: scale(0.9);
+    color: #fff;
+}
+
+.hidden{
+    /*visibility: hidden;*/
+    opacity: 0;
+    z-index: -1;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#loginContainer{
+    position: relative;
+    width: 868px;
+    height: 540px;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+                0 10px 10px rgba(0,0,0,0.22);
+    overflow: hidden;
+    margin: 40px 0;
+}
+
+.signin,
+.signup{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: all 0.5s ease-in-out;
+}
+
+.signup{
+    flex-direction: row-reverse;
+}
+
+.form,
+.side{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.form .social-container{
+    margin-top: 20px;
+    display: flex;
+}
+
+.form .social-container a{
+    margin: 0 7px;
+    border: lightgrey 1px solid;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form .social-container a:hover{
+    transform: scale(1.2);
+    color: black;
+    border-color: #999797;
+}
+
+.form .social-container a img{
+    width: 22px;
+}
+
+.form span{
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+.control{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.control small{
+    color: red;
+    display: inline-block;
+    align-self: flex-start;
+    visibility: hidden;
+    font-size: 0.8rem;
+}
+
+.form .control input{
+    background-color: rgb(221, 219, 219);
+    margin-top: 5px;
+    width: 100%;
+    padding-left: 10px;
+    border: none;
+    height: 40px;
+}
+
+#firstControl{
+    margin-top: 15px;
+}
+
+.form > input{
+    background-color: rgb(221, 219, 219);
+    width: 80%;
+    height: 40px;
+    margin-top: 15px;
+    padding-left: 10px;
+    border: none;
+}
+
+.form > a{
+    margin: 20px 0;
+    font-size: 14px;
+    color: #999797;
+}
+
+.form > a:hover{
+    color: black;
+}
+
+.side{
+    background-color: #262626;
+    color: #fff;
+}
+
+.form{
+    background-color: #fff;
+}
+
+.side p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+.side .btn{
+    background-color: transparent;
+    border: 1px solid #fff;
+}
+
+#loginCheckbox{
+    display: flex;
+    font-size: 0.9rem;
+    align-content: center;
+    justify-content: left;
+    justify-self: left;
+    padding-top: 15px;
+    width: 80%;
+}
+
+#showPass{
+    width: 15px;
+    margin-right: 5px;
+    margin-top: 4px;
+}
