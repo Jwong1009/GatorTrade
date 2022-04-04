@@ -8,11 +8,11 @@ INSERT INTO `GatorTrade`.`Users` (`password`, `email`, `firstname`, `lastname`) 
 INSERT INTO `GatorTrade`.`Users` (`password`, `email`, `firstname`, `lastname`, `admin`) VALUES 
 ("Password", "student@mail.sfsu.edu", "Joe", "Schmuck", 1);
 INSERT INTO `GatorTrade`.`Items` (`category`, `seller`, `description`, `title`, `price`, `photopath`) VALUES 
-(2, 1, "A fantasy book nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes", "Lord of The Rings", 10, "public/images/lotr.jpg"),
- (2, 1, "A magical book nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes", "Harry Potter", 10, "public/images/harry-potter.jpg"), 
- (2, 1, "A mythology book nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes", "Percy Jackson", 10, "public/images/percy-jackson.jpg"), 
- (2, 1, "A book with a horrible movie nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes", "Artemis Fowl", 10, "public/images/artemis-fowl.jpg"), 
- (2, 1, "A dystopian book nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes", "Divergent", 10, "public/images/divergent.jpg");
+(2, 1, "A fantasy book nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis", "Lord of The Rings", 10, "public/images/lotr.jpg"),
+ (2, 1, "A magical book nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis", "Harry Potter", 10, "public/images/harry-potter.jpg"), 
+ (2, 1, "A mythology book nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis", "Percy Jackson", 10, "public/images/percy-jackson.jpg"), 
+ (2, 1, "A book with a horrible movie nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis", "Artemis Fowl", 10, "public/images/artemis-fowl.jpg"), 
+ (2, 1, "A dystopian book nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis", "Divergent", 10, "public/images/divergent.jpg");
 INSERT INTO `GatorTrade`.`Items` (`category`, `seller`, `description`, `title`, `price`, `photopath`) VALUES 
 (1, 1, "Like New nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes", "iPad", 200, "public/images/ipad.jpg"), 
 (1, 1, "Like New nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes", "iPhone", 400, "public/images/iphone.jpg"), 
