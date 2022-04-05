@@ -10,75 +10,82 @@
 
 const express = require('express');
 const db = require('../db');
+const members = require('./members');
 const router = express.Router();
 
 /* TEAM 5 About Me Pages */
 // REFACTOR: Make general template page with 
 
 router.get('/patel', function (req, res, next) {
-    let fname = 'Kishan';
-    let lname = 'Patel';
-    let desc = '';
-    let email = "kpatel10@sfsu.edu";
-    let github_id = 'kp-4137';
-    let github_link = "https://github.com/kp-4137";
-    let image = "/images/generic-photo.jpg";
-    res.render('about', {fname: fname, lname: lname, description: desc, email: email, github_id: github_id, github_link: github_link, image: image});
+    res.render('about', {
+        fname: members.patel.fname,
+        lname: members.patel.lname,
+        description: members.patel.desc,
+        email: members.patel.email,  
+        github_id: members.patel.github_id,
+        github_link: members.patel.github_link,
+        image: members.patel.image
+    });
 });
 
 router.get('/lei', function (req, res, next) {
-    let fname = 'Ze';
-    let lname = 'Lei';
-    let desc = 'Ze is in his last semester at SFSU. He is studying for a B.S. in Computer Science. He plays video games like Teamfight Tactics.';
-    let email = "zlei1@sfsu.edu";
-    let github_id = 'Frogger-Software';
-    let github_link = "https://github.com/Frogger-Software";
-    let image = "/images/generic-photo.jpg";
-    res.render('about', {fname: fname, lname: lname, description: desc, email: email, github_id: github_id, github_link: github_link, image: image});
+    res.render('about', {
+        fname: members.lei.fname,
+        lname: members.lei.lname,
+        description: members.lei.desc,
+        email: members.lei.email,
+        github_id: members.lei.github_id,
+        github_link: members.lei.github_link,
+        image: members.lei.image
+    });
 });
 
 router.get('/zaheer', function (req, res, next) {
-    let fname = 'Faisal';
-    let lname = 'Zaheer';
-    let desc = 'I love computers, I like math, and I enjoy learning how to code, so I incorporate all of that into my projects. I\'m also a huge Star Wars fan! "Parsec" is a unit of distance, not time!';
-    let email = "fzaheer@mail.sfsu.edu";
-    let github_id = 'Faisal-ZaheerVI';
-    let github_link = "https://github.com/Faisal-ZaheerVI";
-    let image = "/images/zaheer.jpg";
-    res.render('about', {fname: fname, lname: lname, description: desc, email: email, github_id: github_id, github_link: github_link, image: image});
+    res.render('about', {
+        fname: members.zaheer.fname,
+        lname: members.zaheer.lname,
+        description: members.zaheer. desc,
+        email: members.zaheer.email,
+        github_id: members.zaheer.github_id,
+        github_link: members.zaheer.github_link,
+        image: members.zaheer.image
+    });
 });
 
 router.get('/hernandez', function (req, res, next) {
-    let fname = 'Juan';
-    let lname = 'Hernandez';
-    let desc = 'Lacking direction, expecations, aspirations and overall motivation I decided to pursue Computer Science after someone told me there\'s money to be made.\nI\'ve regretted that decision with each passing day and realize I should have gone into the mountains to farm wasabi.\nI can write "Hello World" programs in C, C++, Python, Javascript, Java and not much else.\nNow what I lack in raw coding ability I don\'t make up with my level of creativity nor ingenuity.';
-    let email = "jhernandez54@mail.sfsu.edu";
-    let github_id = 'Juan-Hernandez7';
-    let github_link = "https://github.com/Juan-Hernandez7";
-    let image = "/images/juan_moleman.jpg";
-    res.render('about', {fname: fname, lname: lname, description: desc, email: email, github_id: github_id, github_link: github_link, image: image});
+    res.render('about', {
+        fname: members.hernandez.fname,
+        lname: members.hernandez.lname,
+        description: members.hernandez.desc,
+        email: members.hernandez.email,
+        github_id: members.hernandez.github_id,
+        github_link: members.hernandez.github_link,
+        image: members.hernandez.image
+    });
 });
 
 router.get('/wong', function (req, res, next) {
-    let fname = 'Joanne';
-    let lname = 'Wong';
-    let desc = 'My most recent hobbies include playing games, listening to music, and watching dramas. Besides computer science, I enjoy many topics in psychology and sociology.';
-    let email = "jwong45@mail.sfsu.edu";
-    let github_id = 'Jwong1009';
-    let github_link = "https://github.com/Jwong1009";
-    let image = "/images/generic-photo.jpg";
-    res.render('about', {fname: fname, lname: lname, description: desc, email: email, github_id: github_id, github_link: github_link, image: image});
+    res.render('about', {
+        fname: members.wong.fname,
+        lname: members.wong.lname,
+        description: members.wong.desc,
+        email: members.wong.email,
+        github_id: members.wong.github_id,
+        github_link: members.wong.github_link,
+        image: members.wong.image
+    });
 });
 
 router.get('/cheung', function (req, res, next) {
-    let fname = 'Michael';
-    let lname = 'Cheung';
-    let desc = 'I am a senior at San Francisco State University, and I am the frontend lead for this web application. \nI have knowledge in HTML, CSS, Javascript, Bootstrap and Node. I also have knowledge in C, C++, Java and Python. \nI enjoy playing Magic the Gathering and Flesh and Blood.';
-    let email = "mcheung12@mail.sfsu.edu";
-    let github_id = 'weirds111';
-    let github_link = "https://github.com/weirds111";
-    let image = "/images/Michael_Cheung_Photo.jpg";
-    res.render('about', {fname: fname, lname: lname, description: desc, email: email, github_id: github_id, github_link: github_link, image: image});
+    res.render('about', {
+        fname: members.cheung.fname,
+        lname: members.cheung.lname,
+        description: members.cheung.desc,
+        email: members.cheung.email,
+        github_id: members.cheung.github_id,
+        github_link: members.cheung.github_link,
+        image: members.cheung.image
+    });
 });
   
 module.exports = router;
