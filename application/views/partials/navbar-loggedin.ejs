@@ -1,10 +1,20 @@
+<!--
+FILE: views/partials/navbar-loggedin.ejs
+ 
+DESCRIPTION: Generates a nav bar that incorporates
+a homepage logo that redirects to the homepage, 
+category select button, search bar, a redirect to the 
+about-members-of-the-team page, a redirect to the 
+post listing page, and a logged in feature that includes
+a dropdown menu leading to the user's personal page and 
+a log out button.
+-->
 <nav class="navbar navbar-expand-xl dropdown-menu-dark navbar-dark flex-column">
     <div class="fw-lighter">
         SFSU Software Engineering Project CSC 648-848, Spring 2022 For Demonstration Only
     </div>
     <ul class="navbar-nav container-fluid">
         <li class="nav-item align-items-center ">
-            <!-- <a class="fs-4 nav-link hover" href="/test_homepage">GatorTrade</a> -->
             <a class="navbar-brand mx-2" href="/homepage"> <img src="/images/gator.png" width="auto" height="80px"> </a>
 
         </li>
@@ -26,7 +36,6 @@
                 <div class="input-group-append">
                     <button class="btn btn-secondary" type="submit">
                         Search
-                        <!-- <i class="fas fa-search"></i> -->
                     </button>
                 </div>
             </div>

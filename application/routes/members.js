@@ -1,3 +1,11 @@
+/**********************************************************
+ * FILE: routes/members.js
+ * 
+ * DESCRIPTION: Generates JS objects for each member that
+ * holds their first name, last name, description, email,
+ * github id, github link, image, and role.
+**********************************************************/
+
 const members = {
     patel: {
         fname: 'Kishan',
@@ -17,7 +25,7 @@ const members = {
         github_id: 'Frogger-Software',
         github_link: "https://github.com/Frogger-Software",
         image: "/images/generic-photo.jpg",
-        role: 'back-end member and github master',
+        role: 'back-end member',
     },
     zaheer: {
         fname: 'Faisal',
