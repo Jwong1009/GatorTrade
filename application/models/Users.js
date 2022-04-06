@@ -2,11 +2,11 @@ var db = require('../db');
 var bcrypt = require('bcrypt');
 const UserModel = {};
 
-UserModel.create = (username, password, email) => {
+UserModel.create = (password, email, firstname, lastname) => {
     return bcrypt.hash(password, 15)
     .then((hashedPassword) => {
-        let baseSQL = "INSERT INTO users (username, email, password, created) VALUES (?,?,?,now());";
-        return db.execute(baseSQL, [username, email, hashedPassword])
+        let baseSQL = "INSERT INTO GatorTrade.users (email, password,firstname,lastname) VALUES (?,?,?,?);";
+        return db.execute(baseSQL, [ email, hashedPassword,firstname,lastname])
     })
     .then(([results, fields]) => {
         if(results && results.affectedRows) {
@@ -20,7 +20,7 @@ UserModel.create = (username, password, email) => {
 }
 
 UserModel.usernameExists = (username) => {
-    return db.execute("SELECT * FROM csc317db.users WHERE username=?", [username])
+    return db.execute("SELECT * FROM GatorTrade.users WHERE username=?", [username])
     .then(([results, fields]) => {
         return Promise.resolve(!(results && results.length == 0));
     })
@@ -28,21 +28,21 @@ UserModel.usernameExists = (username) => {
 }
 
 UserModel.emailExists = (email) => {
-    return db.execute("SELECT * FROM csc317db.users WHERE email=?", [email])
+    return db.execute("SELECT * FROM GatorTrade.users WHERE email=?", [email])
     .then(([results, fields]) => {
         return Promise.resolve(!(results && results.length == 0));
     })
     .catch((err) => Promise.reject(err));
 }
 
-UserModel.authenticate = (username, password) => {
-    let userId;
-    let baseSQL = "SELECT id, username, password FROM csc317db.users WHERE username=?;";
+UserModel.authenticate = (email, password) => {
+
+    let baseSQL = "SELECT idUsers, email, password FROM GatorTrade.users WHERE email=?;";
     return db
-    .execute(baseSQL,[username])
+    .execute(baseSQL,[email])
     .then(([results, fields]) => {
         if(results && results.length == 1) {
-            userId = results[0].id;
+            userId = results[0].idUsers;
             return bcrypt.compare(password, results[0].password);
         } else {
             return Promise.reject(-1);

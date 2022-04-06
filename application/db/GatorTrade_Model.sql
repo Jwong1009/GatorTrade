@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `GatorTrade`.`Users` ;
 
 CREATE TABLE IF NOT EXISTS `GatorTrade`.`Users` (
   `idUsers` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(64) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `firstname` VARCHAR(45) NULL DEFAULT 'none',
   `lastname` VARCHAR(45) NULL DEFAULT 'none',
