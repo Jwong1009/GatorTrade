@@ -31,18 +31,21 @@
                     Team 5
                 </h1>
             </div>
-
-            <form action="" class="d-flex justify-content-center mt-5">
+            
+            <form action="/test_results" class="d-flex justify-content-center mt-5">
                 <div class="input-group w-50 rounded overflow-hidden">
-                    <select name="categories" id="categories" class="bg-secondary border-0 text-light px-2">
-                        <option value="one">All</option>
-                        <option value="one">One</option>
-                        <option value="two">Two</option>
-                        <option value="fifteen">Fifteen</option>
+                    <select name="category" id="categories" class="bg-secondary border-0 text-light px-2">
+                        <option value=0>All</option>
+                        <option value=1>Electronics</option>
+                        <option value=2>Textbooks</option>
+                        <option value=3>Handicraft</option>
+                        <option value=4>Education Supplies</option>
+                        <option value=5>Food</option>
                     </select>
-                    <input type="search" placeholder="Search" class="form-control border-0"/>
-                    <button type="button" class="btn btn-primary">
-                        <a href="/test_results" class="text-light"><i class="fas fa-search"></i></a>
+                    <input id="searchInput" name="search" type="search" placeholder="Search" class="form-control border-0"/>
+                    <!-- <input type="button" class="btn btn-primary"> -->
+                    <button type="submit" class="btn btn-primary">
+                        <a href="" class="text-light"><i class="fas fa-search"></i></a>
                     </button>
                 </div>
             </form>
@@ -50,5 +53,6 @@
     </div>
 
     <script src="/javascripts/bootstrap.bundle.js"></script>
+    <script src="/javascripts/search.js"></script>
   </body>
 </html>

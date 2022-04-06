@@ -8,18 +8,25 @@
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 
 1. Server URL or IP
-<br>http://ec2-54-234-226-175.compute-1.amazonaws.com:3000
+<br>http://ec2-54-84-192-86.compute-1.amazonaws.com:3000/
 2. SSH username 
-<br>ssh -i "csc648-team05.pem" ubuntu@ec2-44-202-110-149.compute-1.amazonaws.com
+<br>ubuntu
 3. SSH key - included in folder
     <br> If a ssh key is used please upload the key to the credentials folder.
 4. Database URL or IP and port used.
+<br>Default
     <br><strong> NOTE THIS DOES NOT MEAN YOUR DATABASE NEEDS A PUBLIC FACING PORT.</strong> But knowing the IP and port number will help with SSH tunneling into the database. The default port is more than sufficient for this class.
 5. Database username 
-6. Database password 
-7. Database name (basically the name that contains all your tables)
-8. Instructions on how to use the above information.
-Using a terminal, navigate to the location where the SSH key is stored. Then use the command listed under SSH username to access the server
+<br>root
+7. Database password 
+<br>student
+8. Database name (basically the name that contains all your tables)
+<br>GatorTrade
+10. Instructions on how to use the above information.
+Using a terminal, navigate to the location where the SSH key is stored. For the first use, use the command 
+chmod 400 csc648-team05.pem. Then use the command
+ssh -i "csc648-team05.pem" ubuntu@ec2-54-84-192-86.compute-1.amazonaws.com to access the server
+<br>To access the database navigate to the db folder (cd app/application/db) then use sudo mysql -u root -p, then paste the password
 
 AWS Sign In:
 <br>Account ID: 278286693302

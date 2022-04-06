@@ -1,0 +1,64 @@
+<!--
+FILE: views/partials/navbar-loggedin.ejs
+ 
+DESCRIPTION: Generates a nav bar that incorporates
+a homepage logo that redirects to the homepage, 
+category select button, search bar, a redirect to the 
+about-members-of-the-team page, a redirect to the 
+post listing page, and a logged in feature that includes
+a dropdown menu leading to the user's personal page and 
+a log out button.
+-->
+<nav class="navbar navbar-expand-xl dropdown-menu-dark navbar-dark flex-column">
+    <div class="fw-lighter">
+        SFSU Software Engineering Project CSC 648-848, Spring 2022 For Demonstration Only
+    </div>
+    <ul class="navbar-nav container-fluid">
+        <li class="nav-item align-items-center ">
+            <a class="navbar-brand mx-2" href="/homepage"> <img src="/images/gator.png" width="auto" height="80px"> </a>
+
+        </li>
+
+        <li class="nav-item align-items-center flex-fill">
+            <div class="input-group align-items-center px-3">
+                <div style="width:200px">
+
+                    <select class="form-select bg-secondary text-light" id="categories">
+                        <option value=0>All</option>
+                        <option value=1>Electronics</option>
+                        <option value=2>Textbooks</option>
+                        <option value=3>Handicraft</option>
+                        <option value=4>Education Supplies</option>
+                        <option value=5>Food</option>
+                    </select>
+                </div>
+                <input id="searchInput" name="search" placeholder="Search" class="form-control" />
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="submit">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </li>
+
+        <li class="nav-item align-items-center">
+            <a class="nav-link fs-4 hover" href="/about">About</a>
+        </li>
+
+        <li class="nav-item align-items-center ">
+            <a class="nav-link fs-4 hover" href="#">Post</a>
+        </li>
+
+        <li class="nav-item align-items-center ">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    <i class="bi bi-person-circle" style="font-size: 30px; color:white"> </i>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item text-dark" href="#">My Page</a></li>
+                    <li><a class="dropdown-item text-dark" href="#">Log Out</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</nav>

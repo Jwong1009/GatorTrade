@@ -1,0 +1,48 @@
+<!--
+FILE: views/aboutAll.ejs
+
+DESCRIPTION: Generates a page to showcase all
+members on the team with their respective name, 
+role, and image. 
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/form.css">
+</head>
+
+<body>
+    <%- include('partials/navbar') %>
+        <div class="d-flex flex-wrap justify-content-center" id="aboutContainer">
+            <!-- loops through the membersInfo array that was passed in res.render statement in index.js file and grabs
+                outputs a card that shows each individual member and their respective information -->
+            <% for (member of membersInfo) { %>
+                <div class="row m-2">
+                        <a href="/about/<%= member.lname%>">
+                        <div class="col">
+                            <div class= "bg-dark text-white col" id="aboutCard">
+                                <img src="<%= member.img %>" class="m-3 card-img-top" id="aboutImg">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title font-monospace fs-3">
+                                        <%= member.name %>
+                                    </h5>
+                                    <p class="card-text">
+                                        <%= member.role%>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    </div>
+                <% } %>
+        </div>
+        <%- include('partials/footer') %>
+
+
+            <script src="/javascripts/bootstrap.bundle.js"></script>
+</body>
+
+</html>

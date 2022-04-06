@@ -31,11 +31,76 @@
                     Team 5
                 </h1>
             </div>
+
+            <form action="/test_results" class="d-flex justify-content-center mt-5">
+                <div class="input-group w-50 rounded overflow-hidden">
+                    <select name="category" id="categories" class="bg-secondary border-0 text-light px-2">
+                        <option value=0>All</option>
+                        <option value=1>Electronics</option>
+                        <option value=2>Textbooks</option>
+                        <option value=3>Handicraft</option>
+                        <option value=4>Education Supplies</option>
+                        <option value=5>Food</option>
+                    </select>
+                    <input id="searchInput" name="search" type="search" placeholder="Search" class="form-control border-0"/>
+                    <!-- <input type="button" class="btn btn-primary"> -->
+                    <button type="submit" class="btn btn-primary">
+                        <a href="" class="text-light"><i class="fas fa-search"></i></a>
+                    </button>
+                </div>
+            </form>
+
             <div>
-                <p>Showing 6 out of 10 items.</p>
+                <% if(results) { %>
+                    <p>Showing <%= results.length %> out of <%= total %> items.</p>
+                <% } else { %>
+                    <p>Showing 0 out of <%= total %> items.</p>
+                <% } %>
             </div>
             <div id="results">
-                <div class="row mb-5">
+                <% if(results) { %>
+                    <% for(var i = 0; i < results.length; i++) { %>
+                        <% if(i % 3 == 0) { %>
+                            <div class="row mb-5">
+                        <% } %>
+                        <div class="col-md-4">
+                            <div class="card" style="width: 18rem;">
+                                <img src="https://www.petmd.com/sites/default/files/2020-11/picture-of-golden-retriever-dog_0.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                <h5 class="card-title"><%= results[i].title %></h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Category: 
+                                    <% switch (results[i].category) {
+                                        case 1: %>
+                                        Electronics
+                                      <% break;
+                                        case 2: %>
+                                        Textbooks
+                                      <% break;
+                                        case 3: %>
+                                        Handicraft
+                                      <% break;
+                                        case 4: %>
+                                        Education Supplies
+                                      <% break;
+                                        case 5: %>
+                                        Food
+                                      <% break;
+                                        default:
+                                        break; } %>
+                                </h6>
+                                <h6 class="card-subtitle mb-2 text-muted"><%= results[i].seller %></h6>
+                                <p class="card-text"><%= results[i].description %></p>
+                                <span class="border border-primary rounded-2 px-4 pv-2 fs-5"><%= results[i].price %></span>
+                                </div>
+                            </div>
+                        </div>
+                        <% if(i % 3 == 2 || i+1 == results.length) { %>
+                            </div>
+                        <% } %>
+                    <% } %>
+                <% } %>
+
+                <!-- <div class="row mb-5">
                     <div class="col-4">
                         <div class="card" style="width: 18rem;">
                             <img src="https://www.petmd.com/sites/default/files/2020-11/picture-of-golden-retriever-dog_0.jpg" class="card-img-top" alt="...">
@@ -104,11 +169,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 
     <script src="/javascripts/bootstrap.bundle.js"></script>
+    <script src="/javascripts/search.js"></script>
   </body>
 </html>
