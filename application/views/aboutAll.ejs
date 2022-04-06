@@ -1,3 +1,10 @@
+<!--
+FILE: views/aboutAll.ejs
+
+DESCRIPTION: Generates a page to showcase all
+members on the team with their respective name, 
+role, and image. 
+-->
 <!DOCTYPE html>
 <html>
 
@@ -9,14 +16,16 @@
 
 <body>
     <%- include('partials/navbar') %>
-        <div class="container" id="aboutContainer">
-            <% for (member of membersInfo) {%>
-                <a href="/about/<%= member.lname%>">
-                    <div class="row">
+        <div class="d-flex flex-wrap justify-content-center" id="aboutContainer">
+            <!-- loops through the membersInfo array that was passed in res.render statement in index.js file and grabs
+                outputs a card that shows each individual member and their respective information -->
+            <% for (member of membersInfo) { %>
+                <div class="row m-2">
+                        <a href="/about/<%= member.lname%>">
                         <div class="col">
                             <div class= "bg-dark text-white col" id="aboutCard">
                                 <img src="<%= member.img %>" class="m-3 card-img-top" id="aboutImg">
-                                <div class="card-body">
+                                <div class="card-body text-center">
                                     <h5 class="card-title font-monospace fs-3">
                                         <%= member.name %>
                                     </h5>
@@ -26,8 +35,8 @@
                                 </div>
                             </div>
                         </div>
+                    </a>
                     </div>
-                </a>
                 <% } %>
         </div>
         <%- include('partials/footer') %>
