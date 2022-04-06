@@ -134,6 +134,13 @@ button > a {
 
 #firstControl{
     margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#firstControl > div{
+    width: 45%;
 }
 
 .form > input{

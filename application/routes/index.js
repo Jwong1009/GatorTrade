@@ -9,6 +9,7 @@
 const express = require('express');
 const db = require('../db');
 const router = express.Router();
+const members = require('./members');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -18,6 +19,19 @@ router.get('/', function (req, res, next) {
 // Test homepage with Search bar:
 router.get('/test_homepage', function (req, res, next) {
   res.render('test_homepage', { title: 'Team 05 Home Page' });
+});
+
+/* GET aboutAll page */
+router.get('/about', function (req, res, next) {
+  const membersArray = Object.values(members).reduce((accum, curr) => { 
+    return accum.concat({
+      lname: curr.lname,
+      name: `${curr.fname} ${curr.lname}`,
+      role: curr.role,
+      img: curr.image,
+    })
+  }, []);
+  res.render('aboutAll', {membersInfo: membersArray});
 });
 
 // Results page, redirected from /test_homepage:

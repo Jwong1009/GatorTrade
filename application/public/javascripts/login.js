@@ -17,7 +17,8 @@ function toggle(){
 
 /*SignUp form validation Start*/
 const signUpForm = document.querySelector('.signup .form');
-const username = document.querySelector('#username');
+const firstname = document.querySelector('#firstname');
+const lastname = document.querySelector('#lastname');
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 const password2 = document.querySelector('#password2');
@@ -27,23 +28,28 @@ signUpForm.addEventListener('submit',checkValues);
 function checkValues(e){
     e.preventDefault();
 
-    const usernameValue = username.value.trim();
+    const firstnameValue = firstname.value.trim();
+    const lastnameValue = lastname.value.trim();
     const emailValue = email.value.trim();
     const passwordValue = password.value.trim();
     const password2Value = password2.value.trim();
 
     let isError = false;
 
-    if(usernameValue === ""){
-        showError(username,'Username cannot be empty');
-        isError = true;
-    }
-    else if(usernameValue.length < 10){
-        showError(username,'Username should be at least 10 characters');
+    if(firstnameValue === ""){
+        showError(firstname,'First Name cannot be empty');
         isError = true;
     }
     else{
-        success(username);
+        success(firstname);
+    }
+
+    if(lastnameValue === ""){
+        showError(lastname,'Last Name cannot be empty');
+        isError = true;
+    }
+    else{
+        success(lastname);
     }
 
     if(emailValue === ""){

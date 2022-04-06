@@ -8,20 +8,7 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-xl dropdown-menu-dark navbar-dark px-5">
-            <ul class="navbar-nav mt-lg-0 w-50 row">
-                <li class="nav-item d-flex align-items-center col-md-4">
-                    <a class="nav-link fs-4" href="/">Team 5</a>
-                </li>
-                <li class="nav-item d-flex align-items-center col-md-4">
-                    <a class="nav-link fs-4" href="/test_homepage">Home</a>
-                </li>
-                <li class="nav-item d-flex align-items-center col-md-4">
-                    <a class="nav-link fs-4 active" href="#">About</a>
-                </li>
-            </ul>
-        </nav>
-
+    <%- include('partials/navbar') %>
         <div class="container-fluid" id="aboutContainer">
             <div class="row justify-content-center h-100 pv-2">
                 <div class="card shadow-lg w-25 bg-dark text-white" id="aboutCard">
@@ -36,7 +23,7 @@
                 </div>
             </div>
         </div>
-
+            <%- include('partials/footer') %>
         <script src="/javascripts/bootstrap.bundle.js"></script>
     </body>
 
