@@ -16,6 +16,12 @@ router.get('/', async function(req, res, next) {
 //     res.sendStatus(500);
 //   }
 // });
+router.get('/search', function(req, res, next){
+
+  
+
+});
+
 
 router.get('/test_homepage', function(req, res, next) {
   res.render('test_homepage', { title: 'Team 05 Home Page' });
