@@ -15,7 +15,7 @@ const members = {
         github_id: 'kp-4137',
         github_link: "https://github.com/kp-4137",
         image: "/images/generic-photo.jpg",
-        role: 'team lead',
+        role: 'Team Lead',
     },
     lei: {
         fname: 'Ze',
@@ -25,7 +25,7 @@ const members = {
         github_id: 'Frogger-Software',
         github_link: "https://github.com/Frogger-Software",
         image: "/images/generic-photo.jpg",
-        role: 'back-end member',
+        role: 'Back-End Member, Github Master',
     },
     zaheer: {
         fname: 'Faisal',
@@ -35,7 +35,7 @@ const members = {
         github_id: 'Faisal-ZaheerVI',
         github_link: "https://github.com/Faisal-ZaheerVI",
         image: "/images/zaheer.jpg",
-        role: 'back-end lead'
+        role: 'Back-End Lead'
     },
     hernandez: {
         fname: 'Juan',
@@ -45,7 +45,7 @@ const members = {
         github_id: 'Juan-Hernandez7',
         github_link: "https://github.com/Juan-Hernandez7",
         image: "/images/juan_moleman.jpg",
-        role: 'back-end member',
+        role: 'Back-End Member',
     },
     wong: {
         fname: 'Joanne',
@@ -55,7 +55,7 @@ const members = {
         github_id: 'Jwong1009',
         github_link: "https://github.com/Jwong1009",
         image: "/images/generic-photo.jpg",
-        role: 'front-end member',
+        role: 'Front-End Member',
     },
     cheung: {
         fname: 'Michael',
@@ -65,7 +65,7 @@ const members = {
         github_id: 'weirds111',
         github_link: "https://github.com/weirds111",
         image: "/images/Michael_Cheung_Photo.jpg",
-        role: 'front-end lead',
+        role: 'Front-End Lead',
     }
 
 }

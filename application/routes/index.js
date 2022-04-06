@@ -13,7 +13,7 @@ const members = require('./members');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Team 05 Home Page' });
+  res.render('test_homepage', { title: 'Team 05 Home Page' });
 });
 
 // router.get('/dbtest', async function(req, res, next) {
@@ -32,7 +32,8 @@ router.get('/search', function(req, res, next){
 });
 
 // Test homepage with Search bar:
-router.get('/test_homepage', function (req, res, next) {
+
+router.get('/homepage', function (req, res, next) {
 
   res.render('test_homepage', { title: 'Team 05 Home Page' });
 });
