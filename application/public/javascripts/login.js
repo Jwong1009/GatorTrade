@@ -1,5 +1,5 @@
 /*switching signIn/signUp forms Start*/
-const toggleBtns = document.querySelectorAll('.side .btn');
+const toggleBtns = document.querySelectorAll('.side .login-btn');
 const signIn = document.querySelector('.signin');
 const signUp = document.querySelector('.signup');
 const sides = document.querySelectorAll('.side');
@@ -14,6 +14,18 @@ function toggle(){
     forms.forEach(form => {form.classList.toggle('right')});
 }
 /*switching signIn/signUp forms End*/
+
+/*Mobile Layout Animation Start*/
+const mobileBtns = document.querySelectorAll('.login-btn.mobile-only');
+
+mobileBtns.forEach(btn => {btn.addEventListener('click',mobileToggle)});
+
+function mobileToggle(){
+    signIn.classList.toggle('hidden');
+    signUp.classList.toggle('hidden');
+    signIn.classList.toggle('top');
+}
+/*Mobile Layout Animation End*/
 
 /*SignUp form validation Start*/
 const signUpForm = document.querySelector('.signup .form');
@@ -56,8 +68,8 @@ function checkValues(e){
         showError(email,'Email cannot be empty');
         isError = true;
     }
-    else if(emailValue.indexOf('@') === -1 || emailValue.indexOf(".") === -1){
-        showError(email,'Please enter a valid email');
+    else if(emailValue.indexOf('@mail.sfsu.edu') === -1 && emailValue.indexOf("@sfsu.edu") === -1){
+        showError(email,'Please enter a valid SFSU email');
         isError = true;
     }
     else{

@@ -5,7 +5,7 @@ function getInputValue(){
     var searchTerm = document.getElementById("searchInput").value;
 
     // Makes call to server to get all searchTerm related items from database.
-    fetch(`/test_results/${searchTerm}`, { method: 'get' })
+    fetch(`/results/${searchTerm}`, { method: 'get' })
     .then((response) => response.json())
     .then((results) => {
         //[{"idItems":1,"category":2,"seller":1,"photopath":null,"description":null,"title":"Lord of The Rings","price":null,"approved":0}]

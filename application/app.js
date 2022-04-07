@@ -4,6 +4,7 @@
  * DESCRIPTION: (TO UPDATE)
 **********************************************************/
 
+require("dotenv").config();
 var express = require('express');
 var createError = require('http-errors');
 var path = require('path');
@@ -20,7 +21,7 @@ var aboutRouter = require('./routes/about');
 var usersRouter = require('./routes/users');
 var dbRouter = require('./routes/dbtest');
 
-const PORT = 3001; // Ex: localhost:3001
+
 var app = express();
 
 // Configure sessions?
@@ -84,8 +85,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(process.env.PORT || PORT, () => {
-  console.log(`Server is running on port: ${process.env.PORT || PORT}`)
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port: ${process.env.PORT}`);
 });
 
 module.exports = app;
