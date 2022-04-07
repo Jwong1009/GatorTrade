@@ -34,25 +34,26 @@ page.
         </li>
 
         <li class="nav-item align-items-center flex-fill">
-            <div class="input-group align-items-center px-3">
-                <div style="width:200px">
-
-                    <select class="form-select bg-secondary text-light" id="categories">
-                        <option value=0>All</option>
-                        <option value=1>Electronics</option>
-                        <option value=2>Textbooks</option>
-                        <option value=3>Handicraft</option>
-                        <option value=4>Education Supplies</option>
-                        <option value=5>Food</option>
-                    </select>
+            <form action="/results" class="d-flex justify-content-center mt-5">
+                <div class="input-group align-items-center px-3">
+                    <div style="width:200px">
+                        <select class="form-select bg-secondary text-light" name="category" id="categories" >
+                            <option value=0>All</option>
+                            <option value=1>Electronics</option>
+                            <option value=2>Textbooks</option>
+                            <option value=3>Handicraft</option>
+                            <option value=4>Education Supplies</option>
+                            <option value=5>Food</option>
+                        </select>
+                    </div>
+                    <input id="searchInput" name="search" type="search" placeholder="Search" class="form-control" />
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit">
+                            Search
+                        </button>
+                    </div>
                 </div>
-                <input id="searchInput" name="search" placeholder="Search" class="form-control" />
-                <div class="input-group-append">
-                    <button class="btn btn-secondary" type="submit">
-                        Search
-                    </button>
-                </div>
-            </div>
+            </form>
         </li>
 
         <li class="nav-item align-items-center">

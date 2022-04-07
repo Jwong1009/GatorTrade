@@ -34,6 +34,6 @@ INSERT INTO `GatorTrade`.`Items` (`category`, `seller`, `description`, `title`, 
 INSERT INTO `GatorTrade`.`Items` (`category`, `seller`, `description`, `title`, `price`, `photopath`) VALUES 
 (5, 1, "Tastes Good nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes", "Spaghetti", 10, "images/spaghetti.jpg"), 
 (5, 1, "Tastes Good nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes", "Meatballs", 10, "images/meatballs.jpg"), 
-(5, 1, "Tastes Good nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes", "Cupcakes", 10, "images/cupcakes.jpg"), 
+(5, 1, "Tastes Good nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes", "Cupcakes", 10, "images/cupcake.jpg"), 
 (5, 1, "Tastes Good nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes", "Italian Coffee", 10, "images/coffee.jpg"), 
 (5, 1, "Tastes Good nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes", "Apple Pie", 10, "images/apple-pie.jpg");
