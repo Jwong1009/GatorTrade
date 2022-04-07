@@ -6,6 +6,7 @@
 **********************************************************/
 
 var express = require('express');
+var app = express();
 var router = express.Router();
 const db = require('../db');
 const UserModel = require('../models/Users');
@@ -20,24 +21,15 @@ router.get('/', function(req, res, next) {
 });
 
 /* REGISTER */
+
 router.post('/register', registerValidator, (req, res, next) => {
-  let username = req.body.username;
+  let firstname = req.body.firstname;
+  let lastname = req.body.lastname;
   let email = req.body.email;
   let password = req.body.password;
   let cpassword = req.body.password;
 
-  UserModel.usernameExists(username)
-  .then((userNameDoesExist) => {
-    if(userNameDoesExist) {
-      throw new UserError(
-        "Registration Failed: Username already exists",
-        "/registration",
-        200
-      );
-    } else {
-      return UserModel.emailExists(email);
-    }
-  })
+  UserModel.emailExists(email)
   .then((emailDoesExist) => {
     if(emailDoesExist) {
       throw new UserError(
@@ -46,7 +38,7 @@ router.post('/register', registerValidator, (req, res, next) => {
         200
       );
     } else {
-      return UserModel.create(username, password, email);
+      return UserModel.create(password, email, firstname, lastname);
     }
   })
   .then((createdUserId) => {
@@ -81,7 +73,7 @@ router.post('/register', registerValidator, (req, res, next) => {
 
 /* LOG IN */
 router.post('/login', loginValidator, (req, res, next) => {
-  let username = req.body.username;
+  let email = req.body.email;
   let password = req.body.password;
 
   /**
@@ -90,12 +82,12 @@ router.post('/login', loginValidator, (req, res, next) => {
    * (in case of bypassing front end validation)
    */
 
-  UserModel.authenticate(username, password)
+  UserModel.authenticate(email, password)
   .then((loggedUserId) => {
     if(loggedUserId > 0) {
       // Valid Credentials
-      successPrint(`User ${username} is logged in`);
-      req.session.username = username;
+      successPrint(`User ${email} is logged in`);
+      req.session.email = email;
       req.session.userId = loggedUserId;
       res.locals.logged = true;
       req.flash('success', 'You have been successfully logged in!');

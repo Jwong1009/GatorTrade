@@ -12,8 +12,8 @@ const mysql = require('mysql2');
 // Connects to MySQL databse:
 const pool = mysql.createPool({
     host: 'localhost',
-    user: 'root', // Replace with your MySQL Username here
-    password: '12345', // Replace with your MySQL Password here
+    user: 'root', // Insert your MySQL username here
+    password: '12345', // Insert your MySQL password here
     database: 'GatorTrade', 
     connectionLimit: 50,
     debug: false
