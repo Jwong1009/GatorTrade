@@ -32,6 +32,11 @@ router.get('/search', function(req, res, next){
 });
 
 // Test homepage with Search bar:
+router.get('/test_homepage', function (req,res,next){
+
+  res.render('test_homepage', { title: 'Team 05 Home Page' });
+
+});
 
 router.get('/homepage', function (req, res, next) {
 

@@ -85,10 +85,10 @@ function checkValues(e){
     }
 
     if(!isError){
-        users.push({
-            email: emailValue,
-            password: passwordValue
-        });
+        // users.push({
+        //     email: emailValue,
+        //     password: passwordValue
+        // });
         alert("Account Created Succesfully.");
     }
 }

@@ -6,7 +6,6 @@
 **********************************************************/
 
 var express = require('express');
-var app = express();
 var router = express.Router();
 const db = require('../db');
 const UserModel = require('../models/Users');
