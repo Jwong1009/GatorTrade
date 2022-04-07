@@ -1,5 +1,5 @@
 /*switching signIn/signUp forms Start*/
-const toggleBtns = document.querySelectorAll('.side .btn');
+const toggleBtns = document.querySelectorAll('.side .login-btn');
 const signIn = document.querySelector('.signin');
 const signUp = document.querySelector('.signup');
 const sides = document.querySelectorAll('.side');
@@ -56,8 +56,8 @@ function checkValues(e){
         showError(email,'Email cannot be empty');
         isError = true;
     }
-    else if(emailValue.indexOf('@') === -1 || emailValue.indexOf(".") === -1){
-        showError(email,'Please enter a valid email');
+    else if(emailValue.indexOf('@mail.sfsu.edu') === -1 && emailValue.indexOf("@sfsu.edu") === -1){
+        showError(email,'Please enter a valid SFSU email');
         isError = true;
     }
     else{
