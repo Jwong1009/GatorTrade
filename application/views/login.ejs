@@ -8,7 +8,7 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-xl dropdown-menu-dark navbar-dark px-5">
+    <!-- <nav class="navbar navbar-expand-xl dropdown-menu-dark navbar-dark px-5">
         <ul class="navbar-nav mt-lg-0 w-50 row">
             <li class="nav-item d-flex align-items-center col-md-4">
                 <a class="nav-link fs-4 active" href="/">Team 5</a>
@@ -20,7 +20,9 @@
                 <a class="nav-link fs-4" href="#">About</a>
             </li>
         </ul>
-    </nav>
+    </nav> -->
+
+    <%- include('partials/navbar') %>
 
     <div class="container-fluid" id="homeContainer">
         <div class="container">
@@ -36,12 +38,12 @@
                 <div class="signin">
                     <form class="form" action="/login">
                         <h1>Sign In</h1>
-                        <div class="social-container">
+                        <!-- <div class="social-container">
                             <a href="#"><img src="images/social_media_icons/facebook.png" alt="facebook"></a>
                             <a href="#"><img src="images/social_media_icons/linkedin.png" alt="linkedin"></a>
                             <a href="#"><img src="images/social_media_icons/google_plus.png" alt="google_plus"></a>
                         </div>
-                        <span>or use your account</span>
+                        <span>or use your account</span> -->
                         <input type="email" placeholder="Email" id="loginEmail">
                         <input type="password" placeholder="Password" id="loginPass">
                         <div id="loginCheckbox">
