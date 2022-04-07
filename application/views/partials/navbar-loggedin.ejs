@@ -20,7 +20,7 @@ a log out button.
         </li>
 
         <li class="nav-item align-items-center flex-fill">
-            <div class="input-group align-items-center px-3">
+            <!-- <div class="input-group align-items-center px-3">
                 <div style="width:200px">
 
                     <select class="form-select bg-secondary text-light" id="categories">
@@ -38,7 +38,25 @@ a log out button.
                         Search
                     </button>
                 </div>
-            </div>
+            </div> -->
+
+            <form action="/results" class="d-flex justify-content-center">
+                <div class="input-group w-75 rounded overflow-hidden">
+                    <select name="category" id="categories" class="bg-secondary border-0 text-light px-2">
+                        <option value=0>All</option>
+                        <option value=1>Electronics</option>
+                        <option value=2>Textbooks</option>
+                        <option value=3>Handicraft</option>
+                        <option value=4>Education Supplies</option>
+                        <option value=5>Food</option>
+                    </select>
+                    <input id="searchInput" name="search" type="search" placeholder="Search" class="form-control border-0"/>
+                    <!-- <input type="button" class="btn btn-primary"> -->
+                    <button type="submit" class="btn btn-primary">
+                        <a href="" class="text-light"><i class="fas fa-search"></i></a>
+                    </button>
+                </div>
+            </form>
         </li>
 
         <li class="nav-item align-items-center">

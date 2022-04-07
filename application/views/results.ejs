@@ -11,32 +11,6 @@
 
     <div class="container-fluid" id="homeContainer">
         <div class="container">
-            <div class="border border-4 border-dark p-3 mb-2 bg-dark text-white rounded-3" id="homeHeader">
-                <h1 class="text-center">Software Engineering Class at San Francisco State University<br>
-                    &lt;Spring, 2022&gt;<br>
-                    Section CSC 648<br>
-                    Team 5
-                </h1>
-            </div>
-
-            <form action="/results" class="d-flex justify-content-center mt-5">
-                <div class="input-group w-50 rounded overflow-hidden">
-                    <select name="category" id="categories" class="bg-secondary border-0 text-light px-2">
-                        <option value=0>All</option>
-                        <option value=1>Electronics</option>
-                        <option value=2>Textbooks</option>
-                        <option value=3>Handicraft</option>
-                        <option value=4>Education Supplies</option>
-                        <option value=5>Food</option>
-                    </select>
-                    <input id="searchInput" name="search" type="search" placeholder="Search" class="form-control border-0"/>
-                    <!-- <input type="button" class="btn btn-primary"> -->
-                    <button type="submit" class="btn btn-primary">
-                        <a href="" class="text-light"><i class="fas fa-search"></i></a>
-                    </button>
-                </div>
-            </form>
-
             <div>
                 <% if(results) { %>
                     <p>Showing <%= results.length %> out of <%= total %> items.</p>
@@ -77,7 +51,7 @@
                                 </h6>
                                 <h6 class="card-subtitle mb-2 text-muted"><%= results[i].seller %></h6>
                                 <p class="card-text"><%= results[i].description %></p>
-                                <span class="border border-primary rounded-2 px-4 pv-2 fs-5"><%= results[i].price %></span>
+                                <span class="border border-primary rounded-2 px-4 pv-2 fs-5">$<%= results[i].price %></span>
                                 </div>
                             </div>
                         </div>
@@ -86,77 +60,6 @@
                         <% } %>
                     <% } %>
                 <% } %>
-
-                <!-- <div class="row mb-5">
-                    <div class="col-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://www.petmd.com/sites/default/files/2020-11/picture-of-golden-retriever-dog_0.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title">Item title</h5>
-                              <h6 class="card-subtitle mb-2 text-muted">Seller Name</h6>
-                              <p class="card-text">Item description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, explicabo.</p>
-                              <span class="border border-primary rounded-2 px-4 pv-2 fs-5">Price</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://www.petmd.com/sites/default/files/2020-11/picture-of-golden-retriever-dog_0.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title">Item title</h5>
-                              <h6 class="card-subtitle mb-2 text-muted">Seller Name</h6>
-                              <p class="card-text">Item description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, explicabo.</p>
-                              <span class="border border-primary rounded-2 px-4 pv-2 fs-5">Price</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://www.petmd.com/sites/default/files/2020-11/picture-of-golden-retriever-dog_0.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title">Item title</h5>
-                              <h6 class="card-subtitle mb-2 text-muted">Seller Name</h6>
-                              <p class="card-text">Item description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, explicabo.</p>
-                              <span class="border border-primary rounded-2 px-4 pv-2 fs-5">Price</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-5">
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://www.petmd.com/sites/default/files/2020-11/picture-of-golden-retriever-dog_0.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title">Item title</h5>
-                              <h6 class="card-subtitle mb-2 text-muted">Seller Name</h6>
-                              <p class="card-text">Item description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, explicabo.</p>
-                              <span class="border border-primary rounded-2 px-4 pv-2 fs-5">Price</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://www.petmd.com/sites/default/files/2020-11/picture-of-golden-retriever-dog_0.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title">Item title</h5>
-                              <h6 class="card-subtitle mb-2 text-muted">Seller Name</h6>
-                              <p class="card-text">Item description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, explicabo.</p>
-                              <span class="border border-primary rounded-2 px-4 pv-2 fs-5">Price</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://www.petmd.com/sites/default/files/2020-11/picture-of-golden-retriever-dog_0.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title">Item title</h5>
-                              <h6 class="card-subtitle mb-2 text-muted">Seller Name</h6>
-                              <p class="card-text">Item description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, explicabo.</p>
-                              <span class="border border-primary rounded-2 px-4 pv-2 fs-5">Price</span>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
