@@ -13,7 +13,7 @@ const members = require('./members');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('test_homepage', { title: 'Team 05 Home Page' });
+  res.render('homepage', { title: 'Team 05 Home Page' });
 });
 
 // router.get('/dbtest', async function(req, res, next) {
@@ -25,9 +25,9 @@ router.get('/', function (req, res, next) {
 //     res.sendStatus(500);
 //   }
 // });
-router.get('/search', function(req, res, next){
+router.get('/search', function (req, res, next) {
 
-  
+
 
 });
 
@@ -35,12 +35,12 @@ router.get('/search', function(req, res, next){
 
 router.get('/homepage', function (req, res, next) {
 
-  res.render('test_homepage', { title: 'Team 05 Home Page' });
+  res.render('homepage', { title: 'Team 05 Home Page' });
 });
 
 /* GET aboutAll page */
 router.get('/about', function (req, res, next) {
-  const membersArray = Object.values(members).reduce((accum, curr) => { 
+  const membersArray = Object.values(members).reduce((accum, curr) => {
     return accum.concat({
       lname: curr.lname,
       name: `${curr.fname} ${curr.lname}`,
@@ -48,37 +48,46 @@ router.get('/about', function (req, res, next) {
       img: curr.image,
     })
   }, []);
-  res.render('aboutAll', {membersInfo: membersArray});
+  res.render('aboutAll', { membersInfo: membersArray });
 });
 
-// Results page, redirected from /test_homepage:
-router.get('/test_results', function (req, res, next) {
+// Results page, redirected from /homepage:
+router.get('/results', function (req, res, next) {
   // Targets inputted text from search bar and any selected category field.
   const { search, category } = req.query;
   let categoryId = parseInt(category);
   let totalItemCount = 0;
 
-  // Gets total count of items in database to display on Results (/test_results) page.
-  db.query('SELECT COUNT(*) AS length FROM Items;', (err, results, fields) => {
+  // db.query('SELECT * FROM Items').then(([rows]) => {
+  //   res.render('homepage', { title: 'Team 05 Home Page', Items: rows });
+  // })
+  //   .catch(error => {
+  //     console.log(error);
+  //   });
+  
+  // Gets total count of items in database to display on Results (/results) page.
+  db.query('SELECT COUNT(*) AS length FROM Items;').then(([results]) => {
     totalItemCount = results[0].length;
 
     // Selected "All" for Category. No need to factor category into search.
     if (categoryId == 0) {
-      db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' ORDER BY title;`, (err, results, fields) => {
-        res.render('test_results', { title: 'Team 05 Home Page', results: results, total: totalItemCount });
+      db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' ORDER BY title;`).then(([results]) => {
+        res.render('results', { title: 'Team 05 Home Page', results: results, total: totalItemCount });
       });
     }
 
     // Filter results based on category chosen.
     else if (categoryId > 0) {
-      db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' AND category=${categoryId} ORDER BY title;`, (err, results, fields) => {
-        res.render('test_results', { title: 'Team 05 Home Page', results: results, total: totalItemCount });
+      db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' AND category=${categoryId} ORDER BY title;`).then(([results]) => {
+        res.render('results', { title: 'Team 05 Home Page', results: results, total: totalItemCount });
       });
     }
+  }).catch(error => {
+    console.log(error);
   });
 });
 
-router.get('/login', function(req, res, next){
+router.get('/login', function (req, res, next) {
   res.render('login', { title: 'Team 05 Home Page' });
 });
 

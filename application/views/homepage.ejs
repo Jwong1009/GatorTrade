@@ -7,22 +7,6 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   </head>
   <body>
-
-    <!-- <nav class="navbar navbar-expand-xl dropdown-menu-dark navbar-dark px-5">
-        <ul class="navbar-nav mt-lg-0 w-50 row">
-            <li class="nav-item d-flex align-items-center col-md-4">
-                <a class="nav-link fs-4" href="/">Team 5</a>
-            </li>
-            <li class="nav-item d-flex align-items-center col-md-4">
-                <a class="nav-link fs-4 active" href="/test_homepage">Home</a>
-            </li>
-            <li class="nav-item d-flex align-items-center col-md-4">
-                <a class="nav-link fs-4" href="#">About</a>
-            </li>
-        </ul>
-    </nav> -->
-
-    
     <%- include('partials/navbar') %>
 
     <div class="container-fluid" id="homeContainer">
@@ -35,7 +19,7 @@
                 </h1>
             </div>
             
-            <form action="/test_results" class="d-flex justify-content-center mt-5">
+            <form action="/results" class="d-flex justify-content-center mt-5">
                 <div class="input-group w-50 rounded overflow-hidden">
                     <select name="category" id="categories" class="bg-secondary border-0 text-light px-2">
                         <option value=0>All</option>
@@ -54,6 +38,7 @@
             </form>
         </div>
     </div>
+    <%- include('partials/footer') %>
 
     <script src="/javascripts/bootstrap.bundle.js"></script>
     <script src="/javascripts/search.js"></script>
