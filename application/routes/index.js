@@ -11,9 +11,32 @@ const db = require('../db');
 const router = express.Router();
 const members = require('./members');
 
-/* GET home page. */
+//Get Homepage
+//queries database for all categories
+//queries database for all items
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Team 05 Home Page' });
+  //Used to store objects from query
+  const view_data = {};
+  db.query('SELECT * FROM Categories').then(([category_rows])=>{
+    view_data.categories = category_rows;
+    return db.query('SELECT * FROM Items');
+  })
+      .then(([items_rows])=>{
+    view_data.items = items_rows;
+  })
+  .then(()=>{res.render('homepage',{
+    title: 'Team 05 Home Page',
+    Categories: view_data.categories,
+    Items: view_data.items
+  });
+  });
+
+  /*db.query('SELECT * FROM Items').then(([rows])=>{
+    res.render('homepage', {title: 'Team 05 Home Page', Items: rows, Categories: totalCategories});
+  })
+      .catch(error =>{
+        console.log(error);
+      });*/
 });
 
 // Test homepage with Search bar:
@@ -64,6 +87,8 @@ router.get('/test_results', function (req, res, next) {
 router.get('/login', function(req, res, next){
   res.render('login', { title: 'Team 05 Home Page' });
 });
+
+
 
 /* TEAM 5 About Me Pages */
 // REFACTOR: Make general template about page with injected EJS parameters for details.
