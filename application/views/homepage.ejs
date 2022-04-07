@@ -33,8 +33,8 @@ and list all categories with 4 items in each categories.
             <% for(var j = 0; j < Categories.length; j++){%>
             <!-- numOfItems keeps count of how many items are already displayed in each category -->
             <% var numOfItems = 0%>
-                <!-- TO DO: Link Search Results page to each category -->
-           <a href="#"> <h1 class="text"><%=Categories[j].title%></h1></a>
+                <!-- Clicking on each individual categories will take Users to that particular search results page-->
+           <a href="/results?category=<%=Categories[j].idCategories%>&search="> <h1 class="text"><%=Categories[j].title%></h1></a>
             <div class="row row-cols-1 row-cols-md-4 g-4">
                 <!-- Iterate and displays a total of 4 items for each category -->
                 <% for(var i = 0; i < Items.length; i++){%>
