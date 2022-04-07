@@ -39,9 +39,9 @@ and list all categories with 4 items in each categories.
                 <% for(var i = 0; i < Items.length; i++){%>
                     <% if(Items[i].category == Categories[j].idCategories){%>
                     <div class="col">
-                        <div class="card h-100" style="width: 18rem;">
-                            <!-- TO DO: Link Individual Item's Detail Page to HREF -->
-                            <a href="#"><img src=<%=Items[i].photopath%> class="card-img-top" alt="..."></a>
+                        <!-- <div class="card h-100" style="width: 18rem;">
+                            TO DO: Link Individual Item's Detail Page to HREF
+                            <a href="#"><img src="<%=Items[i].photopath%>" class="card-img-top" alt="..."></a>
                             <div class="card-body">
                                 <h5 class="card-title"><%=Items[i].title%></h5>
                                 <p class="card-text"><%=Items[i].description%></p>
@@ -49,6 +49,14 @@ and list all categories with 4 items in each categories.
                                 <div class="card-footer">
                                     <h3 class="text"><b>$<%=Items[i].price%></b></h3>
                                 </div>
+                        </div> -->
+                        <div class="card h-100" style="width: 18rem;">
+                            <a href="#"><img src="<%=Items[i].photopath%>" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <h5 class="card-title"><%=Items[i].title%></h5>
+                                <p class="card-text"><%=Items[i].description%></p>
+                                <span class="border border-primary rounded-2 px-4 pv-2 fs-5">$<%=Items[i].price%></span>
+                            </div>
                         </div>
                     </div>
                     <% numOfItems++%>

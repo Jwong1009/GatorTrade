@@ -14,7 +14,7 @@ const members = {
         email: "kpatel10@sfsu.edu",
         github_id: 'kp-4137',
         github_link: "https://github.com/kp-4137",
-        image: "/images/generic-photo.jpg",
+        image: "/images/patel.jpeg",
         role: 'Team Lead',
     },
     lei: {

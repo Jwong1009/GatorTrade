@@ -20,11 +20,11 @@ role, and image.
         <div class="d-flex flex-wrap justify-content-center" id="aboutContainer">
             <!-- loops through the membersInfo array that was passed in res.render statement in index.js file and grabs
                 outputs a card that shows each individual member and their respective information -->
-            <% for (member of membersInfo) { %>
-                <div class="row m-2">
-                    <a href="/about/<%= member.lname%>">
-                        <div class="col">
-                            <div class="bg-dark text-white col" id="aboutCard">
+            <div class="row m-2">
+                <% for (member of membersInfo) { %>
+                    <div class="col" id="aboutAllCol">
+                        <a href="/about/<%= member.lname%>">
+                            <div class="bg-dark text-white rounded-3" id="aboutCard">
                                 <img src="<%= member.img %>" class="m-3 card-img-top" id="aboutImg">
                                 <div class="card-body text-center">
                                     <h5 class="card-title font-monospace fs-3">
@@ -35,10 +35,10 @@ role, and image.
                                     </p>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
                 <% } %>
+            </div>
         </div>
         <%- include('partials/footer') %>
 
