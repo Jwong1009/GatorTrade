@@ -15,6 +15,18 @@ function toggle(){
 }
 /*switching signIn/signUp forms End*/
 
+/*Mobile Layout Animation Start*/
+const mobileBtns = document.querySelectorAll('.login-btn.mobile-only');
+
+mobileBtns.forEach(btn => {btn.addEventListener('click',mobileToggle)});
+
+function mobileToggle(){
+    signIn.classList.toggle('hidden');
+    signUp.classList.toggle('hidden');
+    signIn.classList.toggle('top');
+}
+/*Mobile Layout Animation End*/
+
 /*SignUp form validation Start*/
 const signUpForm = document.querySelector('.signup .form');
 const firstname = document.querySelector('#firstname');

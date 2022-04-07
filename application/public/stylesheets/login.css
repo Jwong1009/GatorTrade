@@ -201,3 +201,53 @@ button > a {
     margin-right: 5px;
     margin-top: 4px;
 }
+
+.mobile-only{
+    display: none;
+}
+
+.mobile-only.login-btn{
+    background-color: transparent;
+    color: #262626;
+    border: 2px solid #262626;
+}
+
+@media(max-width: 1030px){
+    #loginContainer {
+        border-radius: 0;
+        box-shadow: none;
+        width: 100%;
+    }
+}
+
+@media(max-width: 525px){
+
+    .container-fluid{
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container,
+    #loginContainer,
+    .form{
+        width: 100%;
+    }
+
+    .form input,
+    .control{
+        width: 70%;
+    }
+
+    .side{
+        display: none;
+    }
+
+    .mobile-only{
+        display: block;
+    }
+
+    .top{
+        transform: translateY(-100%);
+    }
+}
