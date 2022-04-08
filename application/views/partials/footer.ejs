@@ -7,6 +7,22 @@ description of the project and includes the
 team number.
 -->
 
+<% if(locals.logged) { %>
+    <script>
+        let ele = document.getElementById('logout-button');
+        if(ele) {
+          ele.onclick = (even) => {
+            fetch('/users/logout', {
+              method:"POST"
+            })
+            .then((data) => {
+              location.replace('/');
+            })
+          }
+        }
+      </script>
+<% } %>
+
 <div class="mt-2">
     <footer class="nav dropdown-menu-dark text-center flex-column mt-auto py-2" id="footer">
         SFSU Software Engineering Project CSC 648-848, Spring 2022, © TEAM 05

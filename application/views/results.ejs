@@ -7,7 +7,11 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <%- include('partials/navbar') %>
+    <% if(locals.logged) { %>
+        <%- include('partials/navbar-loggedin') %>
+    <% } else { %>
+        <%- include('partials/navbar') %>
+    <% } %>
 
     <div class="container-fluid" id="homeContainer">
         <div class="container">

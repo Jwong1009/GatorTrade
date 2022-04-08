@@ -56,7 +56,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Sessions
 app.use((req, res, next) => {
   console.log(req.session);
-  if(req.session.username) {
+  if(req.session.email) {
     // If sessions is initialized, aka if logged in
     res.locals.logged = true;
   }

@@ -21,13 +21,12 @@ router.get('/', function(req, res, next) {
 });
 
 /* REGISTER */
-
 router.post('/register', registerValidator, (req, res, next) => {
-  let firstname = req.body.firstname;
-  let lastname = req.body.lastname;
+  let firstname = req.body.fname;
+  let lastname = req.body.lname;
   let email = req.body.email;
   let password = req.body.password;
-  let cpassword = req.body.password;
+  let cpassword = req.body.password2;
 
   UserModel.emailExists(email)
   .then((emailDoesExist) => {

@@ -16,7 +16,12 @@ and list all categories with 4 items in each categories.
     </head>
 <body>
 
-    <%- include('partials/navbar-loggedin') %>
+    <% if(locals.logged) { %>
+        <%- include('partials/navbar-loggedin') %>
+    <% } else { %>
+        <%- include('partials/navbar') %>
+    <% } %>
+
     <!-- Header for the homepage that contains the Site Description -->
     <div class="container-fluid" id="homeContainer">
         <div class="container">
@@ -74,7 +79,7 @@ and list all categories with 4 items in each categories.
             <%}%>
         </div>
     </div>
-    <%- include('partials/footer')%>
+    <%- include('partials/footer') %>
 
 <script src="/javascripts/bootstrap.bundle.js"></script>
 <script src="/javascripts/search.js"></script>

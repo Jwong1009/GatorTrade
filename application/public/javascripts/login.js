@@ -38,7 +38,7 @@ const password2 = document.querySelector('#password2');
 signUpForm.addEventListener('submit',checkValues);
 
 function checkValues(e){
-    e.preventDefault();
+    // e.preventDefault();
 
     const firstnameValue = firstname.value.trim();
     const lastnameValue = lastname.value.trim();
@@ -96,12 +96,10 @@ function checkValues(e){
         success(password2);
     }
 
-    if(!isError){
-        users.push({
-            email: emailValue,
-            password: passwordValue
-        });
-        alert("Account Created Succesfully.");
+    // If any validation checks fail (aka any errors), the submit button
+    // doesn't do the POST action to /users/register
+    if(isError){
+        e.preventDefault();
     }
 }
 

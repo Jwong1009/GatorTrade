@@ -22,34 +22,37 @@ const checkPassword = (password) => {
 };
 
 const registerValidator = (req, res, next) => {
-    let username = req.body.username;
+    // let username = req.body.username;
     let email = req.body.email;
     let password = req.body.password;
-    let cpassword = req.body.cpassword;
+    let cpassword = req.body.password2;
 
-    if(!checkUsername(username)) {
-        // Invalid username
-        req.flash('error', "Invalid username!");
-        req.session.save(err => {
-            res.redirect("/registration");
-        });
-    } else if(!checkEmail(email)) {
+    // if(!checkUsername(username)) {
+    //     // Invalid username
+    //     req.flash('error', "Invalid username!");
+    //     req.session.save(err => {
+    //         res.redirect("/login");
+    //     });
+    // } 
+    if(!checkEmail(email)) {
         // Invalid email
         req.flash('error', "Invalid email!");
         req.session.save(err => {
-            res.redirect("/registration");
+            res.redirect("/login");
         });
-    } else if(!checkPassword(password)) {
-        // Invalid password
-        req.flash('error', "Invalid password!");
-        req.session.save(err => {
-            res.redirect("/registration");
-        });
-    } else if(password !== cpassword) {
+    } 
+    // else if(!checkPassword(password)) {
+    //     // Invalid password
+    //     req.flash('error', "Invalid password!");
+    //     req.session.save(err => {
+    //         res.redirect("/login");
+    //     });
+    // } 
+    else if(password !== cpassword) {
         // Invalid password
         req.flash('error', "Passwords don't match!");
         req.session.save(err => {
-            res.redirect("/registration");
+            res.redirect("/login");
         });
     } else {
         // Valid credentials
@@ -57,22 +60,24 @@ const registerValidator = (req, res, next) => {
     }
 }
 const loginValidator = (req, res, next) => {
-    let username = req.body.username;
+    let email = req.body.email;
     let password = req.body.password;
 
-    if(!checkUsername(username)) {
-        // Invalid username
-        req.flash('error', "Invalid username!");
+    if(!checkEmail(email)) {
+        // Invalid email
+        req.flash('error', "Invalid email!");
         req.session.save(err => {
             res.redirect("/login");
         });
-    } else if(!checkPassword(password)) {
-        // Invalid password
-        req.flash('error', "Invalid password!");
-        req.session.save(err => {
-            res.redirect("/login");
-        });
-    } else {
+    } 
+    // else if(!checkPassword(password)) {
+    //     // Invalid password
+    //     req.flash('error', "Invalid password!");
+    //     req.session.save(err => {
+    //         res.redirect("/login");
+    //     });
+    // } 
+    else {
         // Valid credentials
         next();
     }

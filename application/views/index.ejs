@@ -23,7 +23,11 @@
     </nav> -->
 
     
-    <%- include('partials/navbar') %>
+    <% if(locals.logged) { %>
+        <%- include('partials/navbar-loggedin') %>
+    <% } else { %>
+        <%- include('partials/navbar') %>
+    <% } %>
 
     <div class="container-fluid" id="homeContainer">
         <div class="container">
