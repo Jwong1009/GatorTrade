@@ -64,7 +64,7 @@ router.get('/about', function (req, res, next) {
       img: curr.image,
     })
   }, []);
-  res.render('aboutAll', { membersInfo: membersArray });
+  res.render('aboutAll', { membersInfo: membersArray, title: 'Team 05 About Page'});
 });
 
 // Results page, redirected from /homepage:
@@ -104,7 +104,7 @@ router.get('/results', function (req, res, next) {
 });
 
 router.get('/login', function (req, res, next) {
-  res.render('login', { title: 'Team 05 Home Page' });
+  res.render('login', { title: 'Team 05 Login Page' });
 });
 
 module.exports = router;

@@ -33,7 +33,7 @@ router.post('/register', registerValidator, (req, res, next) => {
     if(emailDoesExist) {
       throw new UserError(
         "Registration Failed: Email already exists",
-        "/registration",
+        "/login",
         200
       );
     } else {
@@ -44,7 +44,7 @@ router.post('/register', registerValidator, (req, res, next) => {
     if(createdUserId < 0) {
       throw new UserError(
         "Server Error, user could not be created",
-        "/registration",
+        "/login",
         500
       );
     } else {
