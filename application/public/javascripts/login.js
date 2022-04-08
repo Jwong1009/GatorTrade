@@ -1,4 +1,10 @@
-/*switching signIn/signUp forms Start*/
+/**********************************************************
+ * FILE: public/js/login.js
+ * 
+ * DESCRIPTION: 
+**********************************************************/
+
+/* switching signIn/signUp forms Start */
 const toggleBtns = document.querySelectorAll('.side .login-btn');
 const signIn = document.querySelector('.signin');
 const signUp = document.querySelector('.signup');
@@ -117,9 +123,9 @@ function success(input){
     input.style.border = 'none';
     error.style.visibility = 'hidden';
 }
-/*SignUp form validation End*/
+/* SignUp form validation End */
 
-/*Show password functionality Start*/
+/* Show password functionality Start */
 const loginPass = document.querySelector('#loginPass');
 const showPass = document.querySelector('#showPass');
 
@@ -133,4 +139,4 @@ function togglePass(){
         loginPass.setAttribute('type','password');
     }
 }
-/*Show password functionality End*/
+/* Show password functionality End */

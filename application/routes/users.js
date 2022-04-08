@@ -94,7 +94,7 @@ router.post('/login', loginValidator, (req, res, next) => {
         res.redirect('/');
       });
     } else {
-      throw new UserError("Invalid username and/or password", "/login", 200);
+      throw new UserError("Invalid email and/or password", "/login", 200);
     }
   })
   .catch((err) => {
