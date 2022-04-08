@@ -71,7 +71,8 @@ app.use('/dbtest', dbRouter);
 
 // Catches 404 and forwards to error handler.
 app.use(function(req, res, next) {
-  next(createError(404));
+  // next(createError(404));
+  res.status(404).send('Unable to find the requested resource!');
 });
 
 // Error handler:
