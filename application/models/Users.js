@@ -45,7 +45,7 @@ UserModel.authenticate = (email, password) => {
             userId = results[0].idUsers;
             return bcrypt.compare(password, results[0].password);
         } else {
-            return Promise.reject(-1);
+            return Promise.resolve(false);
         }
     })
     .then((passwordsMatch) => {
