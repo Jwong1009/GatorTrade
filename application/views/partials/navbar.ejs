@@ -9,6 +9,12 @@ post listing page, and a redirect to the login/register
 page.
 -->
 
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/form.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+</head>
+
 <nav class="navbar navbar-expand-xl dropdown-menu-dark navbar-dark flex-column">
     <div class="fw-lighter">
         SFSU Software Engineering Project CSC 648-848, Spring 2022 For Demonstration Only
@@ -30,7 +36,8 @@ page.
                         <option value=4>Education Supplies</option>
                         <option value=5>Food</option>
                     </select>
-                    <input id="searchInput" name="search" type="search" placeholder="Search" class="form-control border-0"/>
+                    <input id="searchInput" name="search" type="search" placeholder="Search"
+                        class="form-control border-0" />
                     <button type="submit" class="btn btn-primary">
                         <a href="" class="text-light"><i class="bi bi-search"></i></a>
                     </button>
@@ -48,10 +55,10 @@ page.
 
         <% if(locals.logged) { %>
             <%- include('profile') %>
-        <% } else { %>
-        <li class="nav-item align-items-center ">
-            <a class="nav-link fs-4 hover" href="/login">Login</a>
-        </li>
-        <% } %>
+                <% } else { %>
+                    <li class="nav-item align-items-center ">
+                        <a class="nav-link fs-4 hover" href="/login">Login</a>
+                    </li>
+                    <% } %>
     </ul>
 </nav>
