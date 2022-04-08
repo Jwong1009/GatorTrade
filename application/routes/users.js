@@ -103,9 +103,10 @@ router.post('/login', loginValidator, (req, res, next) => {
       errorPrint(err.getMessage());
       req.flash('error', err.getMessage());
       res.status(err.getStatus());
-      res.redirect('/login');
+      res.redirect(err.getRedirectURL());
     } else {
-      next(err);
+      // next(err);
+      res.redirect("/login")
     }
   });
 });
