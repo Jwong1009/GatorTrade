@@ -11,11 +11,7 @@
 </head>
 
 <body>
-    <% if(locals.logged) { %>
-        <%- include('partials/navbar-loggedin') %>
-    <% } else { %>
-        <%- include('partials/navbar') %>
-    <% } %>
+    <%- include('partials/navbar') %>
         <div class="container-fluid" id="aboutContainer">
             <div class="row justify-content-center h-100 pv-2">
                 <div class="card shadow-lg w-25 bg-dark text-white" id="aboutCard">

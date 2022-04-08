@@ -1,74 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/form.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <% if(locals.logged) { %>
-        <%- include('partials/navbar-loggedin') %>
-    <% } else { %>
-        <%- include('partials/navbar') %>
-    <% } %>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/form.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <%- include('partials/navbar') %>
 
     <div class="container-fluid" id="homeContainer">
-        <div class="container">
-            <div>
-                <% if(results) { %>
-                    <p>Showing <%= results.length %> out of <%= total %> items.</p>
-                <% } else { %>
-                    <p>Showing 0 out of <%= total %> items.</p>
-                <% } %>
-            </div>
-            <div id="results">
-                <% if(results) { %>
-                    <% for(var i = 0; i < results.length; i++) { %>
-                        <% if(i % 3 == 0) { %>
-                            <div class="row mb-5">
-                        <% } %>
-                        <div class="col-md-4">
-                            <div class="card" style="width: 18rem;">
-                                <img src="<%=results[i].photopath%>" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h5 class="card-title"><%= results[i].title %></h5>
-                                  <h6 class="card-subtitle mb-2 text-muted">Category: 
-                                    <% switch (results[i].category) {
-                                        case 1: %>
-                                        Electronics
-                                      <% break;
-                                        case 2: %>
-                                        Textbooks
-                                      <% break;
-                                        case 3: %>
-                                        Handicraft
-                                      <% break;
-                                        case 4: %>
-                                        Education Supplies
-                                      <% break;
-                                        case 5: %>
-                                        Food
-                                      <% break;
-                                        default:
-                                        break; } %>
-                                  </h6>
-                                  <!-- <h6 class="card-subtitle mb-2 text-muted"><%= results[i].seller %></h6> -->
-                                  <p class="card-text"><%= results[i].description %></p>
-                                  <span class="border border-primary rounded-2 px-4 pv-2 fs-5">$<%= results[i].price %></span>
-                                </div>
-                            </div>
-                        </div>
-                        <% if(i % 3 == 2 || i+1 == results.length) { %>
-                            </div>
-                        <% } %>
-                    <% } %>
-                <% } %>
-            </div>
+      <div class="container">
+        <div>
+          <% if(results) { %>
+            <p>Showing <%= results.length %> out of <%= total %> items.</p>
+            <% } else { %>
+              <p>Showing 0 out of <%= total %> items.</p>
+              <% } %>
         </div>
+        <div id="results">
+          <% if(results) { %>
+            <% for(var i=0; i < results.length; i++) { %>
+              <% if(i % 3==0) { %>
+                <div class="row mb-5">
+                  <% } %>
+                    <div class="col-md-4">
+                      <div class="card" style="width: 18rem;">
+                        <img src="<%=results[i].photopath%>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">
+                            <%= results[i].title %>
+                          </h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Category:
+                            <% switch (results[i].category) { case 1: %>
+                              Electronics
+                              <% break; case 2: %>
+                                Textbooks
+                                <% break; case 3: %>
+                                  Handicraft
+                                  <% break; case 4: %>
+                                    Education Supplies
+                                    <% break; case 5: %>
+                                      Food
+                                      <% break; default: break; } %>
+                          </h6>
+                          <!-- <h6 class="card-subtitle mb-2 text-muted"><%= results[i].seller %></h6> -->
+                          <p class="card-text">
+                            <%= results[i].description %>
+                          </p>
+                          <span class="border border-primary rounded-2 px-4 pv-2 fs-5">$<%= results[i].price %></span>
+                        </div>
+                      </div>
+                    </div>
+                    <% if(i % 3==2 || i+1==results.length) { %>
+                </div>
+                <% } %>
+                  <% } %>
+                    <% } %>
+        </div>
+      </div>
     </div>
 
     <script src="/javascripts/bootstrap.bundle.js"></script>
     <script src="/javascripts/search.js"></script>
-  </body>
+</body>
+
 </html>

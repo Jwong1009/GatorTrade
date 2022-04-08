@@ -1,94 +1,102 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/form.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  </head>
-  <body>
+</head>
+
+<body>
     <%- include('partials/navbar') %>
 
-    <div class="container-fluid" id="homeContainer">
-        <div class="container">
-            <div id="loginContainer">
-                <!-- LOGIN AREA -->
-                <div class="signin">
-                    <form class="form" method="POST" action="/users/login" enctype="application/x-www-form-urlencoded">
-                        <h1>Sign In</h1>
-                        <!-- <div class="social-container">
+        <div class="container-fluid" id="homeContainer">
+            <div class="container">
+                <div id="loginContainer">
+                    <!-- LOGIN AREA -->
+                    <div class="signin">
+                        <form class="form" method="POST" action="/users/login"
+                            enctype="application/x-www-form-urlencoded">
+                            <h1>Sign In</h1>
+                            <!-- <div class="social-container">
                             <a href="#"><img src="images/social_media_icons/facebook.png" alt="facebook"></a>
                             <a href="#"><img src="images/social_media_icons/linkedin.png" alt="linkedin"></a>
                             <a href="#"><img src="images/social_media_icons/google_plus.png" alt="google_plus"></a>
                         </div>
                         <span>or use your account</span> -->
-                        <input type="email" placeholder="SFSU Email" id="loginEmail" name="email" required>
-                        <input type="password" placeholder="Password" id="loginPass" name="password" required>
-                        <div id="loginCheckbox">
-                            <input type="checkbox" name="showPass" id="showPass">
-                            <label for="showPass">Show Password</label>
+                            <input type="email" placeholder="SFSU Email" id="loginEmail" name="email" required>
+                            <input type="password" placeholder="Password" id="loginPass" name="password" required>
+                            <div id="loginCheckbox">
+                                <input type="checkbox" name="showPass" id="showPass">
+                                <label for="showPass">Show Password</label>
+                            </div>
+                            <a href="#">Forgot your password?</a>
+                            <button type="submit" class="login-btn">Sign in</button>
+                            <span class="mobile-only">New Here?</span>
+                            <button type="button" class="login-btn mobile-only">Sign up</button>
+                        </form>
+                        <div class="side">
+                            <h1>Hello, Friend!</h1>
+                            <p>Enter your personal details and start journey with us</p>
+                            <button class="login-btn">Sign up</button>
                         </div>
-                        <a href="#">Forgot your password?</a>
-                        <button type="submit" class="login-btn">Sign in</button>
-                        <span class="mobile-only">New Here?</span>
-                        <button type="button" class="login-btn mobile-only">Sign up</button>
-                    </form>
-                    <div class="side">
-                        <h1>Hello, Friend!</h1>
-                        <p>Enter your personal details and start journey with us</p>
-                        <button class="login-btn">Sign up</button>
                     </div>
-                </div>
-                <!-- REGISTER AREA -->
-                <div class="signup hidden">
-                    <form class="form" method="POST" action="/users/register" enctype="application/x-www-form-urlencoded">
-                        <h1>Create Account</h1>
-                        <!-- <div class="social-container">
+                    <!-- REGISTER AREA -->
+                    <div class="signup hidden">
+                        <form class="form" method="POST" action="/users/register"
+                            enctype="application/x-www-form-urlencoded">
+                            <h1>Create Account</h1>
+                            <!-- <div class="social-container">
                             <a href="#"><img src="images/social_media_icons/facebook.png" alt="facebook"></a>
                             <a href="#"><img src="images/social_media_icons/linkedin.png" alt="linkedin"></a>
                             <a href="#"><img src="images/social_media_icons/google_plus.png" alt="google_plus"></a>
                         </div> -->
-                        <div class="control" id="firstControl">
-                            <div>
-                                <input type="text" placeholder="First Name" id="firstname" name="fname" required>
+                            <div class="control" id="firstControl">
+                                <div>
+                                    <input type="text" placeholder="First Name" id="firstname" name="fname" required>
+                                    <small>error message</small>
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="Last Name" id="lastname" name="lname" required>
+                                    <small>error message</small>
+                                </div>
+                            </div>
+                            <div class="control">
+                                <input type="text" placeholder="SFSU Email" id="email" name="email" required>
                                 <small>error message</small>
                             </div>
-                            <div>
-                                <input type="text" placeholder="Last Name" id="lastname" name="lname" required>
+                            <div class="control">
+                                <input type="password" placeholder="Password" id="password" name="password" required>
                                 <small>error message</small>
                             </div>
+                            <div class="control">
+                                <input type="password" placeholder="Re-enter Password" id="password2" name="password2"
+                                    required>
+                                <small>error message</small>
+                            </div>
+                            <button type="submit" class="login-btn">Sign Up</button>
+                            <span class="mobile-only">New Here?</span>
+                            <button type="button" class="login-btn mobile-only">Sign up</button>
+                        </form>
+                        <div class="side">
+                            <h1>Welcome Back Gator!</h1>
+                            <p>Login using your SFSU email and continue Trading.</p>
+                            <button class="login-btn">Sign in</button>
                         </div>
-                        <div class="control">
-                            <input type="text" placeholder="SFSU Email" id="email" name="email" required>
-                            <small>error message</small>
-                        </div>
-                        <div class="control">
-                            <input type="password" placeholder="Password" id="password" name="password" required>
-                            <small>error message</small>
-                        </div>
-                        <div class="control">
-                            <input type="password" placeholder="Re-enter Password" id="password2" name="password2" required>
-                            <small>error message</small>
-                        </div>
-                        <button type="submit" class="login-btn">Sign Up</button>
-                        <span class="mobile-only">New Here?</span>
-                        <button type="button" class="login-btn mobile-only">Sign up</button>
-                    </form>
-                    <div class="side">
-                        <h1>Welcome Back Gator!</h1>
-                        <p>Login using your SFSU email and continue Trading.</p>
-                        <button class="login-btn">Sign in</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    
-    <%- include('partials/footer') %>
 
-    <script src="/javascripts/bootstrap.bundle.js"></script>
-    <script src="/javascripts/login.js"></script>
-  </body>
+        <%- include('partials/footer') %>
+
+            <script src="/javascripts/bootstrap.bundle.js"></script>
+            <script src="/javascripts/login.js"></script>
+</body>
+
 </html>

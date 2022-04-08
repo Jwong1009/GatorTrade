@@ -9,21 +9,6 @@ post listing page, and a redirect to the login/register
 page.
 -->
 
-<!-- the old one -->
-<!-- <nav class="navbar navbar-expand-xl dropdown-menu-dark navbar-dark px-5">
-    <ul class="navbar-nav mt-lg-0 w-50 row">
-        <li class="nav-item d-flex align-items-center col-md-4">
-            <a class="nav-link fs-4 active" href="/">Team 5</a>
-        </li>
-        <li class="nav-item d-flex align-items-center col-md-4">
-            <a class="nav-link fs-4" href="/homepage">Home</a>
-        </li>
-        <li class="nav-item d-flex align-items-center col-md-4">
-            <a class="nav-link fs-4" href="#">About</a>
-        </li>
-    </ul>
-</nav> -->
-
 <nav class="navbar navbar-expand-xl dropdown-menu-dark navbar-dark flex-column">
     <div class="fw-lighter">
         SFSU Software Engineering Project CSC 648-848, Spring 2022 For Demonstration Only
@@ -34,26 +19,6 @@ page.
         </li>
 
         <li class="nav-item align-items-center flex-fill">
-            <!-- <form action="/results" class="">
-                <div class="input-group align-items-center px-3">
-                    <div style="width:200px">
-                        <select class="form-select bg-secondary text-light" name="category" id="categories" >
-                            <option value=0>All</option>
-                            <option value=1>Electronics</option>
-                            <option value=2>Textbooks</option>
-                            <option value=3>Handicraft</option>
-                            <option value=4>Education Supplies</option>
-                            <option value=5>Food</option>
-                        </select>
-                    </div>
-                    <input id="searchInput" name="search" type="search" placeholder="Search" class="form-control" />
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary" type="submit">
-                            Search
-                        </button>
-                    </div>
-                </div>
-            </form> -->
 
             <form action="/results" class="d-flex justify-content-center">
                 <div class="input-group w-75 rounded overflow-hidden">
@@ -66,7 +31,6 @@ page.
                         <option value=5>Food</option>
                     </select>
                     <input id="searchInput" name="search" type="search" placeholder="Search" class="form-control border-0"/>
-                    <!-- <input type="button" class="btn btn-primary"> -->
                     <button type="submit" class="btn btn-primary">
                         <a href="" class="text-light"><i class="bi bi-search"></i></a>
                     </button>
@@ -82,8 +46,12 @@ page.
             <a class="nav-link fs-4 hover" href="#">Post</a>
         </li>
 
+        <% if(locals.logged) { %>
+            <%- include('profile') %>
+        <% } else { %>
         <li class="nav-item align-items-center ">
             <a class="nav-link fs-4 hover" href="/login">Login</a>
         </li>
+        <% } %>
     </ul>
 </nav>
