@@ -12,6 +12,10 @@ body{
     justify-content: space-between;
 }
 
+.btn:focus{
+    box-shadow: none;
+}
+
 a{
     text-decoration: none;
 }

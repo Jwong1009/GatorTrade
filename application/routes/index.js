@@ -107,4 +107,8 @@ router.get('/login', function (req, res, next) {
   res.render('login', { title: 'Team 05 Login Page' });
 });
 
+router.get('/message', function (req, res, next) {
+  res.render('test_message', { title: 'Team 05 Login Page' });
+});
+
 module.exports = router;

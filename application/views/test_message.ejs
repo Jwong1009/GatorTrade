@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>
+            <%= title %>
+        </title>
+    </head>
+
+    <body>
+        <%- include('partials/navbar') %>
+        <div class="container d-flex justify-content-center">
+            <button class="btn btn-outline-danger btn-lg" data-bs-toggle="modal" data-bs-target="#messageModal">
+                Message
+            </button>
+            <div class="modal fade" id="messageModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="messageModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h3 class="modal-title" id="exampleModalLabel">Contact Seller</h3>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <h5 class="mb-1">Product:  {product name goes here}</h5>
+                      <h5 class="mb-1">Seller:   {seller name goes here}</h5>
+                      <form method="POST" action="">
+                        <div class="my-3">
+                            <label for="messageTextarea" class="form-label">Custom Message:</label>
+                            <textarea class="form-control" id="messageTextarea" placeholder="Don't forget to send your contact info where the seller can reach you." rows="6"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                    </div>
+                    <!-- <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                      <button type="button" class="btn btn-primary">Send</button>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+        </div>
+        <%- include('partials/footer') %>
+        <script src="/javascripts/bootstrap.bundle.js"></script>
+    </body>
+</html>
