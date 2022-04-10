@@ -20,6 +20,7 @@ var indexRouter = require('./routes/index');
 var aboutRouter = require('./routes/about');
 var usersRouter = require('./routes/users');
 var dbRouter = require('./routes/dbtest');
+var messagesRouter = require('./routes/messages')
 
 
 var app = express();
@@ -68,6 +69,7 @@ app.use('/', indexRouter);
 app.use('/about', aboutRouter);
 app.use('/users', usersRouter);
 app.use('/dbtest', dbRouter);
+app.use('/messages', messagesRouter)
 
 // Catches 404 and forwards to error handler.
 app.use(function(req, res, next) {

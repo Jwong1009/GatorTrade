@@ -23,10 +23,10 @@
                     <div class="modal-body">
                       <h5 class="mb-1">Product:  {product name goes here}</h5>
                       <h5 class="mb-1">Seller:   {seller name goes here}</h5>
-                      <form method="POST" action="">
+                      <form method="POST" action="/messages/send">
                         <div class="my-3">
                             <label for="messageTextarea" class="form-label">Custom Message:</label>
-                            <textarea class="form-control" id="messageTextarea" placeholder="Don't forget to send your contact info where the seller can reach you." rows="6"></textarea>
+                            <textarea class="form-control" name="message" id="messageTextarea" placeholder="Don't forget to send your contact info where the seller can reach you." rows="6"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                       </form>

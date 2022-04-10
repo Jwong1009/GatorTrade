@@ -33,27 +33,6 @@ router.get('/', function (req, res, next) {
 
 });
 
-// router.get('/dbtest', async function(req, res, next) {
-//   try {
-//     let results = await db.all();
-//     res.json(results);
-//   } catch(e) {
-//     console.log(e);
-//     res.sendStatus(500);
-//   }
-// });
-router.get('/search', function (req, res, next) {
-
-
-});
-
-// Test homepage with Search bar:
-// PROBABLY DON'T NEED THIS ANYMORE
-/*router.get('/homepage', function (req, res, next) {
-
-  res.render('homepage', { title: 'Team 05 Home Page' });
-});*/
-
 /* GET aboutAll page */
 router.get('/about', function (req, res, next) {
   const membersArray = Object.values(members).reduce((accum, curr) => {

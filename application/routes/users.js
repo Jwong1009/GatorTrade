@@ -6,14 +6,11 @@
 **********************************************************/
 
 var express = require('express');
-var app = express();
-var router = express.Router();
-const db = require('../db');
+const router = express.Router();
 const UserModel = require('../models/Users');
 const UserError = require('../helpers/error/UserError');
 const { successPrint, errorPrint } = require('../helpers/debug/debugprinters');
 const { registerValidator, loginValidator } = require('../middleware/validation');
-var bcrypt = require('bcrypt');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
