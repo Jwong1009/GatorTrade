@@ -12,12 +12,24 @@
 
     <div class="container-fluid" id="homeContainer">
       <div class="container">
-        <div>
-          <% if(results) { %>
-            <p>Showing <%= results.length %> out of <%= total %> items.</p>
+        <div class="d-flex justify-content-between mb-5">
+          <div>
+            <% if(results) { %>
+              <p>Showing <%= results.length %> out of <%= total %> items.</p>
             <% } else { %>
               <p>Showing 0 out of <%= total %> items.</p>
-              <% } %>
+            <% } %>
+          </div>
+          <div class="d-flex align-items-center w-25">
+            <h4 class="w-50">Sort By:</h4>
+            <select class="form-select" aria-label="Sort dropdown">
+              <option selected>Default</option>
+              <option value="price_inc">Price (Low to High)</option>
+              <option value="price_dec">Price (High to Low)</option>
+              <option value="title_inc">Title (A-Z)</option>
+              <option value="title_dec">Title (Z-A)</option>
+            </select>
+          </div>
         </div>
         <div id="results">
           <% if(results) { %>
@@ -26,7 +38,7 @@
                 <div class="row mb-5">
                   <% } %>
                     <div class="col-md-4">
-                      <div class="card" style="width: 18rem;">
+                      <div class="card h-100" style="width: 18rem;">
                         <img src="<%=results[i].photopath%>" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">
