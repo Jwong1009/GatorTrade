@@ -25,34 +25,13 @@ router.get('/', function (req, res, next) {
     view_data.items = items_rows;
   })
   .then(()=>{res.render('homepage',{
-    title: 'Team 05 Home Page',
+    title: 'GatorTrade',
     Categories: view_data.categories,
     Items: view_data.items
   });
   });
 
 });
-
-// router.get('/dbtest', async function(req, res, next) {
-//   try {
-//     let results = await db.all();
-//     res.json(results);
-//   } catch(e) {
-//     console.log(e);
-//     res.sendStatus(500);
-//   }
-// });
-router.get('/search', function (req, res, next) {
-
-
-});
-
-// Test homepage with Search bar:
-// PROBABLY DON'T NEED THIS ANYMORE
-/*router.get('/homepage', function (req, res, next) {
-
-  res.render('homepage', { title: 'Team 05 Home Page' });
-});*/
 
 /* GET aboutAll page */
 router.get('/about', function (req, res, next) {
@@ -87,15 +66,15 @@ router.get('/results', function (req, res, next) {
 
     // Selected "All" for Category. No need to factor category into search.
     if (categoryId == 0) {
-      db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' ORDER BY title;`).then(([results]) => {
-        res.render('results', { title: 'Team 05 Home Page', results: results, total: totalItemCount });
+      db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%';`).then(([results]) => {
+        res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount });
       });
     }
 
     // Filter results based on category chosen.
     else if (categoryId > 0) {
-      db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' AND category=${categoryId} ORDER BY title;`).then(([results]) => {
-        res.render('results', { title: 'Team 05 Home Page', results: results, total: totalItemCount });
+      db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' AND category=${categoryId};`).then(([results]) => {
+        res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount });
       });
     }
   }).catch(error => {
@@ -105,6 +84,24 @@ router.get('/results', function (req, res, next) {
 
 router.get('/login', function (req, res, next) {
   res.render('login', { title: 'Team 05 Login Page' });
+});
+
+
+router.get('/message', function (req, res, next) {
+  res.render('test_message', { title: 'Team 05 Message Modal' });
+});
+
+//Renders item's detail page
+router.get('/dp', function(req, res, next){
+  const {id} = req.query;
+  let idItems = parseInt(id);
+  //Uses idItems column in Items table to filter out the row of data we want to display
+  db.query("SELECT * FROM Items WHERE idItems = ?", [idItems]).then(([Item])=>{
+    res.render('itemsDetailPage', {title: "Team 05 item's detail page", Item: Item});
+  }).catch(error =>{
+    console.log(error);
+  });
+>>>>>>> Stashed changes
 });
 
 module.exports = router;
