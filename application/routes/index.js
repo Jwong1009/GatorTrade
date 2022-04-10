@@ -66,15 +66,15 @@ router.get('/results', function (req, res, next) {
 
     // Selected "All" for Category. No need to factor category into search.
     if (categoryId == 0) {
-      db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' ORDER BY title;`).then(([results]) => {
-        res.render('results', { title: 'Team 05 Results', results: results, total: totalItemCount });
+      db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%';`).then(([results]) => {
+        res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount });
       });
     }
 
     // Filter results based on category chosen.
     else if (categoryId > 0) {
-      db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' AND category=${categoryId} ORDER BY title;`).then(([results]) => {
-        res.render('results', { title: 'Team 05 Results', results: results, total: totalItemCount });
+      db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' AND category=${categoryId};`).then(([results]) => {
+        res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount });
       });
     }
   }).catch(error => {
