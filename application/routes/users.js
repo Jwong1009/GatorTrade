@@ -111,6 +111,20 @@ router.post('/login', loginValidator, (req, res, next) => {
   });
 });
 
+router.get('/myPage', function (req, res, next) {
+
+  const { search, category } = req.query;
+  let categoryId = parseInt(category);
+  res.render('userPage', { title: 'Team 05 My Page' , search:search, category:categoryId});
+});
+
+router.get('/settings', function (req, res, next) {
+
+  const { search, category } = req.query;
+  let categoryId = parseInt(category);
+  res.render('userSettings', { title: 'Team 05 My Settings' , search:search, category:categoryId});
+});
+
 /* LOG OUT */
 router.post('/logout', (req, res, next) => {
   req.session.destroy((err) => {
