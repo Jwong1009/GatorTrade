@@ -1,3 +1,6 @@
+-- FILE: db/GatorTrade_Inserts.sql
+-- DESCRIPTION: Insert statements to demonstrate database
+-- CREATED BY: Ze
 INSERT INTO `GatorTrade`.`Categories` (`title`) VALUES 
 ("Electronics"),( "Text"), ("Handicraft"), ("Edu_supply"), ("Food");
 INSERT INTO `GatorTrade`.`Users` (`password`, `email`, `firstname`, `lastname`) VALUES 

@@ -2,7 +2,9 @@
  * FILE: routes/messages.js
  * 
  * DESCRIPTION: Application's endpoints from this file will
- * start with "/messages".
+ * start with "/messages". Route is for message posting
+ * 
+ * CREATED BY: Ze
 **********************************************************/
 
 const express = require('express');
