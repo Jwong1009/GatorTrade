@@ -4,7 +4,7 @@
  * DESCRIPTION: Application's endpoints from this file will
  * start with "/users".
  * 
- * CREATED BY: Faisal
+ * CREATED BY: Faisal & Ze
 **********************************************************/
 
 var express = require('express');
@@ -22,11 +22,10 @@ router.get('/', function(req, res, next) {
 
 /* REGISTER */
 router.post('/register', registerValidator, (req, res, next) => {
-  let firstname = req.body.fname;
-  let lastname = req.body.lname;
-  let email = req.body.email;
-  let password = req.body.password;
-  let cpassword = req.body.password2;
+  const firstname = req.body.fname;
+  const lastname = req.body.lname;
+  const email = req.body.email;
+  const password = req.body.password;
 
   UserModel.emailExists(email)
   .then((emailDoesExist) => {
@@ -72,8 +71,8 @@ router.post('/register', registerValidator, (req, res, next) => {
 
 /* LOG IN */
 router.post('/login', loginValidator, (req, res, next) => {
-  let email = req.body.email;
-  let password = req.body.password;
+  const email = req.body.email;
+  const password = req.body.password;
 
   /**
    * Does server side validation
@@ -114,14 +113,14 @@ router.post('/login', loginValidator, (req, res, next) => {
 router.get('/myPage', function (req, res, next) {
 
   const { search, category } = req.query;
-  let categoryId = parseInt(category);
+  const categoryId = parseInt(category);
   res.render('userPage', { title: 'Team 05 My Page' , search:search, category:categoryId});
 });
 
 router.get('/settings', function (req, res, next) {
 
   const { search, category } = req.query;
-  let categoryId = parseInt(category);
+  const categoryId = parseInt(category);
   res.render('userSettings', { title: 'Team 05 My Settings' , search:search, category:categoryId});
 });
 
