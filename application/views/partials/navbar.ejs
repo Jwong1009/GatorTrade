@@ -25,19 +25,48 @@ page.
         </li>
 
         <li class="nav-item align-items-center flex-fill">
-
             <form action="/results" class="d-flex justify-content-center">
                 <div class="input-group w-75 rounded overflow-hidden">
-                    <select name="category" id="categories" class="bg-secondary border-0 text-light px-2">
-                        <option value=0>All</option>
-                        <option value=1>Electronics</option>
-                        <option value=2>Textbooks</option>
-                        <option value=3>Handicraft</option>
-                        <option value=4>Education Supplies</option>
-                        <option value=5>Food</option>
+                    <select name="category" id="categories" class="bg-secondary border-0 text-light px-2" >                  
+                        <% if (category == 0) {%>
+                            <option selected = "selected" value=0>All</option>
+                        <%} else{%>
+                            <option value=0>All</option>
+                        <%}%>
+
+                        <% if (category == 1) {%>
+                            <option selected = "selected" value=1>Electronics</option>
+                        <%} else{%>
+                            <option value=1>Electronics</option>
+                        <%}%>
+
+                        <% if (category == 2) {%>
+                            <option selected = "selected" value=2>Textbooks</option>
+                        <%} else{%>
+                            <option value=2>Textbooks</option>
+                        <%}%>
+
+                        <% if (category == 3) {%>
+                            <option selected = "selected" value=3>Handicraft</option>
+                        <%} else{%>
+                            <option value=3>Handicraft</option>
+                        <%}%>
+
+                        <% if (category == 4) {%>
+                            <option selected = "selected" value=4>Education Supplies</option>
+                        <%} else{%>
+                            <option value=4>Education Supplies</option>
+                        <%}%>
+
+                        <% if (category == 5) {%>
+                            <option selected = "selected" value=5>Food</option>
+                        <%} else{%>
+                            <option value=5>Food</option>
+                        <%}%>
+                        
                     </select>
                     <input id="searchInput" name="search" type="search" placeholder="Search"
-                        class="form-control border-0" />
+                        class="form-control border-0" value ="<%= search %>"/>
                     <button type="submit" class="btn btn-primary">
                         <a href="" class="text-light"><i class="bi bi-search"></i></a>
                     </button>
