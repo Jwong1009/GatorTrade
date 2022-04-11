@@ -6,13 +6,12 @@
 **********************************************************/
 
 var express = require('express');
-var router = express.Router();
-const db = require('../db');
+const router = express.Router();
+
 const UserModel = require('../models/Users');
 const UserError = require('../helpers/error/UserError');
 const { successPrint, errorPrint } = require('../helpers/debug/debugprinters');
 const { registerValidator, loginValidator } = require('../middleware/validation');
-var bcrypt = require('bcrypt');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -20,20 +19,19 @@ router.get('/', function(req, res, next) {
 });
 
 /* REGISTER */
-
 router.post('/register', registerValidator, (req, res, next) => {
-  let firstname = req.body.firstname;
-  let lastname = req.body.lastname;
+  let firstname = req.body.fname;
+  let lastname = req.body.lname;
   let email = req.body.email;
   let password = req.body.password;
-  let cpassword = req.body.password;
+  let cpassword = req.body.password2;
 
   UserModel.emailExists(email)
   .then((emailDoesExist) => {
     if(emailDoesExist) {
       throw new UserError(
         "Registration Failed: Email already exists",
-        "/registration",
+        "/login",
         200
       );
     } else {
@@ -44,7 +42,7 @@ router.post('/register', registerValidator, (req, res, next) => {
     if(createdUserId < 0) {
       throw new UserError(
         "Server Error, user could not be created",
-        "/registration",
+        "/login",
         500
       );
     } else {
@@ -103,9 +101,10 @@ router.post('/login', loginValidator, (req, res, next) => {
       errorPrint(err.getMessage());
       req.flash('error', err.getMessage());
       res.status(err.getStatus());
-      res.redirect('/login');
+      res.redirect(err.getRedirectURL());
     } else {
-      next(err);
+      // next(err);
+      res.redirect("/login")
     }
   });
 });

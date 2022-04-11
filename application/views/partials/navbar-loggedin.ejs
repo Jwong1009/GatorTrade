@@ -1,4 +1,5 @@
 <!--
+DEPRECIATED
 FILE: views/partials/navbar-loggedin.ejs
  
 DESCRIPTION: Generates a nav bar that incorporates
@@ -15,7 +16,7 @@ a log out button.
     </div>
     <ul class="navbar-nav container-fluid">
         <li class="nav-item align-items-center ">
-            <a class="navbar-brand mx-2" href="/homepage"> <img src="/images/gator.png" width="auto" height="80px"> </a>
+            <a class="navbar-brand mx-2" href="/"> <img src="/images/gt_logo.png" width="auto" height="80px"> </a>
 
         </li>
 
@@ -51,9 +52,8 @@ a log out button.
                         <option value=5>Food</option>
                     </select>
                     <input id="searchInput" name="search" type="search" placeholder="Search" class="form-control border-0"/>
-                    <!-- <input type="button" class="btn btn-primary"> -->
                     <button type="submit" class="btn btn-primary">
-                        <a href="" class="text-light"><i class="fas fa-search"></i></a>
+                        <a href="" class="text-light"><i class="bi bi-search"></i></a>
                     </button>
                 </div>
             </form>
@@ -67,14 +67,14 @@ a log out button.
             <a class="nav-link fs-4 hover" href="#">Post</a>
         </li>
 
-        <li class="nav-item align-items-center ">
+        <li class="nav-item align-items-center ps-2">
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                     <i class="bi bi-person-circle" style="font-size: 30px; color:white"> </i>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item text-dark" href="#">My Page</a></li>
-                    <li><a class="dropdown-item text-dark" href="#">Log Out</a></li>
+                    <li><a id="logout-button" class="dropdown-item text-dark" href="">Log Out</a></li>
                 </ul>
             </div>
         </li>

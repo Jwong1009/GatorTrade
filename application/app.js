@@ -1,7 +1,7 @@
 /**********************************************************
  * FILE: app.js
  * 
- * DESCRIPTION: (TO UPDATE)
+ * DESCRIPTION: (TO UPDATE) 
 **********************************************************/
 
 require("dotenv").config();
@@ -20,6 +20,7 @@ var indexRouter = require('./routes/index');
 var aboutRouter = require('./routes/about');
 var usersRouter = require('./routes/users');
 var dbRouter = require('./routes/dbtest');
+var messagesRouter = require('./routes/messages')
 
 
 var app = express();
@@ -56,7 +57,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Sessions
 app.use((req, res, next) => {
   console.log(req.session);
-  if(req.session.username) {
+  if(req.session.email) {
     // If sessions is initialized, aka if logged in
     res.locals.logged = true;
   }
@@ -68,10 +69,12 @@ app.use('/', indexRouter);
 app.use('/about', aboutRouter);
 app.use('/users', usersRouter);
 app.use('/dbtest', dbRouter);
+app.use('/messages', messagesRouter)
 
 // Catches 404 and forwards to error handler.
 app.use(function(req, res, next) {
-  next(createError(404));
+  // next(createError(404));
+  res.status(404).send('Unable to find the requested resource!');
 });
 
 // Error handler:
@@ -86,7 +89,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port: ${process.env.PORT}`);
+  console.log(`Server is running on port: ${process.env.PORT || 3000}`);
 });
 
 module.exports = app;
