@@ -1,0 +1,62 @@
+<!--
+FILE: views/userPage.ejs
+
+DESCRIPTION: 
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <%- include('partials/navbar') %>
+        <div class="d-flex flex-wrap justify-content-center">
+            <div class="m-4">
+                <a href="/myListings" id="listingsTab">
+                    <div class="col m-3 border border-dark p-3 mb-2 bg-dark text-white rounded-3 fs-1 text-center" style="width:500px">
+                        My Listings
+                        <div class="text-white fs-5">
+                            View your recent posts here
+                        </div>
+                    </div>
+                </a>
+                <a href="/settings" id="settingsTab">
+                    <div class="col m-3 border border-dark p-3 mb-2 bg-dark text-white rounded-3 fs-1 text-center" style="width:500px">
+                        Settings
+                        <div class="text-white fs-5">
+                            Update or change your account information here
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="m-4">
+                <a href="/myMessages" id="messagesTab">
+                    <div class="col m-3 border border-dark p-3 mb-2 bg-dark text-white rounded-3 fs-1 text-center" style="width:500px">
+                        Messages
+                        <div class="text-white fs-5">
+                            View incoming and recent messages here
+                        </div>
+                    </div>
+                </a>
+                <a href="/reviews" id="messagesTab">
+                    <div class="col m-3 border border-dark p-3 mb-2 bg-dark text-white rounded-3 fs-1 text-center" style="width:500px">
+                        Reviews
+                        <div class="text-white fs-5">
+                            View your reviews here
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <%- include('partials/footer') %>
+
+
+            <script src="/javascripts/bootstrap.bundle.js"></script>
+</body>
+
+</html>
