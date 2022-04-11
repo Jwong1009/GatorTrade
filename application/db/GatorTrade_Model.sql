@@ -1,3 +1,6 @@
+-- FILE: db/GatorTrade_Model.sql
+-- DESCRIPTION: SQL statements to create the database
+-- CREATED BY: Ze
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;

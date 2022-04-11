@@ -119,11 +119,6 @@ router.get('/login', function (req, res, next) {
   res.render('login', { title: 'Team 05 Login Page' , search:search, category:categoryId});
 });
 
-
-router.get('/message', function (req, res, next) {
-  res.render('test_message', { title: 'Team 05 Message Modal' });
-});
-
 //Renders item's detail page
 router.get('/dp', function(req, res, next){
   const { search, category } = req.query;
@@ -132,8 +127,9 @@ router.get('/dp', function(req, res, next){
   const {id} = req.query;
   let idItems = parseInt(id);
   //Uses idItems column in Items table to filter out the row of data we want to display
-  db.query("SELECT * FROM Items WHERE idItems = ?", [idItems]).then(([Item])=>{
-    res.render('itemsDetailPage', {title: "Team 05 item's detail page", Item: Item, search:search, category:categoryId});
+  db.query("SELECT * FROM Items I LEFT JOIN Users U ON I.seller = U.idUsers WHERE idItems =  ?;", [idItems]).then(([Item])=>{
+    res.render('itemDetails', {title: "Team 05 Item Details Page", Item: Item, search:search, category:categoryId});
+
   }).catch(error =>{
     console.log(error);
   });

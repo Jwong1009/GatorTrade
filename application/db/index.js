@@ -5,6 +5,8 @@
  * credentials (username, password, etc.). User and Password 
  * may differ from user to user and when connecting through 
  * AWS server.
+ * 
+ * CREATED BY: Faisal
 **********************************************************/
 
 const mysql = require('mysql2');
@@ -19,4 +21,5 @@ const pool = mysql.createPool({
     debug: false
 });
 
-module.exports = pool;
+const promisePool = pool.promise();
+module.exports = promisePool;

@@ -1,3 +1,10 @@
+/**********************************************************
+ * FILE: models/Messages.js
+ * 
+ * DESCRIPTION: uses mySQL messages table
+ * 
+ * CREATED BY: Ze
+**********************************************************/
 var db = require('../db');
 const MessagesModel = {};
 

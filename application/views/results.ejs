@@ -1,3 +1,10 @@
+<!-- 
+FILE: views/results.ejs
+
+DESCRIPTION: results page
+
+CREATED BY: Front End
+ -->
 <!DOCTYPE html>
 <html>
 
@@ -14,9 +21,9 @@
           <div>
             <% if(results) { %>
               <p>Showing <%= results.length %> out of <%= total %> items.</p>
-            <% } else { %>
-              <p>Showing 0 out of <%= total %> items.</p>
-            <% } %>
+              <% } else { %>
+                <p>Showing 0 out of <%= total %> items.</p>
+                <% } %>
           </div>
           <div class="d-flex align-items-center w-25">
             <h4 class="w-50">Sort By:</h4>
