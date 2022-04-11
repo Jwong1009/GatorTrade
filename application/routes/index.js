@@ -92,7 +92,7 @@ router.get('/dp', function(req, res, next){
   let idItems = parseInt(id);
   //Uses idItems column in Items table to filter out the row of data we want to display
   db.query("SELECT * FROM Items I LEFT JOIN Users U ON I.seller = U.idUsers WHERE idItems =  ?;", [idItems]).then(([Item])=>{
-    res.render('itemsDetailPage', {title: "Team 05 item's detail page", Item: Item});
+    res.render('itemDetails', {title: "Team 05 Item Details Page", Item: Item});
   }).catch(error =>{
     console.log(error);
   });
