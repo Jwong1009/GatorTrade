@@ -10,6 +10,7 @@ const express = require('express');
 const db = require('../db');
 const router = express.Router();
 const members = require('./members');
+const { checkSignIn } = require('../middleware/routesFunctions');
 
 //Get Homepage
 //queries database for all categories
@@ -101,7 +102,11 @@ router.get('/dp', function(req, res, next){
   }).catch(error =>{
     console.log(error);
   });
->>>>>>> Stashed changes
+});
+
+router.get('/post', checkSignIn, function(req,res,next){
+    res.render('post', {title: "Team 05 post page"});
+
 });
 
 module.exports = router;
