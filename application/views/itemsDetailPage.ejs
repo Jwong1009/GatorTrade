@@ -34,7 +34,9 @@ DESCRIPTION: Generates an item's detail page. Information includes title,
                         <p>$<%=Item[0].price%><br></p>
                         <p><strong>About This Item:</strong><br>
                             <%=Item[0].description%>
-                        </p><button type="submit" class="btn btn-primary" data-bs-toggle="modal"
+                        </p>
+                        <!-- Begin HTML for Messages Modal -->
+                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#messageModal">
                             Message Seller
                         </button>
@@ -50,9 +52,10 @@ DESCRIPTION: Generates an item's detail page. Information includes title,
                                     <div class="modal-body">
                                         <h5 class="mb-1">Product: <%=Item[0].title%>
                                         </h5>
-                                        <h5 class="mb-1">Seller: <%=Item[0].email%>
+                                        <h5 class="mb-1">Seller: <%=Item[0].firstname + " " + Item[0].lastname%>
                                         </h5>
-                                        <form method="POST" action="/messages/send?item=<%=Item[0].idItems%>&receiver=<%=Item[0].seller%> ">
+                                        <form method="POST"
+                                            action="/messages/send?item=<%=Item[0].idItems%>&receiver=<%=Item[0].seller%> ">
                                             <div class="my-3">
                                                 <label for="messageTextarea" class="form-label">Custom Message:</label>
                                                 <textarea class="form-control" name="message" id="messageTextarea"
