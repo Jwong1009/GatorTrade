@@ -5,21 +5,28 @@
  * credentials (username, password, etc.). User and Password 
  * may differ from user to user and when connecting through 
  * AWS server.
- * 
- * CREATED BY: Faisal
 **********************************************************/
 
 const mysql = require('mysql2');
 
 // Connects to MySQL databse:
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root', // Replace with your MySQL Username here
-    password: 'student', // Replace with your MySQL Password here
-    database: 'GatorTrade', 
+
+    // host: 'localhost',
+    // user: 'root', // Insert your MySQL username here
+    // password: 'Judohe13!', // Insert your MySQL password here
+    // database: 'GatorTrade', 
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE, 
+
     connectionLimit: 50,
     debug: false
 });
 
+// module.exports = pool;
+
 const promisePool = pool.promise();
 module.exports = promisePool;
+
