@@ -10,6 +10,7 @@ const express = require('express');
 const db = require('../db');
 const router = express.Router();
 const members = require('./members');
+const { checkSignIn } = require('../middleware/routesFunctions');
 
 //Get Homepage
 //queries database for all categories
@@ -32,34 +33,6 @@ router.get('/', function (req, res, next) {
   });
 
 });
-
-// router.get('/dbtest', async function(req, res, next) {
-//   try {
-//     let results = await db.all();
-//     res.json(results);
-//   } catch(e) {
-//     console.log(e);
-//     res.sendStatus(500);
-//   }
-// });
-router.get('/search', function (req, res, next) {
-
-
-});
-
-// Test homepage with Search bar:
-
-router.get('/test_homepage', function (req,res,next){
-
-  res.render('test_homepage', { title: 'Team 05 Home Page' });
-
-});
-
-// PROBABLY DON'T NEED THIS ANYMORE
-/*router.get('/homepage', function (req, res, next) {
-
-  res.render('homepage', { title: 'Team 05 Home Page' });
-});*/
 
 /* GET aboutAll page */
 router.get('/about', function (req, res, next) {
@@ -133,6 +106,11 @@ router.get('/dp', function(req, res, next){
   }).catch(error =>{
     console.log(error);
   });
+});
+
+router.get('/post', checkSignIn, function(req,res,next){
+    res.render('post', {title: "Team 05 post page"});
+    
 });
 
 module.exports = router;

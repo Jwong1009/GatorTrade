@@ -19,18 +19,10 @@ const checkPassword = (password) => {
 };
 
 const registerValidator = (req, res, next) => {
-    // let username = req.body.username;
     let email = req.body.email;
     let password = req.body.password;
     let cpassword = req.body.password2;
 
-    // if(!checkUsername(username)) {
-    //     // Invalid username
-    //     req.flash('error', "Invalid username!");
-    //     req.session.save(err => {
-    //         res.redirect("/login");
-    //     });
-    // } 
     if(!checkEmail(email)) {
         // Invalid email
         req.flash('error', "Invalid email!");
