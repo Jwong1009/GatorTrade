@@ -78,7 +78,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `GatorTrade`.`Reviews` ;
 
 CREATE TABLE IF NOT EXISTS `GatorTrade`.`Reviews` (
-  `idReviews` INT UNSIGNED NOT NULL,
+  `idReviews` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `reviewer` INT UNSIGNED NOT NULL,
   `reviewee` INT UNSIGNED NOT NULL,
   `rating` TINYINT(5) UNSIGNED NOT NULL,
