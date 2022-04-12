@@ -1,0 +1,71 @@
+<!--
+FILE: views/userMessages.ejs
+
+DESCRIPTION: Displays all incoming and outgoing messages.
+
+CREATED BY: Joanne
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <%- include('partials/navbar') %>
+        <div class="flex-grow-1">
+            <div class="h1 m-3">
+                Incoming Messages
+            </div>
+            <div class="d-flex flex-wrap justify-content-center">
+                <div class="justify-content-center">
+                    <div class="overflow-auto col m-3 border border-dark p-3 mb-2 bg-dark text-white rounded-3"
+                        style="width:800px;">
+                        <% if (messages.length !=0) { %>
+                            <% for (let i=0; i < messages.length; i++) { %>
+                                <div class="col-sm border border-secondary d-flex">
+                                    <img src="/<%=messages[i].photopath%>" class="img-thumbnail m-2" width="100px"
+                                        height="auto">
+                                    <div class="col">
+                                        <div class="fs-2 col-sm m-2">
+                                            Item: <b>
+                                                <%= messages[i].title%>
+                                            </b>
+                                        </div>
+                                        <div class="fs-4 col-sm m-2">
+                                            <% for (let j=0; j < senderN.length; j++) {%>
+                                                <!-- TODO: Fix double printing Sender name if they sent multiple msgs for different items.-->
+                                                <% if (senderN[j].idUsers === messages[i].sender) { %> 
+                                                    From: <%= `${senderN[j].firstname} ${senderN[j].lastname}`%>
+                                                <%}else{%>
+                                                    <%continue;%>
+                                                <%}%>
+                                            <%}%>
+                                        </div>
+                                        <div class="fs-6 col-sm m-2 text-wrap">
+                                            Message: <%= messages[i].body%>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%}%>
+                            <%}else{%>
+                            <div class="h2">
+                                No messages.
+                            </div>
+                            <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('partials/footer') %>
+
+
+            <script src="/javascripts/bootstrap.bundle.js"></script>
+</body>
+
+</html>
