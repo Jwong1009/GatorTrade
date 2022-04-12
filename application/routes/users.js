@@ -161,7 +161,8 @@ router.get('/myMessages', function (req, res, next) {
 router.get('/settings', function (req, res, next) {
   const { search, category } = req.query;
   const categoryId = parseInt(category);
-  res.render('userSettings', { title: 'Team 05 My Settings' , search:search, category:categoryId});
+  const { email } = req.session;
+  res.render('userSettings', { title: 'Team 05 My Settings' , search:search, category:categoryId, userEmail: email});
 });
 
 /* LOG OUT */
