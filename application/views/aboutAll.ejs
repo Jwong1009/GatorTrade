@@ -4,6 +4,8 @@ FILE: views/aboutAll.ejs
 DESCRIPTION: Generates a page to showcase all
 members on the team with their respective name, 
 role, and image. 
+
+CREATED BY: Joanne
 -->
 <!DOCTYPE html>
 <html>
@@ -15,7 +17,7 @@ role, and image.
 </head>
 
 <body>
-    <%- include('partials/navbar') %>
+    <%- include('partials/navbar', {search:"", category : 0}) %>
         <div class="d-flex flex-wrap justify-content-center" id="aboutContainer">
             <!-- loops through the membersInfo array that was passed in res.render statement in index.js file and grabs
                 outputs a card that shows each individual member and their respective information -->

@@ -4,6 +4,8 @@
  * DESCRIPTION: Generates JS objects for each member that
  * holds their first name, last name, description, email,
  * github id, github link, image, and role.
+ * 
+ * CREATED BY: Joanne
 **********************************************************/
 
 const members = {

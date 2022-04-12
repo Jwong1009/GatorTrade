@@ -3,10 +3,15 @@
  * 
  * DESCRIPTION: Application's endpoints from this file will
  * start with "/users".
+ * 
+ * CREATED BY: Faisal & Ze
 **********************************************************/
 
 var express = require('express');
 const router = express.Router();
+
+const db = require('../db');
+
 const UserModel = require('../models/Users');
 const UserError = require('../helpers/error/UserError');
 const { successPrint, errorPrint } = require('../helpers/debug/debugprinters');
@@ -19,11 +24,10 @@ router.get('/', function(req, res, next) {
 
 /* REGISTER */
 router.post('/register', registerValidator, (req, res, next) => {
-  let firstname = req.body.fname;
-  let lastname = req.body.lname;
-  let email = req.body.email;
-  let password = req.body.password;
-  let cpassword = req.body.password2;
+  const firstname = req.body.fname;
+  const lastname = req.body.lname;
+  const email = req.body.email;
+  const password = req.body.password;
 
   UserModel.emailExists(email)
   .then((emailDoesExist) => {
@@ -69,8 +73,8 @@ router.post('/register', registerValidator, (req, res, next) => {
 
 /* LOG IN */
 router.post('/login', loginValidator, (req, res, next) => {
-  let email = req.body.email;
-  let password = req.body.password;
+  const email = req.body.email;
+  const password = req.body.password;
 
   /**
    * Does server side validation
@@ -106,6 +110,43 @@ router.post('/login', loginValidator, (req, res, next) => {
       res.redirect("/login")
     }
   });
+});
+
+router.get('/myPage', function (req, res, next) {
+  const { search, category } = req.query;
+  const { userId } = req.session;
+  const categoryId = parseInt(category);
+  db.query(`SELECT firstname, lastname FROM Users U WHERE U.idUsers = ${userId};`).then(([results]) => {
+    const usersName = `${results[0].firstname} ${results[0].lastname}`;
+    res.render('userPage', { title: 'Team 05 My Page', search: search, category: categoryId, name: usersName });
+  }).catch(error => {
+    console.log(error);
+  });
+});
+
+router.get('/myPosts', function (req, res, next) {
+  const { search, category } = req.query;
+  const { userId } = req.session;
+  let categoryId = parseInt(category);
+  db.query(`SELECT * FROM Items I WHERE I.seller= ${userId}`).then(([results]) => {
+    res.render('userPosts', { title: 'User Posts', search: search, category: categoryId, Items: results, total: results.length })
+  }).catch(error => {
+    console.log(error);
+  })
+});
+
+router.get('/myMessages', function (req, res, next) {
+  const { search, category } = req.query;
+  const { userId } = req.session;
+  let categoryId = parseInt(category);
+  res.render('userMessages', { title: 'Team 05 Messages Page', search: search, category: categoryId });
+});
+
+router.get('/settings', function (req, res, next) {
+
+  const { search, category } = req.query;
+  const categoryId = parseInt(category);
+  res.render('userSettings', { title: 'Team 05 My Settings' , search:search, category:categoryId});
 });
 
 /* LOG OUT */
