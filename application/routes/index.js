@@ -70,14 +70,29 @@ router.get('/results', function (req, res, next) {
     // Selected "All" for Category. No need to factor category into search.
     if (categoryId == 0) {
       db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%';`).then(([results]) => {
-        res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount , search:search, category:categoryId});
+        if(results.length == 0){
+          db.query(`SELECT * FROM Items;`).then(([results]) => {
+            res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId});
+          });
+
+        }else{ 
+          res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount , search:search, category:categoryId});
+        }
       });
     }
 
     // Filter results based on category chosen.
     else if (categoryId > 0) {
       db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' AND category=${categoryId};`).then(([results]) => {
-        res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId});
+        if(results.length == 0){
+          db.query(`SELECT * FROM Items;`).then(([results]) => {
+            res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId});
+          });
+
+        } 
+        else{
+          res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId});
+        }
       });
     }
   }).catch(error => {
