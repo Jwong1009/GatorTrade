@@ -10,6 +10,8 @@
 var express = require('express');
 const router = express.Router();
 
+const db = require('../db');
+
 const UserModel = require('../models/Users');
 const UserError = require('../helpers/error/UserError');
 const { successPrint, errorPrint } = require('../helpers/debug/debugprinters');
@@ -111,10 +113,33 @@ router.post('/login', loginValidator, (req, res, next) => {
 });
 
 router.get('/myPage', function (req, res, next) {
-
   const { search, category } = req.query;
+  const { userId } = req.session;
   const categoryId = parseInt(category);
-  res.render('userPage', { title: 'Team 05 My Page' , search:search, category:categoryId});
+  db.query(`SELECT firstname, lastname FROM Users U WHERE U.idUsers = ${userId};`).then(([results]) => {
+    const usersName = `${results[0].firstname} ${results[0].lastname}`;
+    res.render('userPage', { title: 'Team 05 My Page', search: search, category: categoryId, name: usersName });
+  }).catch(error => {
+    console.log(error);
+  });
+});
+
+router.get('/myPosts', function (req, res, next) {
+  const { search, category } = req.query;
+  const { userId } = req.session;
+  let categoryId = parseInt(category);
+  db.query(`SELECT * FROM Items I WHERE I.seller= ${userId}`).then(([results]) => {
+    res.render('userPosts', { title: 'User Posts', search: search, category: categoryId, Items: results, total: results.length })
+  }).catch(error => {
+    console.log(error);
+  })
+});
+
+router.get('/myMessages', function (req, res, next) {
+  const { search, category } = req.query;
+  const { userId } = req.session;
+  let categoryId = parseInt(category);
+  res.render('userMessages', { title: 'Team 05 Messages Page', search: search, category: categoryId });
 });
 
 router.get('/settings', function (req, res, next) {
