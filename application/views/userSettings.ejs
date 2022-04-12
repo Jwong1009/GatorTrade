@@ -1,9 +1,10 @@
 <!--
-FILE: views/aboutAll.ejs
+FILE: views/userSettings.ejs
 
-DESCRIPTION: Generates a page to showcase all
-members on the team with their respective name, 
-role, and image. 
+DESCRIPTION: Allows user to update and change their
+account information. 
+
+CREATED BY: Joanne
 -->
 <!DOCTYPE html>
 <html>
@@ -16,6 +17,12 @@ role, and image.
 
 <body>
     <%- include('partials/navbar') %>
+
+    <div class="flex-grow-1">
+
+        <div class="h1 mt-2 ms-2">
+            Settings
+        </div>
         <div class="container-fluid p-3" id="aboutContainer">
             <div class="row justify-content-center pv-2">
                 <div class="card shadow-lg w-50 bg-dark text-white" id="loginCard">
@@ -27,64 +34,64 @@ role, and image.
                                 </div>
                                 <div class="col">
                                     <input class="form-control" id="disabledInput" type="text"
-                                        placeholder="placeholder.mail.sfsu" disabled>
+                                    placeholder="<%= userEmail%>" disabled>
                                 </div>
                             </div>
-
+                            
                             <div class="row m-3">
                                 <div class="col">
                                     <label for="firstName" class="col-form-label"> First Name </label>
                                 </div>
                                 <div class="col">
                                     <input type="password" id="firstName" class="form-control" placeholder="First Name"
-                                        required>
+                                    required>
                                 </div>
                             </div>
-
+                            
                             <div class="row m-3">
                                 <div class="col">
                                     <label for="lastName" class="col-form-label">Last Name</label>
                                 </div>
                                 <div class="col">
                                     <input type="text" id="lastname" class="form-control" placeholder="Last Name"
-                                        required>
+                                    required>
                                 </div>
                             </div>
-
-
+                            
+                            
                             <div class="row m-3">
                                 <div class="col">
                                     <label for="currentPassword" class="col-form-label">Current Password</label>
                                 </div>
                                 <div class="col">
                                     <input type="password" id="currentPassword" class="form-control"
-                                        placeholder="Current Password" required>
+                                    placeholder="Current Password" required>
                                 </div>
                             </div>
-
+                            
                             <div class="row m-3">
                                 <div class="col">
                                     <label for="newPassword" class="col-form-label">New Password</label>
                                 </div>
                                 <div class="col">
                                     <input type="password" id="newPassword" class="form-control"
-                                        placeholder="New Password" required>
+                                    placeholder="New Password" required>
                                     <span id="passwordReminder" class="form-text text-white-50">
                                         Must be at least 10 characters long.
                                     </span>
                                 </div>
                             </div>
-
+                            
                             <div class="row m-3">
                                 <div class="col">
                                     <label for="newPassword" class="col-form-label">Re-Type Password</label>
                                 </div>
                                 <div class="col">
                                     <input type="password" id="retypePassword" class="form-control"
-                                        placeholder="Re-Type Password" required>
+                                    placeholder="Re-Type Password" required>
                                 </div>
                             </div>
-
+                            
                             <div class="text-center">
                                 <div class="m-2">
                                     <button class="btn btn-secondary col-3 mx-2" type="button">
@@ -100,6 +107,7 @@ role, and image.
                 </div>
             </div>
         </div>
+    </div>
         <%- include('partials/footer') %>
             <script src="/javascripts/bootstrap.bundle.js"></script>
 </body>
