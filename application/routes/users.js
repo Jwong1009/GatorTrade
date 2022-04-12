@@ -157,6 +157,28 @@ router.get('/myMessages', function (req, res, next) {
   });
 });
 
+/* Get User Reviews */
+router.get('/reviews', function (req, res, next) {
+  const { search, category } = req.query;
+  const { userId } = req.session;
+  let categoryId = parseInt(category);
+  let reviewee = {};
+  let reviewInfo = [];
+
+  db.query(`SELECT firstname, lastname, idUsers FROM Reviews INNER JOIN Users ON reviewer=idUsers AND reviewer != ${userId};`).then(([revieweeName]) => {
+    reviewee = revieweeName;
+    console.log({ reviewee });
+    return db.query(`SELECT DISTINCT header, reviewee, reviewer, rating, body FROM Reviews LEFT JOIN Users on reviewee=idUsers WHERE reviewee=${userId};`);
+  }).then(([results]) => {
+    reviewInfo = results;
+    console.log({ reviewInfo });
+  }).then(() => {
+    res.render('userReviews', { title: 'Team 05 Reviews Page', search: search, category: categoryId, reviewInfo: reviewInfo, reviewerName: reviewee })
+  }).catch(error => {
+    console.log(error);
+  });
+});
+
 /* Get User Settings */
 router.get('/settings', function (req, res, next) {
   const { search, category } = req.query;
