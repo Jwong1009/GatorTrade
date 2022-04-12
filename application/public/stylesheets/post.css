@@ -3,7 +3,7 @@ html {
 }
 
 #image_form {
-    width: 1200px;
+    width: 1300px;
     background: #ccc;
     margin: 0 auto;
     padding: 20px;
@@ -33,21 +33,32 @@ form p {
     padding-left: 10px;
 }
 
-form label, form button {
+.style {
     background-color: #7F9CCB;
     padding: 5px 10px;
     border-radius: 5px;
     border: 1px ridge black;
-    font-size: 0.8rem;
+    font-weight: bold;
     height: auto;
 }
 
-form label:hover, form button:hover {
+.style:hover, #post_button:hover{
     background-color: #2D5BA3;
     color: white;
 }
 
-form label:active, form button:active {
+.style:active, #post_button:active{
     background-color: #0D3F8F;
     color: white;
+}
+
+#post_form{
+    background-color: #343a40;
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: 1px ridge black;
+}
+#post_button_div{
+    text-align: center;
+    font-size: 25px;
 }

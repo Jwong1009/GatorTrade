@@ -124,8 +124,9 @@ router.get('/dp', function(req, res, next){
 });
 
 router.get('/post', checkSignIn, function(req,res,next){
-    res.render('post', {title: "Team 05 post page"});
-    
+  db.query("SELECT * FROM Categories").then(([row])=>{
+    res.render('post', {title: "Team 05 post page", Category: row});
+  })
 });
 
 module.exports = router;
