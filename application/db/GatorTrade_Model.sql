@@ -9,7 +9,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 
 CREATE DATABASE IF NOT EXISTS `GatorTrade` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `GatorTrade`;
-
 -- -----------------------------------------------------
 -- Table `GatorTrade`.`Categories`
 -- -----------------------------------------------------
@@ -51,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `GatorTrade`.`Items` (
   `category` INT UNSIGNED NOT NULL,
   `seller` INT UNSIGNED NOT NULL,
   `photopath` VARCHAR(4096) NULL DEFAULT 'none',
+  `thumbnail` VARCHAR(4096) NULL,
   `title` VARCHAR(45) NULL DEFAULT 'none',
   `description` VARCHAR(128) NULL DEFAULT 'none',
   `price` DOUBLE UNSIGNED NULL,
