@@ -101,7 +101,6 @@ router.get('/dp', function(req, res, next){
   }).catch(error =>{
     console.log(error);
   });
->>>>>>> Stashed changes
 });
 
 module.exports = router;
