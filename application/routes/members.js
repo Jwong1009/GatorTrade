@@ -42,11 +42,11 @@ const members = {
     hernandez: {
         fname: 'Juan',
         lname: 'Hernandez',
-        desc: 'Lacking direction, expecations, aspirations and overall motivation I decided to pursue Computer Science after someone told me there\'s money to be made.\nI\'ve regretted that decision with each passing day and realize I should have gone into the mountains to farm wasabi.\nI can write "Hello World" programs in C, C++, Python, Javascript, Java and not much else.\nNow what I lack in raw coding ability I don\'t make up with my level of creativity nor ingenuity.',
+        desc: 'I enjoy studying computer security, reading, and learning new languages.',
         email: "jhernandez54@mail.sfsu.edu",
         github_id: 'Juan-Hernandez7',
         github_link: "https://github.com/Juan-Hernandez7",
-        image: "/images/juan_moleman.jpg",
+        image: "/images/generic-photo.jpg",
         role: 'Back-End Member',
     },
     wong: {
