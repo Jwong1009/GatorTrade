@@ -35,12 +35,12 @@ CREATED BY: Michael
                     <!-- numOfItems keeps count of how many items are already displayed in each category -->
                     <% var numOfItems=0%>
                         <!-- Clicking on each individual categories will take Users to that particular search results page-->
-                        <a href="/results?category=<%=Categories[j].idCategories%>&search=">
-                            <h1 class="text">
-                                <%=Categories[j].title%>
+                        <!-- <a href="/results?category=<%=Categories[j].idCategories%>&search="> -->
+                            <h1 class="text my-3">
+                                <a href="/results?category=<%=Categories[j].idCategories%>&search="><%=Categories[j].title%></a>
                             </h1>
-                        </a>
-                        <div class="row row-cols-1 row-cols-md-4 g-4">
+                        <!-- </a> -->
+                        <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
                             <!-- Iterate and displays a total of 4 items for each category -->
                             <% for(var i=0; i < Items.length; i++){%>
                                 <% if(Items[i].category==Categories[j].idCategories){%>
@@ -61,7 +61,7 @@ CREATED BY: Michael
                                                     class="card-img-top" alt="..."></a>
                                             <div class="card-body">
                                                 <h5 class="card-title">
-                                                    <%=Items[i].title%>
+                                                    <a href="/dp?id=<%=Items[i].idItems%>"><%=Items[i].title%></a>
                                                 </h5>
                                                 <p class="card-text">
                                                     <%=Items[i].description%>
