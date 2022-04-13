@@ -12,7 +12,7 @@ const UserModel = {};
 UserModel.create = (password, email, firstname, lastname) => {
     return bcrypt.hash(password, 15)
     .then((hashedPassword) => {
-        let baseSQL = "INSERT INTO GatorTrade.users (email, password, firstname, lastname) VALUES (?,?,?,?);";
+        let baseSQL = "INSERT INTO GatorTrade.Users (email, password, firstname, lastname) VALUES (?,?,?,?);";
         return db.execute(baseSQL, [email, hashedPassword, firstname, lastname])
     })
     .then(([results, fields]) => {
@@ -35,7 +35,7 @@ UserModel.create = (password, email, firstname, lastname) => {
 // }
 
 UserModel.emailExists = (email) => {
-    return db.execute("SELECT * FROM GatorTrade.users WHERE email=?", [email])
+    return db.execute("SELECT * FROM GatorTrade.Users WHERE email=?", [email])
     .then(([results, fields]) => {
         return Promise.resolve(!(results && results.length == 0));
     })
@@ -43,7 +43,7 @@ UserModel.emailExists = (email) => {
 }
 
 UserModel.authenticate = (email, password) => {
-    let baseSQL = "SELECT idUsers, email, password FROM GatorTrade.users WHERE email=?;";
+    let baseSQL = "SELECT idUsers, email, password FROM GatorTrade.Users WHERE email=?;";
     return db
     .execute(baseSQL,[email])
     .then(([results, fields]) => {
