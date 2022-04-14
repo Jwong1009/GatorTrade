@@ -3,10 +3,22 @@ html,body
     box-sizing: border-box;
     min-height: 100vh;
     background: lightblue;
+    /* #efefef */
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.btn:focus{
+    box-shadow: none;
 }
 
 a{
     text-decoration: none;
+    color: inherit;
 }
 
 .navbar{
@@ -20,12 +32,18 @@ a{
 #aboutContainer .row{
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
+    height: 45%;
+}
+
+#aboutAllCol{
+    min-width: 22%;
+    margin: 0 4%;
 }
 
 #aboutCard{
-    height: 90%;
     padding: 10px;
-    margin-top: 3%;
+    margin: 3% 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,7 +51,8 @@ a{
 }
 
 #aboutImg{
-    height: 275px;
-    width: 275px;
+    height: 175px;
+    width: 175px;
     border-radius: 50%;
 }
+

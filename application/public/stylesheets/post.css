@@ -1,0 +1,64 @@
+html {
+    font-family: sans-serif;
+}
+
+#image_form {
+    /* width: 1300px; */
+    background: #ccc;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+form ol {
+    padding-left: 0;
+}
+
+form li, div > p {
+    background: #eee;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    list-style-type: none;
+    border: 1px solid black;
+}
+
+form img {
+    height: 200px;
+    order: 1;
+}
+
+form p {
+    line-height: 32px;
+    padding-left: 10px;
+}
+
+.style {
+    background-color: #7F9CCB;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px ridge black;
+    font-weight: bold;
+    height: auto;
+}
+
+.style:hover, #post_button:hover{
+    background-color: #2D5BA3;
+    color: white;
+}
+
+.style:active, #post_button:active{
+    background-color: #0D3F8F;
+    color: white;
+}
+
+#post_form{
+    background-color: #343a40;
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: 1px ridge black;
+}
+#post_button_div{
+    text-align: center;
+    font-size: 25px;
+}

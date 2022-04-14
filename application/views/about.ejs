@@ -1,0 +1,50 @@
+<!--
+FILE: views/about.ejs
+
+DESCRIPTION: Generates a page to showcase individual
+members on the team with their respective name, 
+role, and image. 
+
+CREATED BY: Joanne
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>About <%= fname %>
+    </title>
+</head>
+
+<body>
+    <%- include('partials/navbar', {search:"", category : 0}) %>
+        <div class="container-fluid" id="aboutContainer">
+            <div class="row justify-content-center h-100 pv-2">
+                <div class="card shadow-lg w-25 bg-dark text-white" id="aboutCard">
+                    <img src="<%= image %>" class="m-3" id="aboutImg">
+                    <div class="card-body">
+                        <h5 class="card-title font-monospace fs-3">
+                            <%= fname %>
+                                <%= lname %>
+                        </h5>
+                        <p class="card-text">
+                            <%= description %>
+                        </p>
+                        <div class="bi-envelope">
+                            <%= email %>
+                        </div>
+                        <div class="bi-telephone"> (123) 456 - 7890</div>
+                        <a class="text-decoration-none" href="<%= github_link %>">
+                            <div class="bi-github">
+                                <%= github_id %>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('partials/footer') %>
+            <script src="/javascripts/bootstrap.bundle.js"></script>
+            <script src="/javascripts/search.js"></script>
+</body>
+
+</html>

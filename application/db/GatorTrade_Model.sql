@@ -1,3 +1,6 @@
+-- FILE: db/GatorTrade_Model.sql
+-- DESCRIPTION: SQL statements to create the database
+-- CREATED BY: Ze
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -27,7 +30,7 @@ DROP TABLE IF EXISTS `GatorTrade`.`Users` ;
 
 CREATE TABLE IF NOT EXISTS `GatorTrade`.`Users` (
   `idUsers` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(64) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `firstname` VARCHAR(45) NULL DEFAULT 'none',
   `lastname` VARCHAR(45) NULL DEFAULT 'none',
@@ -48,8 +51,9 @@ CREATE TABLE IF NOT EXISTS `GatorTrade`.`Items` (
   `category` INT UNSIGNED NOT NULL,
   `seller` INT UNSIGNED NOT NULL,
   `photopath` VARCHAR(4096) NULL DEFAULT 'none',
-  `description` VARCHAR(128) NULL DEFAULT 'none',
+  `thumbnail` VARCHAR(4096) NULL,
   `title` VARCHAR(45) NULL DEFAULT 'none',
+  `description` VARCHAR(128) NULL DEFAULT 'none',
   `price` DOUBLE UNSIGNED NULL,
   `approved` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`idItems`),
@@ -75,7 +79,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `GatorTrade`.`Reviews` ;
 
 CREATE TABLE IF NOT EXISTS `GatorTrade`.`Reviews` (
-  `idReviews` INT UNSIGNED NOT NULL,
+  `idReviews` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `reviewer` INT UNSIGNED NOT NULL,
   `reviewee` INT UNSIGNED NOT NULL,
   `rating` TINYINT(5) UNSIGNED NOT NULL,
@@ -109,6 +113,8 @@ CREATE TABLE IF NOT EXISTS `GatorTrade`.`Messages` (
   `sender` INT UNSIGNED NOT NULL,
   `receiver` INT UNSIGNED NOT NULL,
   `body` VARCHAR(128) NULL,
+  `date` DATETIME NULL DEFAULT now(),
+  `read` TINYINT UNSIGNED NULL DEFAULT 0,
   PRIMARY KEY (`idMessages`),
   INDEX `SENDER_USERS_FK_idx` (`sender` ASC),
   INDEX `MESSAGEE_USERS_FK_idx` (`receiver` ASC),

@@ -1,21 +1,26 @@
+/**********************************************************
+ * FILE: db/index.js
+ * 
+ * DESCRIPTION: Connects to MySQL through user's MySQL 
+ * credentials (username, password, etc.). User and Password 
+ * may differ from user to user and when connecting through 
+ * AWS server.
+**********************************************************/
+
 const mysql = require('mysql2');
 
+// Connects to MySQL databse:
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root', // Insert your MySQL username here
-    password: 'Team05Guest!', // Insert your MySQL password here
-    database: 'GatorTrade', 
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE, 
     connectionLimit: 50,
     debug: false
 });
 
-// pool.query("SELECT * FROM Items WHERE title LIKE '' ORDER BY title;",(err, data) => {
-//     if(err) {
-//         console.error(err);
-//         return;
-//     }
-//     // rows fetch
-//     console.log(data);
-// });
+// module.exports = pool;
 
-module.exports = pool;
+const promisePool = pool.promise();
+module.exports = promisePool;
+

@@ -1,0 +1,51 @@
+<!--
+FILE: views/aboutAll.ejs
+
+DESCRIPTION: Generates a page to showcase all
+members on the team with their respective name, 
+role, and image. 
+
+CREATED BY: Joanne
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <%- include('partials/navbar', {search:"", category : 0}) %>
+        <div class="d-flex flex-wrap justify-content-center" id="aboutContainer">
+            <!-- loops through the membersInfo array that was passed in res.render statement in index.js file and grabs
+                outputs a card that shows each individual member and their respective information -->
+            <div class="row m-2">
+                <% for (member of membersInfo) { %>
+                    <div class="col" id="aboutAllCol">
+                        <a href="/about/<%= member.lname%>">
+                            <div class="bg-dark text-white rounded-3" id="aboutCard">
+                                <img src="<%= member.img %>" class="m-3 card-img-top" id="aboutImg">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title font-monospace fs-3">
+                                        <%= member.name %>
+                                    </h5>
+                                    <p class="card-text">
+                                        <%= member.role%>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+        <%- include('partials/footer') %>
+
+
+            <script src="/javascripts/bootstrap.bundle.js"></script>
+            <script src="/javascripts/search.js"></script>
+</body>
+
+</html>

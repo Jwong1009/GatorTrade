@@ -1,0 +1,101 @@
+<!-- 
+FILE: views/results.ejs
+
+DESCRIPTION: results page
+
+CREATED BY: Michael
+ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+</head>
+
+<body>
+  <%- include('partials/navbar', {search:search, category:category}) %>
+    <div class="flex-grow-1">
+      <div class="container-fluid" id="homeContainer">
+        <div class="container">
+          <% if(noResult == "true") { %>
+            <div id="noResults" class="bg-secondary text-white p-3 mb-2">
+              <h5>Sorry! We don't find anything that matches your search.</h5>
+            </div>
+          <% } %>
+          <div class="d-flex justify-content-between mb-5">
+            <div>
+              <% if(results) { %>
+                <p>Showing <%= results.length %> out of <%= total %> items.</p>
+                <% } else { %>
+                  <p>Showing 0 out of <%= total %> items.</p>
+                  <% } %>
+            </div>
+            <div class="d-flex align-items-center w-25">
+              <h4 class="w-50">Sort By:</h4>
+              <select class="form-select" id="sortSelect" aria-label="Sort dropdown">
+                <option selected value="default">Default</option>
+                <option value="price_asc">Price (Low to High)</option>
+                <option value="price_desc">Price (High to Low)</option>
+                <option value="title_asc">Title (A-Z)</option>
+                <option value="title_desc">Title (Z-A)</option>
+              </select>
+            </div>
+          </div>
+          <div id="results" data-results="<%=resultsObj%>">
+            <% if(results) { %>
+              <% for(var i=0; i < results.length; i++) { %>
+                <% if(i % 3==0) { %>
+                  <div class="row mb-5">
+                    <% } %>
+                      <div class="col-md-4">
+                        <div class="card h-100" style="width: 18rem;">
+                          <a href="/dp?id=<%=results[i].idItems%>"><img src="<%=results[i].photopath%>"
+                              class="card-img-top" alt="..."></a>
+                          <div class="card-body">
+                            <a href="/dp?id=<%=results[i].idItems%>">
+                              <h5 class="card-title">
+                                <%= results[i].title %>
+                              </h5>
+                            </a>
+                            <h6 class="card-subtitle mb-2 text-muted">Category:
+                              <% switch (results[i].category) { case 1: %>
+                                Electronics
+                                <% break; case 2: %>
+                                  Textbooks
+                                  <% break; case 3: %>
+                                    Handicraft
+                                    <% break; case 4: %>
+                                      Education Supplies
+                                      <% break; case 5: %>
+                                        Food
+                                        <% break; default: break; } %>
+                            </h6>
+                            <!-- <h6 class="card-subtitle mb-2 text-muted"><%= results[i].seller %></h6> -->
+                            <p class="card-text">
+                              <%= results[i].description %>
+                            </p>
+                            <span class="border border-primary rounded-2 px-4 pv-2 fs-5">$<%= results[i].price %></span>
+                          </div>
+                        </div>
+                      </div>
+                      <% if(i % 3==2 || i+1==results.length) { %>
+                  </div>
+                  <% } %>
+                    <% } %>
+                      <% } %>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <%- include('partials/footer') %>
+
+      <script src="/javascripts/bootstrap.bundle.js"></script>
+      <script src="/javascripts/search.js"></script>
+      <script src="/javascripts/results.js"></script>
+</body>
+
+</html>

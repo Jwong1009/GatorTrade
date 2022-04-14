@@ -1,0 +1,59 @@
+<!--
+FILE: views/userPosts.ejs
+
+DESCRIPTION: Displays the posts that the user made.
+
+CREATED BY: Joanne
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <%- include('partials/navbar') %>
+    <div class="flex-grow-1">
+        <div class="h1 mt-2 ms-2">
+            My Posts
+            <div class="justify-center-start fs-6 text-secondary">
+                Showing <%= Items.length %> out of <%= total%>
+            </div>
+        </div>
+
+        <div class="container-fluid" id="homepageCategory">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+                    <% for(let i = 0; i < Items.length; i++) { %>
+                        <div class="col">
+                            <div class="card h-100" style="width: 18rem;">
+                                <a href="/dp?id=<%=Items[i].idItems%>"><img src="<%=Items[i].photopath%>"
+                                        class="card-img-top" alt="..."></a>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%=Items[i].title%>
+                                    </h5>
+                                    <p class="card-text">
+                                        <%=Items[i].description%>
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <h3 class="text"><b>$<%=Items[i].price%></b></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <%- include('partials/footer') %>
+    <script src="/javascripts/bootstrap.bundle.js"></script>
+    <script src="/javascripts/search.js"></script>
+</body>
+
+</html>

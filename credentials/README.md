@@ -5,25 +5,26 @@
     2. Help. If a class TA or class CTO needs to help a team with an issue, this folder will help facilitate this giving the TA or CTO all needed info AND instructions for logging into your team's server. 
 
 
-# Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
+# Below is a list of items required. Missing items will cause points to be deducted from multiple milestone submissions.
 
 1. Server URL or IP
-<br>http://ec2-54-234-226-175.compute-1.amazonaws.com:3000
+<br>http://54.158.72.214:3000/
 2. SSH username 
-<br>ssh -i "csc648-team05.pem" ubuntu@ec2-44-202-110-149.compute-1.amazonaws.com
+<br>ubuntu
 3. SSH key - included in folder
-    <br> If a ssh key is used please upload the key to the credentials folder.
 4. Database URL or IP and port used.
 <br>Default
     <br><strong> NOTE THIS DOES NOT MEAN YOUR DATABASE NEEDS A PUBLIC FACING PORT.</strong> But knowing the IP and port number will help with SSH tunneling into the database. The default port is more than sufficient for this class.
 5. Database username 
 <br>root
 7. Database password 
-<br>Team05Guest!
+<br>student
 8. Database name (basically the name that contains all your tables)
 <br>GatorTrade
 10. Instructions on how to use the above information.
-Using a terminal, navigate to the location where the SSH key is stored. Then use the command listed under SSH username to access the server
+Using a terminal, navigate to the location where the SSH key is stored. For the first use, use the command 
+chmod 400 csc648-team05.pem. Then use the command
+ssh -i "csc648-team05.pem" ubuntu@ec2-54-158-72-214.compute-1.amazonaws.com to access the server
 <br>To access the database navigate to the db folder (cd app/application/db) then use sudo mysql -u root -p, then paste the password
 
 AWS Sign In:
@@ -34,4 +35,4 @@ AWS Sign In:
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
 ## <strong>Failure to do so will result it points be deducted from milestone submissions.</strong><br>
-## You may store the most of the above in this README.md file. DO NOT Store the SSH key or any keys in this README.md file.
+## You may store most of the above in this README.md file. DO NOT Store the SSH key or any keys in this README.md file.
