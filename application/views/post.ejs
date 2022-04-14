@@ -32,10 +32,10 @@ DESCRIPTION: Generates the post page where registered users are allowed to post 
                 <!-- Category input -->
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Category</label>
-                    <select class="form-select" id="inputGroupSelect01" required>
-                        <option value="">All</option>
+                    <select name="category" class="form-select" id="inputGroupSelect01" required>
+                        <option value=0>All</option>
                         <% for(var i=0; i<Category.length;i++){%>
-                            <option value=<%=Category[i].title%>><%=Category[i].title%></option>
+                            <option value=<%=Category[i].idCategories%>><%=Category[i].title%></option>
                         <%}%>
                     </select>
                 </div>

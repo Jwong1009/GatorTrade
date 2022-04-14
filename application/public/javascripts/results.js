@@ -50,7 +50,7 @@ function updateResults() {
         let itemCard = `<div class="col-md-4">
                         <div class="card h-100" style="width: 18rem;">
                             <a href="/dp?id=${item.idItems}">
-                                <img src="${item.photopath}" class="card-img-top" alt="...">
+                                <img src="${item.thumbnail}" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
                             <a href="/dp?id=${item.idItems}">

@@ -20,8 +20,7 @@ var indexRouter = require('./routes/index');
 var aboutRouter = require('./routes/about');
 var usersRouter = require('./routes/users');
 var postsRouter = require('./routes/posts');
-var messagesRouter = require('./routes/messages')
-
+var messagesRouter = require('./routes/messages');
 
 var app = express();
 
@@ -52,7 +51,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use("/public", express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Sessions
 app.use((req, res, next) => {

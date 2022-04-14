@@ -43,12 +43,7 @@ UserModel.emailExists = (email) => {
 }
 
 UserModel.authenticate = (email, password) => {
-<<<<<<< HEAD
-
-    let baseSQL = "SELECT idUsers, email, password FROM GatorTrade.users WHERE email=?;";
-=======
     let baseSQL = "SELECT idUsers, email, password FROM GatorTrade.Users WHERE email=?;";
->>>>>>> e6b05b105536188bb7c8c46742cb31f15999e4ec
     return db
     .execute(baseSQL,[email])
     .then(([results, fields]) => {
