@@ -6,7 +6,7 @@
  * CREATED BY: Faisal
 **********************************************************/
 var db = require('../db');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 const UserModel = {};
 
 UserModel.create = (password, email, firstname, lastname) => {
