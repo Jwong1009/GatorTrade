@@ -9,6 +9,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 
 CREATE DATABASE IF NOT EXISTS `GatorTrade` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `GatorTrade`;
+
 -- -----------------------------------------------------
 -- Table `GatorTrade`.`Categories`
 -- -----------------------------------------------------
@@ -112,6 +113,7 @@ CREATE TABLE IF NOT EXISTS `GatorTrade`.`Messages` (
   `sender` INT UNSIGNED NOT NULL,
   `receiver` INT UNSIGNED NOT NULL,
   `body` VARCHAR(128) NULL,
+  `date` DATETIME NULL DEFAULT now(),
   `read` TINYINT UNSIGNED NULL DEFAULT 0,
   PRIMARY KEY (`idMessages`),
   INDEX `SENDER_USERS_FK_idx` (`sender` ASC),
