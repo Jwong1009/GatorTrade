@@ -1,5 +1,18 @@
-// UNUSED FILE AS OF 3/17/2022. Refactored code into form's action attribute to router.
+// File used to implement search-validation.
 
+const searchTerm = document.querySelector("#searchInput");
+const searchForm = document.querySelector("#searchForm");
+
+// Search Validation. Only allowing search inputs of 40 characters or less.
+searchForm.addEventListener("submit", (event) => {
+    if(searchTerm.value.length > 40){
+        event.preventDefault();
+        window.alert("A maximum of 40 characters are allowed in the search field. Please try a different input.");
+    }
+});
+
+
+/*
 function getInputValue(){
     // Selecting the input element and get its value 
     var searchTerm = document.getElementById("searchInput").value;
@@ -35,3 +48,4 @@ function createResultListing(title, seller, description, price) {
                 </div>
             </div>`;
 }
+*/
