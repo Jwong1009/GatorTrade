@@ -19,6 +19,11 @@ CREATED BY: Michael
     <div class="flex-grow-1">
       <div class="container-fluid" id="homeContainer">
         <div class="container">
+          <% if(noResult == "true") { %>
+            <div id="noResults" class="bg-secondary text-white p-3 mb-2">
+              <h5>Sorry! We don't find anything that matches your search.</h5>
+            </div>
+          <% } %>
           <div class="d-flex justify-content-between mb-5">
             <div>
               <% if(results) { %>

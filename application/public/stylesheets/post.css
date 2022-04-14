@@ -3,7 +3,7 @@ html {
 }
 
 #image_form {
-    width: 1300px;
+    /* width: 1300px; */
     background: #ccc;
     margin: 0 auto;
     padding: 20px;

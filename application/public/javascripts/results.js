@@ -93,3 +93,8 @@ sortSelect.addEventListener("change", () => {
     sortResults();
     updateResults();
 });
+
+
+// const noResultsContainer = document.querySelector("#noResults");
+// const noResults = noResultsContainer.dataset.noresults;
+// window.alert(noResults);
