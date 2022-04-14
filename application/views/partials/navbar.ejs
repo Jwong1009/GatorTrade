@@ -29,7 +29,7 @@ CREATED BY: Joanne & Juan
         </li>
 
         <li class="nav-item align-items-center flex-fill">
-            <form action="/results" class="d-flex justify-content-center">
+            <form action="/results" class="d-flex justify-content-center" id="searchForm">
                 <div class="input-group w-75 rounded overflow-hidden">
                     <select name="category" id="categories" class="bg-secondary border-0 text-light px-2" >                  
                         <% if (category == 0) {%>
@@ -71,7 +71,7 @@ CREATED BY: Joanne & Juan
                     </select>
                     <input id="searchInput" name="search" type="search" placeholder="Search"
                         class="form-control border-0" value ="<%= search %>"/>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary" id="searchButton">
                         <a href="" class="text-light"><i class="bi bi-search"></i></a>
                     </button>
                 </div>

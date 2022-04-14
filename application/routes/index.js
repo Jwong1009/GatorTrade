@@ -72,11 +72,10 @@ router.get('/results', function (req, res, next) {
       db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%';`).then(([results]) => {
         if(results.length == 0){
           db.query(`SELECT * FROM Items;`).then(([results]) => {
-            res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId});
+            res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search: search, category: categoryId, noResult: 'true'});
           });
-
         }else{ 
-          res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount , search:search, category:categoryId});
+          res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount , search:search, category:categoryId, noResult: 'false'});
         }
       });
     }
@@ -86,12 +85,12 @@ router.get('/results', function (req, res, next) {
       db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' AND category=${categoryId};`).then(([results]) => {
         if(results.length == 0){
           db.query(`SELECT * FROM Items;`).then(([results]) => {
-            res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId});
+            res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId, noResult: 'true'});
           });
 
         } 
         else{
-          res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId});
+          res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId, noResult: 'false'});
         }
       });
     }
