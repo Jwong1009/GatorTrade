@@ -19,7 +19,7 @@ var flash = require('express-flash');
 var indexRouter = require('./routes/index');
 var aboutRouter = require('./routes/about');
 var usersRouter = require('./routes/users');
-var dbRouter = require('./routes/dbtest');
+var postsRouter = require('./routes/posts');
 var messagesRouter = require('./routes/messages')
 
 
@@ -52,7 +52,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use("/public", express.static(path.join(__dirname, 'public')));
 
 // Sessions
 app.use((req, res, next) => {
@@ -68,7 +68,7 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/about', aboutRouter);
 app.use('/users', usersRouter);
-app.use('/dbtest', dbRouter);
+app.use('/posts', postsRouter);
 app.use('/messages', messagesRouter)
 
 // Catches 404 and forwards to error handler.

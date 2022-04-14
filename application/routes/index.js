@@ -10,6 +10,7 @@ const express = require('express');
 const db = require('../db');
 const router = express.Router();
 const members = require('./members');
+const { checkSignIn } = require('../middleware/routesFunctions');
 
 //Get Homepage
 //queries database for all categories
@@ -27,7 +28,7 @@ router.get('/', function (req, res, next) {
   .then(()=>{res.render('homepage',{
     title: 'GatorTrade',
     Categories: view_data.categories,
-    Items: view_data.items
+    Items: view_data.items,
   });
   });
 
@@ -43,7 +44,10 @@ router.get('/about', function (req, res, next) {
       img: curr.image,
     })
   }, []);
-  res.render('aboutAll', { membersInfo: membersArray, title: 'Team 05 About Page'});
+  const { search, category } = req.query;
+  let categoryId = parseInt(category);
+
+  res.render('aboutAll', { membersInfo: membersArray, title: 'Team 05 About Page' , search:search, category:categoryId});
 });
 
 // Results page, redirected from /homepage:
@@ -63,18 +67,32 @@ router.get('/results', function (req, res, next) {
   // Gets total count of items in database to display on Results (/results) page.
   db.query('SELECT COUNT(*) AS length FROM Items;').then(([results]) => {
     totalItemCount = results[0].length;
-
     // Selected "All" for Category. No need to factor category into search.
     if (categoryId == 0) {
       db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%';`).then(([results]) => {
-        res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount });
+        if(results.length == 0){
+          db.query(`SELECT * FROM Items;`).then(([results]) => {
+            res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId});
+          });
+
+        }else{ 
+          res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount , search:search, category:categoryId});
+        }
       });
     }
 
     // Filter results based on category chosen.
     else if (categoryId > 0) {
       db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' AND category=${categoryId};`).then(([results]) => {
-        res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount });
+        if(results.length == 0){
+          db.query(`SELECT * FROM Items;`).then(([results]) => {
+            res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId});
+          });
+
+        } 
+        else{
+          res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId});
+        }
       });
     }
   }).catch(error => {
@@ -83,24 +101,32 @@ router.get('/results', function (req, res, next) {
 });
 
 router.get('/login', function (req, res, next) {
-  res.render('login', { title: 'Team 05 Login Page' });
-});
 
-
-router.get('/message', function (req, res, next) {
-  res.render('test_message', { title: 'Team 05 Message Modal' });
+  const { search, category } = req.query;
+  let categoryId = parseInt(category);
+  res.render('login', { title: 'Team 05 Login Page' , search:search, category:categoryId});
 });
 
 //Renders item's detail page
 router.get('/dp', function(req, res, next){
+  const { search, category } = req.query;
+  let categoryId = parseInt(category);
+
   const {id} = req.query;
   let idItems = parseInt(id);
   //Uses idItems column in Items table to filter out the row of data we want to display
-  db.query("SELECT * FROM Items WHERE idItems = ?", [idItems]).then(([Item])=>{
-    res.render('itemsDetailPage', {title: "Team 05 item's detail page", Item: Item});
+  db.query("SELECT * FROM Items I LEFT JOIN Users U ON I.seller = U.idUsers WHERE idItems =  ?;", [idItems]).then(([Item])=>{
+    res.render('itemDetails', {title: "Team 05 Item Details Page", Item: Item, search:search, category:categoryId});
+
   }).catch(error =>{
     console.log(error);
   });
+});
+
+router.get('/post', checkSignIn, function(req,res,next){
+  db.query("SELECT * FROM Categories").then(([row])=>{
+    res.render('post', {title: "Team 05 post page", Category: row});
+  })
 });
 
 module.exports = router;

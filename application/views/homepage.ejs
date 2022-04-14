@@ -3,6 +3,8 @@ FILE: views/homepage.ejs
 
 DESCRIPTION: Generates the homepage with the site description
 and list all categories with 4 items in each categories.
+
+CREATED BY: Michael
 -->
 <!DOCTYPE html>
 <html>
@@ -14,7 +16,7 @@ and list all categories with 4 items in each categories.
 </head>
 
 <body>
-    <%- include('partials/navbar') %>
+    <%- include('partials/navbar', {search:"", category : 0}) %>
 
         <!-- Header for the homepage that contains the Site Description -->
         <div class="container-fluid" id="homeContainer">
@@ -55,8 +57,8 @@ and list all categories with 4 items in each categories.
                                 </div>
                         </div> -->
                                         <div class="card h-100" style="width: 18rem;">
-                                            <a href="/dp?id=<%=Items[i].idItems%>"><img src="<%=Items[i].photopath%>" class="card-img-top"
-                                                    alt="..."></a>
+                                            <a href="/dp?id=<%=Items[i].idItems%>"><img src="<%=Items[i].photopath%>"
+                                                    class="card-img-top" alt="..."></a>
                                             <div class="card-body">
                                                 <h5 class="card-title">
                                                     <%=Items[i].title%>

@@ -1,3 +1,10 @@
+/**********************************************************
+ * FILE: models/Users.js
+ * 
+ * DESCRIPTION: uses mySQL users table
+ * 
+ * CREATED BY: Faisal
+**********************************************************/
 var db = require('../db');
 var bcrypt = require('bcrypt');
 const UserModel = {};

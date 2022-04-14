@@ -1,3 +1,12 @@
+<!--
+FILE: views/about.ejs
+
+DESCRIPTION: Generates a page to showcase individual
+members on the team with their respective name, 
+role, and image. 
+
+CREATED BY: Joanne
+-->
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +16,7 @@
 </head>
 
 <body>
-    <%- include('partials/navbar') %>
+    <%- include('partials/navbar', {search:"", category : 0}) %>
         <div class="container-fluid" id="aboutContainer">
             <div class="row justify-content-center h-100 pv-2">
                 <div class="card shadow-lg w-25 bg-dark text-white" id="aboutCard">

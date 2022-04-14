@@ -6,6 +6,8 @@
  * from previous version in routes/index.js to make a 
  * general template about page with injected EJS parameters 
  * for details.
+ * 
+ * CREATED BY: Joanne
 **********************************************************/
 
 const express = require('express');

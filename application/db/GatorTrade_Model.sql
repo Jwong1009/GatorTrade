@@ -1,3 +1,6 @@
+-- FILE: db/GatorTrade_Model.sql
+-- DESCRIPTION: SQL statements to create the database
+-- CREATED BY: Ze
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -75,7 +78,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `GatorTrade`.`Reviews` ;
 
 CREATE TABLE IF NOT EXISTS `GatorTrade`.`Reviews` (
-  `idReviews` INT UNSIGNED NOT NULL,
+  `idReviews` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `reviewer` INT UNSIGNED NOT NULL,
   `reviewee` INT UNSIGNED NOT NULL,
   `rating` TINYINT(5) UNSIGNED NOT NULL,

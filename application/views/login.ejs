@@ -1,3 +1,10 @@
+<!-- 
+FILE: views/login.ejs
+
+DESCRIPTION: login page
+
+CREATED BY: Kishan
+ -->
 <!DOCTYPE html>
 <html>
 
@@ -9,7 +16,7 @@
 </head>
 
 <body>
-    <%- include('partials/navbar') %>
+    <%- include('partials/navbar', {search:search}) %>
 
         <div class="container-fluid" id="homeContainer">
             <div class="container">
@@ -42,37 +49,38 @@
                             <button class="login-btn">Sign up</button>
                         </div>
                     </div>
+
                     <!-- REGISTER AREA -->
                     <div class="signup hidden">
                         <form class="form" method="POST" action="/users/register"
                             enctype="application/x-www-form-urlencoded">
                             <h1>Create Account</h1>
                             <!-- <div class="social-container">
+
                             <a href="#"><img src="images/social_media_icons/facebook.png" alt="facebook"></a>
                             <a href="#"><img src="images/social_media_icons/linkedin.png" alt="linkedin"></a>
                             <a href="#"><img src="images/social_media_icons/google_plus.png" alt="google_plus"></a>
                         </div> -->
                             <div class="control" id="firstControl">
                                 <div>
-                                    <input type="text" placeholder="First Name" id="firstname" name="fname" required>
+                                    <input type="text" placeholder="First Name" id="firstname" name="fname">
                                     <small>error message</small>
                                 </div>
                                 <div>
-                                    <input type="text" placeholder="Last Name" id="lastname" name="lname" required>
+                                    <input type="text" placeholder="Last Name" id="lastname" name="lname">
                                     <small>error message</small>
                                 </div>
                             </div>
                             <div class="control">
-                                <input type="text" placeholder="SFSU Email" id="email" name="email" required>
+                                <input type="text" placeholder="SFSU Email" id="email" name="email">
                                 <small>error message</small>
                             </div>
                             <div class="control">
-                                <input type="password" placeholder="Password" id="password" name="password" required>
+                                <input type="password" placeholder="Password" id="password" name="password">
                                 <small>error message</small>
                             </div>
                             <div class="control">
-                                <input type="password" placeholder="Re-enter Password" id="password2" name="password2"
-                                    required>
+                                <input type="password" placeholder="Re-enter Password" id="password2" name="password2">
                                 <small>error message</small>
                             </div>
                             <button type="submit" class="login-btn">Sign Up</button>
