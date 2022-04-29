@@ -17,13 +17,22 @@ CREATED BY: Joanne
 <body>
     <%- include('partials/navbar') %>
     <div class="flex-grow-1">
-        <div class="h1 mt-2 ms-2">
-            My Posts
-            <div class="justify-center-start fs-6 text-secondary">
-                Showing <%= Items.length %> out of <%= total%>
+
+        <div class="d-flex justify-content-between">
+            <div class="h1 mt-2 ms-2">
+                My Posts
+                <div class="justify-center-start fs-6 text-secondary">
+                    Showing <%= Items.length %> out of <%= total%>
+                </div>
+            </div>
+            <div class="h3 m-2">
+                <a href="/users/myPage" class="link-secondary">
+                        <i class="bi bi-arrow-return-left" style="font-size: 40px; margin-top: 20px;"></i>
+                        Return to My Page
+                </a>
             </div>
         </div>
-
+            
         <div class="container-fluid" id="homepageCategory">
             <div class="container">
                 <div class="row row-cols-1 row-cols-md-4 g-4">
