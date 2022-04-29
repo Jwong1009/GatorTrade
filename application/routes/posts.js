@@ -6,8 +6,8 @@
  * 
  * CREATED BY: Faisal
 **********************************************************/
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const { successPrint, errorPrint } = require('../helpers/debug/debugprinters');
 var sharp = require('sharp');
 var multer = require('multer');

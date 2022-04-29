@@ -148,7 +148,7 @@ router.get('/myMessages', function (req, res, next) {
   db.query(`SELECT firstname, lastname, idUsers FROM Messages INNER JOIN Users ON sender=idUsers AND sender != ${userId};`).then(([senderName]) => {
     msgSender = senderName;
     // console.log({msgSender});
-    return db.query(`SELECT DISTINCT body, receiver, sender, photopath, title FROM Messages LEFT JOIN Items ON item=idItems LEFT JOIN Users on receiver=idUsers WHERE receiver= ${userId}`);
+    return db.query(`SELECT DISTINCT body, receiver, sender, photopath, title, thumbnail FROM Messages LEFT JOIN Items ON item=idItems LEFT JOIN Users on receiver=idUsers WHERE receiver= ${userId}`);
   }).then(([results]) => {
     msgInfo = results;
     // console.log({ msgInfo });
