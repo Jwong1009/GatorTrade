@@ -17,7 +17,7 @@ CREATED BY: Joanne
 <body>
     <%- include('partials/navbar') %>
         <div class="flex-grow-1">
-            <div class="d-flex justify-content-between">
+            <!-- <div class="d-flex justify-content-between">
                 <div class="h1 mt-2 ms-2">
                     Incoming Messages
                 </div>
@@ -27,7 +27,20 @@ CREATED BY: Joanne
                         Return to My Page
                     </a>
                 </div>
-            </div>
+            </div> -->
+            <ul class="nav justify-content-evenly">
+                <li class="nav-item m-2">
+                    <a href="/users/myPage/myPosts" class="nav-link fs-3 m-2 text-black">
+                        My Posts
+                    </a>
+                </li>
+                <li class="nav-item m-2">
+                    <a href="/users/myPage/myMessages" class="nav-link active fs-3 m-2 text-black text-decoration-underline">
+                        My Messages
+                    </a>
+                </li>
+            </ul>
+
             <div class="d-flex flex-wrap justify-content-center">
                 <div class="justify-content-center">
                     <div class="overflow-auto col m-2 border border-dark p-3 mb-2 bg-dark text-white rounded-3"

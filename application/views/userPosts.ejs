@@ -18,7 +18,7 @@ CREATED BY: Joanne
     <%- include('partials/navbar') %>
     <div class="flex-grow-1">
 
-        <div class="d-flex justify-content-between">
+        <!-- <div class="d-flex justify-content-between">
             <div class="h1 mt-2 ms-2">
                 My Posts
                 <div class="justify-center-start fs-6 text-secondary">
@@ -31,8 +31,24 @@ CREATED BY: Joanne
                         Return to My Page
                 </a>
             </div>
-        </div>
+        </div> -->
+        <ul class="nav justify-content-evenly">
+            <li class="nav-item m-2">
+                <a href="/users/myPage/myPosts" class="nav-link active fs-3 m-2 text-black text-decoration-underline">
+                    My Posts
+                </a>
+            </li>
+            <li class="nav-item m-2">
+                <a href="/users/myPage/myMessages" class="nav-link fs-3 m-2 text-black">
+                    My Messages
+                </a>
+            </li>
+        </ul>
             
+        <div class=" m-2 justify-center-start fs-4 text-secondary">
+            Showing <%= Items.length %> out of <%= total%> results
+        </div>
+
         <div class="container-fluid" id="homepageCategory">
             <div class="container">
                 <div class="row row-cols-1 row-cols-md-4 g-4">
