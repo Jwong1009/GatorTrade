@@ -112,7 +112,7 @@ router.post('/login', loginValidator, (req, res, next) => {
   });
 });
 
-/* Get User's Page with Posts or Messages */
+/* Get User Dashboard */
 router.get('/myPage', function (req, res, next) {
   const { search, category } = req.query;
   const { userId } = req.session; // used to grab the id of the user logged in to grab the appropriate name in db
@@ -152,8 +152,9 @@ router.get('/myPage/myMessages', function (req, res, next) {
   }).then(([results]) => {
     msgInfo = results;
     // console.log({ msgInfo });
-  }).then(() => {
     res.render('userMessages', { title: 'Team 05 Messages Page', search: search, category: categoryId, messages: msgInfo, senderN: msgSender })
+  }).catch(error => {
+    console.log(error);
   });
 });
 
