@@ -68,8 +68,13 @@ CREATED BY: Michael
                                                 </p>
                                                 <!-- <span class="border border-primary rounded-2 px-4 pv-2 fs-5">$<%=Items[i].price%></span> -->
                                             </div>
-                                            <div class="card-footer">
-                                                <h3 class="text"><b>$<%=Items[i].price%></b></h3>
+                                            <div class="card-footer d-flex justify-content-between">
+                                                <div>
+                                                    <h3 class="m-0"><b>$<%=Items[i].price%></b></h3>
+                                                </div>
+                                                <a href="/dp?id=<%=Items[i].idItems%>#modal" class="btn btn-primary btn-sm">
+                                                    Message Seller
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

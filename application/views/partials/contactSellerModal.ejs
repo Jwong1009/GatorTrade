@@ -1,0 +1,25 @@
+<div class="modal fade" id="messageModal" tabindex="-1" data-bs-backdrop="static"
+                            aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Contact Seller</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5 class="mb-1">Product: <%=Item[0].title%></h5>
+                <h5 class="mb-1">Seller: <%=Item[0].firstname + " " + Item[0].lastname%></h5>
+                <form method="POST" action="/messages/send?item=<%=Item[0].idItems%>&receiver=<%=Item[0].seller%> ">
+                    <div class="my-3">
+                        <label for="messageTextarea" class="form-label">Custom Message:</label>
+                        <textarea class="form-control" name="message" id="messageTextarea" 
+                                    placeholder="Don't forget to send your contact info where the seller can reach you."
+                                    rows="6">
+                        </textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
