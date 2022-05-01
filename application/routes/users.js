@@ -112,7 +112,7 @@ router.post('/login', loginValidator, (req, res, next) => {
   });
 });
 
-/* Get User Dashboard */
+/* Get User's Page with Posts or Messages */
 router.get('/myPage', function (req, res, next) {
   const { search, category } = req.query;
   const { userId } = req.session; // used to grab the id of the user logged in to grab the appropriate name in db
@@ -126,7 +126,7 @@ router.get('/myPage', function (req, res, next) {
 });
 
 /* Get User Posts List */
-router.get('/myPosts', function (req, res, next) {
+router.get('/myPage/myPosts', function (req, res, next) {
   const { search, category } = req.query;
   const { userId } = req.session; //used to grab the id of the user logged in to grab the posts made by that user to be displayed
   let categoryId = parseInt(category);
@@ -138,7 +138,7 @@ router.get('/myPosts', function (req, res, next) {
 });
 
 /* Get User Messages */
-router.get('/myMessages', function (req, res, next) {
+router.get('/myPage/myMessages', function (req, res, next) {
   const { search, category } = req.query;
   const { userId } = req.session;
   let categoryId = parseInt(category);
@@ -158,6 +158,7 @@ router.get('/myMessages', function (req, res, next) {
 });
 
 /* Get User Reviews */
+/* NO LONGER NEEDED as of now
 router.get('/reviews', function (req, res, next) {
   const { search, category } = req.query;
   const { userId } = req.session;
@@ -178,6 +179,7 @@ router.get('/reviews', function (req, res, next) {
     console.log(error);
   });
 });
+*/
 
 /* Get User Settings */
 router.get('/settings', function (req, res, next) {
