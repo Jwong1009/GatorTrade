@@ -48,19 +48,26 @@ function updateResults() {
         }
 
         let itemCard = `<div class="col-md-4">
-                        <div class="card h-100" style="width: 18rem;">
-                            <a href="/dp?id=${item.idItems}">
-                                <img src="${item.thumbnail}" class="card-img-top" alt="...">
-                            </a>
-                            <div class="card-body">
-                            <a href="/dp?id=${item.idItems}">
-                                <h5 class="card-title">${item.title}</h5>
-                            </a>
-                            <h6 class="card-subtitle mb-2 text-muted">${item.category}</h6>
-                            <p class="card-text">${item.description}</p>
-                            <span class="border border-primary rounded-2 px-4 pv-2 fs-5">$${item.price}</span>
+                            <div class="card h-100" style="width: 18rem;">
+                                <a href="/dp?id=${item.idItems}">
+                                    <img src="${item.thumbnail}" class="card-img-top" alt="...">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href="/dp?id=${item.idItems}">${item.title}</a>
+                                    </h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Category: ${categoryName}</h6>
+                                    <p class="card-text">${item.description}</p>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between">
+                                    <div>
+                                        <h3 class="m-0"><b>$${item.price}</b></h3>
+                                    </div>
+                                    <a href="/dp?id=${item.idItems}#modal" class="btn btn-primary btn-sm">
+                                        Message Seller
+                                    </a>
+                                </div>
                             </div>
-                        </div>
                         </div>`;
         if(count % 3 === 0){
             updatedContent += `<div class="row mb-5">` + itemCard;
