@@ -32,7 +32,7 @@ CREATED BY: Michael
                   <p>Showing 0 out of <%= total %> items.</p>
                   <% } %>
             </div>
-            <div class="d-flex align-items-center w-25">
+            <div class="d-flex align-items-center w-sm-25">
               <h4 class="w-50">Sort By:</h4>
               <select class="form-select" id="sortSelect" aria-label="Sort dropdown">
                 <option selected value="default">Choose</option>
@@ -47,9 +47,9 @@ CREATED BY: Michael
             <% if(results) { %>
               <% for(var i=0; i < results.length; i++) { %>
                 <% if(i % 3==0) { %>
-                  <div class="row mb-5">
+                  <div class="row">
                     <% } %>
-                      <div class="col-md-4">
+                      <div class="col-md-4 mb-5 d-flex justify-content-center">
                         <!-- <div class="card h-100" style="width: 18rem;">
                           <a href="/dp?id=<%=results[i].idItems%>"><img src="<%=results[i].thumbnail%>"
                               class="card-img-top" alt="..."></a>

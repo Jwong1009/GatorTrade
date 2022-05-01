@@ -47,7 +47,7 @@ function updateResults() {
         default: break;
         }
 
-        let itemCard = `<div class="col-md-4">
+        let itemCard = `<div class="col-md-4 mb-5 d-flex justify-content-center">
                             <div class="card h-100" style="width: 18rem;">
                                 <a href="/dp?id=${item.idItems}">
                                     <img src="${item.thumbnail}" class="card-img-top" alt="...">
@@ -70,7 +70,7 @@ function updateResults() {
                             </div>
                         </div>`;
         if(count % 3 === 0){
-            updatedContent += `<div class="row mb-5">` + itemCard;
+            updatedContent += `<div class="row">` + itemCard;
         } else if(count % 3 === 1){
             updatedContent += itemCard;
         } else if(count % 3 === 2 || count + 1 === results.length){
