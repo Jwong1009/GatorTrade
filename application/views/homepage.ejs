@@ -36,9 +36,11 @@ CREATED BY: Michael
                     <% var numOfItems=0%>
                         <!-- Clicking on each individual categories will take Users to that particular search results page-->
                         <!-- <a href="/results?category=<%=Categories[j].idCategories%>&search="> -->
-                            <h1 class="text my-3">
-                                <a href="/results?category=<%=Categories[j].idCategories%>&search="><%=Categories[j].title%></a>
-                            </h1>
+                        <h1 class="text my-3">
+                            <a href="/results?category=<%=Categories[j].idCategories%>&search=">
+                                <%=Categories[j].title%>
+                            </a>
+                        </h1>
                         <!-- </a> -->
                         <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
                             <!-- Iterate and displays a total of 4 items for each category -->
@@ -61,7 +63,9 @@ CREATED BY: Michael
                                                     class="card-img-top" alt="..."></a>
                                             <div class="card-body">
                                                 <h5 class="card-title">
-                                                    <a href="/dp?id=<%=Items[i].idItems%>"><%=Items[i].title%></a>
+                                                    <a href="/dp?id=<%=Items[i].idItems%>">
+                                                        <%=Items[i].title%>
+                                                    </a>
                                                 </h5>
                                                 <p class="card-text">
                                                     <%=Items[i].description%>
@@ -72,7 +76,8 @@ CREATED BY: Michael
                                                 <div>
                                                     <h3 class="m-0"><b>$<%=Items[i].price%></b></h3>
                                                 </div>
-                                                <a href="/dp?id=<%=Items[i].idItems%>#modal" class="btn btn-primary btn-sm">
+                                                <a href="/dp?id=<%=Items[i].idItems%>#modal"
+                                                    class="btn btn-primary btn-sm">
                                                     Message Seller
                                                 </a>
                                             </div>
