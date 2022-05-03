@@ -1,7 +1,7 @@
 /**********************************************************
  * FILE: models/Posts.js
  * 
- * DESCRIPTION: 
+ * DESCRIPTION: Handles any db functionality related to Posts.
  * 
 **********************************************************/
 var db = require('../db');

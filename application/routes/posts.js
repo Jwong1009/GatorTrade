@@ -14,7 +14,9 @@ var multer = require('multer');
 var crypto = require('crypto');
 var PostModel = require('../models/Posts');
 var PostError = require('../helpers/error/PostError');
+const Color = require('color');
 
+// Creates storage in public/images folder to store user uploaded images.
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, "public/images");
@@ -26,6 +28,7 @@ var storage = multer.diskStorage({
     }
 });
 
+// Connects established multer storage to upload files.
 var uploader = multer({storage: storage});
 
 router.post('/createPost', uploader.single("itemImage"), (req, res, next) => {
@@ -57,16 +60,16 @@ router.post('/createPost', uploader.single("itemImage"), (req, res, next) => {
     //     size: 74409
     //   }
 
-    console.log(req);
-    console.log("Parameters:", title, categoryId, description, fileUploaded, thumbnailPath, price, seller);
-    // res.send('');
-
     // Sharp resizes uploaded image to a thumbnail version of the image
     // with a 200x200 size, then exports to destinationOfThumnail, 
     // in thumbnails folder.
 
     sharp(fileUploaded)
-    .resize(200)
+    .png()
+    .resize(200, 200, {
+        fit: 'contain',
+        background: { r: 255, g: 255, b: 255, alpha: 0 }
+    })
     .toFile(destinationOfThumbnail)
     .then(() => {
         return PostModel.create(title, categoryId, description, filePath, thumbnailPath, price, seller)

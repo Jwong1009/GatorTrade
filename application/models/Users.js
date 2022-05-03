@@ -1,7 +1,7 @@
 /**********************************************************
  * FILE: models/Users.js
  * 
- * DESCRIPTION: uses mySQL users table
+ * DESCRIPTION: Handles any db functionality related to Users.
  * 
  * CREATED BY: Faisal
 **********************************************************/
