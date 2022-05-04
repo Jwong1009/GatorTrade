@@ -19,19 +19,19 @@ CREATED BY: Joanne & Juan
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
 
-<nav class="navbar navbar-expand-xl dropdown-menu-dark navbar-dark flex-column">
+<nav class="navbar navbar-expand-sm dropdown-menu-dark navbar-dark flex-column">
     <div class="fw-lighter">
         SFSU Software Engineering Project CSC 648-848, Spring 2022 For Demonstration Only
     </div>
     <ul class="navbar-nav container-fluid">
-        <li class="nav-item align-items-center ">
-            <a class="navbar-brand mx-2" href="/"> <img src="/images/gt_logo.png" width="auto" height="80px"> </a>
+        <li class="nav-item align-items-center">
+            <a class="navbar-brand mx-2" href="/"> <img src="/images/gt_logo.png" width="auto" height="110px"> </a>
         </li>
 
-        <li class="nav-item align-items-center flex-fill">
-            <form action="/results" class="d-flex justify-content-center">
-                <div class="input-group w-75 rounded overflow-hidden">
-                    <select name="category" id="categories" class="bg-secondary border-0 text-light px-2" >                  
+        <li class="nav-item align-items-center" style="width: 1100px;">
+            <form action="/results" class="d-flex justify-content-center" id="searchForm">
+                <div class="input-group rounded overflow-hidden" >
+                    <select name="category" id="categories" class="bg-secondary border-0 text-light px-2" >
                         <% if (category == 0) {%>
                             <option selected = "selected" value=0>All</option>
                         <%} else{%>
@@ -71,25 +71,21 @@ CREATED BY: Joanne & Juan
                     </select>
                     <input id="searchInput" name="search" type="search" placeholder="Search"
                         class="form-control border-0" value ="<%= search %>"/>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary" id="searchButton">
                         <a href="" class="text-light"><i class="bi bi-search"></i></a>
                     </button>
                 </div>
+                <a class="nav-link fs-4 hover" href="/about">About</a>
+                <a class="nav-link fs-4 hover" href="/post">Post</a>
             </form>
         </li>
+       
 
-        <li class="nav-item align-items-center">
-            <a class="nav-link fs-4 hover" href="/about">About</a>
-        </li>
 
-        <li class="nav-item align-items-center ">
-            <a class="nav-link fs-4 hover" href="/post">Post</a>
-        </li>
-
-        <% if(locals.logged) { %>
+    <% if(locals.logged) { %>
             <%- include('profile') %>
                 <% } else { %>
-                    <li class="nav-item align-items-center ">
+                    <li class="nav-item align-items-center me-5">
                         <a class="nav-link fs-4 hover" href="/login">Login</a>
                     </li>
                     <% } %>

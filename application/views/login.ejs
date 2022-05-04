@@ -9,6 +9,7 @@ CREATED BY: Kishan
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <%= title %>
     </title>
@@ -61,6 +62,9 @@ CREATED BY: Kishan
                             <a href="#"><img src="images/social_media_icons/linkedin.png" alt="linkedin"></a>
                             <a href="#"><img src="images/social_media_icons/google_plus.png" alt="google_plus"></a>
                         </div> -->
+                            <div class="mt-3">
+                                <p class="text-danger align-item-start">* All fields are mandatory.</p>
+                            </div>
                             <div class="control" id="firstControl">
                                 <div>
                                     <input type="text" placeholder="First Name" id="firstname" name="fname">
@@ -83,12 +87,9 @@ CREATED BY: Kishan
                                 <input type="password" placeholder="Re-enter Password" id="password2" name="password2">
                                 <small>error message</small>
                             </div>
-                            <div>
-                                <p class="text-danger align-item-start">* All fields are mandatory.</p>
-                            </div>
                             <button type="submit" class="login-btn">Sign Up</button>
-                            <span class="mobile-only">New Here?</span>
-                            <button type="button" class="login-btn mobile-only">Sign up</button>
+                            <span class="mobile-only">Already a user?</span>
+                            <button type="button" class="login-btn mobile-only">Sign in</button>
                         </form>
                         <div class="side">
                             <h1>Welcome Back Gator!</h1>
@@ -105,6 +106,7 @@ CREATED BY: Kishan
 
             <script src="/javascripts/bootstrap.bundle.js"></script>
             <script src="/javascripts/login.js"></script>
+            <script src="/javascripts/search.js"></script>
 </body>
 
 </html>

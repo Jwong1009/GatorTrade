@@ -20,8 +20,16 @@ CREATED BY: Joanne
 
     <div class="flex-grow-1">
 
-        <div class="h1 mt-2 ms-2">
-            Settings
+        <div class="d-flex justify-content-between">
+            <div class="h1 mt-2 ms-2">
+                Settings
+            </div>
+             <div class="h3 m-2">
+                <a href="/users/myPage" class="link-secondary">
+                    <i class="pt-2 bi bi-arrow-return-left" style="font-size: 40px;"></i>
+                    Return to My Page
+                </a>
+            </div>
         </div>
         <div class="container-fluid p-3" id="aboutContainer">
             <div class="row justify-content-center pv-2">
@@ -43,7 +51,7 @@ CREATED BY: Joanne
                                     <label for="firstName" class="col-form-label"> First Name </label>
                                 </div>
                                 <div class="col">
-                                    <input type="password" id="firstName" class="form-control" placeholder="First Name"
+                                    <input type="firstName" id="firstName" class="form-control" placeholder="First Name"
                                     required>
                                 </div>
                             </div>
@@ -110,6 +118,7 @@ CREATED BY: Joanne
     </div>
         <%- include('partials/footer') %>
             <script src="/javascripts/bootstrap.bundle.js"></script>
+            <script src="/javascripts/search.js"></script>
 </body>
 
 </html>

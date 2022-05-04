@@ -16,43 +16,75 @@ CREATED BY: Joanne
 
 <body>
     <%- include('partials/navbar') %>
-    <div class="flex-grow-1">
-        <div class="h1 mt-2 ms-2">
-            My Posts
-            <div class="justify-center-start fs-6 text-secondary">
-                Showing <%= Items.length %> out of <%= total%>
-            </div>
-        </div>
+        <div class="flex-grow-1">
 
-        <div class="container-fluid" id="homepageCategory">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-md-4 g-4">
-                    <% for(let i = 0; i < Items.length; i++) { %>
-                        <div class="col">
-                            <div class="card h-100" style="width: 18rem;">
-                                <a href="/dp?id=<%=Items[i].idItems%>"><img src="<%=Items[i].photopath%>"
-                                        class="card-img-top" alt="..."></a>
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <%=Items[i].title%>
-                                    </h5>
-                                    <p class="card-text">
-                                        <%=Items[i].description%>
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <h3 class="text"><b>$<%=Items[i].price%></b></h3>
-                                </div>
-                            </div>
-                        </div>
-                        <% } %>
+            <!-- <div class="d-flex justify-content-between">
+            <div class="h1 mt-2 ms-2">
+                My Posts
+                <div class="justify-center-start fs-6 text-secondary">
+                    Showing <%= Items.length %> out of <%= total%>
                 </div>
             </div>
-        </div>
+            <div class="h3 m-2">
+                <a href="/users/myPage" class="link-secondary">
+                        <i class="bi bi-arrow-return-left" style="font-size: 40px; margin-top: 20px;"></i>
+                        Return to My Page
+                </a>
+            </div>
+        </div> -->
+            <ul class="nav justify-content-evenly">
+                <li class="nav-item m-2">
+                    <a href="/users/myPage/myPosts"
+                        class="nav-link active fs-3 m-2 text-black text-decoration-underline">
+                        My Posts
+                    </a>
+                </li>
+                <li class="nav-item m-2">
+                    <a href="/users/myPage/myMessages" class="nav-link fs-3 m-2 text-black">
+                        My Messages
+                    </a>
+                </li>
+            </ul>
 
-    </div>
-    <%- include('partials/footer') %>
-    <script src="/javascripts/bootstrap.bundle.js"></script>
+            <div class=" m-2 justify-center-start fs-4 text-secondary">
+                Showing <%= Items.length %> out of <%= total%> results
+            </div>
+
+            <div class="container-fluid" id="homepageCategory">
+                <div class="container">
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        <% for(let i=0; i < Items.length; i++) { %>
+                            <div class="col">
+                                <div class="card h-100" style="width: 18rem;">
+                                    <a href="/dp?id=<%=Items[i].idItems%>"><img src="/<%=Items[i].thumbnail%>"
+                                            class="card-img-top" alt="..."></a>
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <%=Items[i].title%>
+                                        </h5>
+                                        <p class="card-text">
+                                            <%=Items[i].description%>
+                                        </p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between">
+                                        <div>
+                                            <h3 class="m-0"><b>$<%=Items[i].price%></b></h3>
+                                        </div>
+                                        <a href="/users/delete?id=<%=Items[i].idItems%>" class="btn btn-danger btn-sm">
+                                            Delete
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <%- include('partials/footer') %>
+            <script src="/javascripts/bootstrap.bundle.js"></script>
+            <script src="/javascripts/search.js"></script>
 </body>
 
 </html>

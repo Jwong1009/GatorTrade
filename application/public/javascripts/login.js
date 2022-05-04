@@ -1,29 +1,54 @@
-/*switching signIn/signUp forms Start*/
-const toggleBtns = document.querySelectorAll('.side .login-btn');
+/**********************************************************
+ * FILE: public/js/login.js
+ * 
+ * DESCRIPTION: 
+**********************************************************/
+
+/* switching signIn/signUp forms Start */
+const loginToggleBtn = document.querySelector('.signin .side .login-btn');
+const registerToggleBtn = document.querySelector('.signup .side .login-btn');
 const signIn = document.querySelector('.signin');
 const signUp = document.querySelector('.signup');
 const sides = document.querySelectorAll('.side');
 const forms = document.querySelectorAll('.form');
 
-toggleBtns.forEach(btn => {btn.addEventListener('click',toggle)});
+loginToggleBtn.addEventListener('click',loginToggle);
+registerToggleBtn.addEventListener('click',registerToggle);
 
-function toggle(){
-    signIn.classList.toggle('hidden');
-    signUp.classList.toggle('hidden');
+function loginToggle(){
+    signIn.classList.add('hidden');
+    signUp.classList.remove('hidden');
+    sides.forEach(side => {side.classList.toggle('left')});
+    forms.forEach(form => {form.classList.toggle('right')});
+}
+
+function registerToggle(){
+    signIn.classList.remove('hidden');
+    signUp.classList.add('hidden');
     sides.forEach(side => {side.classList.toggle('left')});
     forms.forEach(form => {form.classList.toggle('right')});
 }
 /*switching signIn/signUp forms End*/
 
 /*Mobile Layout Animation Start*/
-const mobileBtns = document.querySelectorAll('.login-btn.mobile-only');
+const mobileLoginBtn = document.querySelector('.signin .login-btn.mobile-only');
+const mobileRegisterBtn = document.querySelector('.signup .login-btn.mobile-only');
 
-mobileBtns.forEach(btn => {btn.addEventListener('click',mobileToggle)});
+console.log(mobileLoginBtn);
 
-function mobileToggle(){
-    signIn.classList.toggle('hidden');
-    signUp.classList.toggle('hidden');
-    signIn.classList.toggle('top');
+mobileLoginBtn.addEventListener('click',mobileLoginToggle);
+mobileRegisterBtn.addEventListener('click',mobileRegisterToggle);
+
+function mobileLoginToggle(){
+    //signIn.classList.add('hidden');
+    signUp.classList.remove('hidden');
+    signIn.classList.add('top');
+}
+
+function mobileRegisterToggle(){
+    signIn.classList.remove('hidden');
+    signUp.classList.add('hidden');
+    signIn.classList.remove('top');
 }
 /*Mobile Layout Animation End*/
 
@@ -117,9 +142,9 @@ function success(input){
     input.style.border = 'none';
     error.style.visibility = 'hidden';
 }
-/*SignUp form validation End*/
+/* SignUp form validation End */
 
-/*Show password functionality Start*/
+/* Show password functionality Start */
 const loginPass = document.querySelector('#loginPass');
 const showPass = document.querySelector('#showPass');
 
@@ -133,4 +158,4 @@ function togglePass(){
         loginPass.setAttribute('type','password');
     }
 }
-/*Show password functionality End*/
+/* Show password functionality End */

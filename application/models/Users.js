@@ -1,12 +1,12 @@
 /**********************************************************
  * FILE: models/Users.js
  * 
- * DESCRIPTION: uses mySQL users table
+ * DESCRIPTION: Handles any db functionality related to Users.
  * 
  * CREATED BY: Faisal
 **********************************************************/
 var db = require('../db');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 const UserModel = {};
 
 UserModel.create = (password, email, firstname, lastname) => {
@@ -26,13 +26,13 @@ UserModel.create = (password, email, firstname, lastname) => {
     .catch((err) => Promise.reject(err));
 }
 
-// UserModel.usernameExists = (username) => {
-//     return db.execute("SELECT * FROM GatorTrade.users WHERE username=?", [username])
-//     .then(([results, fields]) => {
-//         return Promise.resolve(!(results && results.length == 0));
-//     })
-//     .catch((err) => Promise.reject(err));
-// }
+UserModel.usernameExists = (username) => {
+    return db.execute("SELECT * FROM GatorTrade.users WHERE username=?", [username])
+    .then(([results, fields]) => {
+        return Promise.resolve(!(results && results.length == 0));
+    })
+    .catch((err) => Promise.reject(err));
+}
 
 UserModel.emailExists = (email) => {
     return db.execute("SELECT * FROM GatorTrade.Users WHERE email=?", [email])

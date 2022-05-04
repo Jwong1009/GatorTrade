@@ -27,15 +27,15 @@ DESCRIPTION: Generates the post page where registered users are allowed to post 
     </div>
 
     <div class="container-fluid">
-        <div class="container" id="post_form">
-            <form method="post" enctype="multipart/form-data">
+        <div class="container w-50" id="post_form">
+            <form class="w-100" method="POST" enctype="multipart/form-data" action="/posts/createPost">
                 <!-- Category input -->
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Category</label>
-                    <select class="form-select" id="inputGroupSelect01" required>
-                        <option value="">Choose...</option>
+                    <select name="category" class="form-select" id="inputGroupSelect01" required>
+                        <option value=0>All</option>
                         <% for(var i=0; i<Category.length;i++){%>
-                            <option value=<%=Category[i].title%>><%=Category[i].title%></option>
+                            <option value=<%=Category[i].idCategories%>><%=Category[i].title%></option>
                         <%}%>
                     </select>
                 </div>
@@ -50,13 +50,13 @@ DESCRIPTION: Generates the post page where registered users are allowed to post 
                 </div>
                 <!-- Description of Item input -->
                 <div class="input-group mb-3">
-                    <textarea class="form-control" placeholder="Description of Item" name="itemPrice" required></textarea>
+                    <textarea class="form-control" placeholder="Description of Item" name="itemDesc" required></textarea>
                 </div>
                 <!-- Image input -->
                 <div class="mb-3" id="image_form">
                     <div>
                         <label for="image_uploads" class="style">Choose images to upload (PNG, JPG)</label>
-                        <input type="file" class="style" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" multiple>
+                        <input type="file" class="style" id="image_uploads" name="itemImage" accept=".jpg, .jpeg, .png" multiple>
                     </div>
                     <div class="preview">
                         <p>No files currently selected for upload</p>

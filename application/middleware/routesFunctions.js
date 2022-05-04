@@ -1,4 +1,8 @@
-
+/**********************************************************
+ * FILE: middleware/routesFunctions.js
+ * 
+ * DESCRIPTION: 
+**********************************************************/
 
 const checkSignIn = (req,res,next) => {
     if(req.session.email){

@@ -137,7 +137,6 @@ button > a {
 }
 
 #firstControl{
-    margin-top: 15px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -212,6 +211,10 @@ button > a {
     border: 2px solid #262626;
 }
 
+.footer-container{
+    margin-top: 10px;
+}
+
 @media(max-width: 1030px){
     #loginContainer {
         border-radius: 0;
@@ -223,15 +226,24 @@ button > a {
 @media(max-width: 525px){
 
     .container-fluid{
-        width: 100vw;
-        margin: 0;
-        padding: 0;
+        width: 100vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .container{
+        padding: 0 !important;
     }
 
     .container,
     #loginContainer,
     .form{
-        width: 100%;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .footer-container{
+        margin: 0 !important;
     }
 
     .form input,

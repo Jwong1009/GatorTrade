@@ -8,7 +8,7 @@
 # Below is a list of items required. Missing items will cause points to be deducted from multiple milestone submissions.
 
 1. Server URL or IP
-<br>http://54.158.72.214:3000/
+<br>http://3.84.15.167
 2. SSH username 
 <br>ubuntu
 3. SSH key - included in folder
@@ -24,7 +24,7 @@
 10. Instructions on how to use the above information.
 Using a terminal, navigate to the location where the SSH key is stored. For the first use, use the command 
 chmod 400 csc648-team05.pem. Then use the command
-ssh -i "csc648-team05.pem" ubuntu@ec2-54-158-72-214.compute-1.amazonaws.com to access the server
+ssh -i "csc648-team05.pem" ubuntu@ec2-3-84-15-167.compute-1.amazonaws.com to access the server
 <br>To access the database navigate to the db folder (cd app/application/db) then use sudo mysql -u root -p, then paste the password
 
 AWS Sign In:

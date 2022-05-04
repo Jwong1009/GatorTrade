@@ -19,8 +19,8 @@ var flash = require('express-flash');
 var indexRouter = require('./routes/index');
 var aboutRouter = require('./routes/about');
 var usersRouter = require('./routes/users');
-var messagesRouter = require('./routes/messages')
-
+var postsRouter = require('./routes/posts');
+var messagesRouter = require('./routes/messages');
 
 var app = express();
 
@@ -67,6 +67,7 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/about', aboutRouter);
 app.use('/users', usersRouter);
+app.use('/posts', postsRouter);
 app.use('/messages', messagesRouter)
 
 // Catches 404 and forwards to error handler.
@@ -86,8 +87,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port: ${process.env.PORT || 3000}`);
-});
+console.log(`Server is running on port: ${process.env.PORT || 3000}`)
 
 module.exports = app;

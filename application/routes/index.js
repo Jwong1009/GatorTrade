@@ -56,13 +56,6 @@ router.get('/results', function (req, res, next) {
   const { search, category } = req.query;
   let categoryId = parseInt(category);
   let totalItemCount = 0;
-
-  // db.query('SELECT * FROM Items').then(([rows]) => {
-  //   res.render('homepage', { title: 'Team 05 Home Page', Items: rows });
-  // })
-  //   .catch(error => {
-  //     console.log(error);
-  //   });
   
   // Gets total count of items in database to display on Results (/results) page.
   db.query('SELECT COUNT(*) AS length FROM Items;').then(([results]) => {
@@ -72,11 +65,10 @@ router.get('/results', function (req, res, next) {
       db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%';`).then(([results]) => {
         if(results.length == 0){
           db.query(`SELECT * FROM Items;`).then(([results]) => {
-            res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId});
+            res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search: search, category: categoryId, noResult: 'true'});
           });
-
         }else{ 
-          res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount , search:search, category:categoryId});
+          res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount , search:search, category:categoryId, noResult: 'false'});
         }
       });
     }
@@ -86,12 +78,12 @@ router.get('/results', function (req, res, next) {
       db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' AND category=${categoryId};`).then(([results]) => {
         if(results.length == 0){
           db.query(`SELECT * FROM Items;`).then(([results]) => {
-            res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId});
+            res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId, noResult: 'true'});
           });
 
         } 
         else{
-          res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId});
+          res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId, noResult: 'false'});
         }
       });
     }
@@ -101,7 +93,6 @@ router.get('/results', function (req, res, next) {
 });
 
 router.get('/login', function (req, res, next) {
-
   const { search, category } = req.query;
   let categoryId = parseInt(category);
   res.render('login', { title: 'Team 05 Login Page' , search:search, category:categoryId});
@@ -112,7 +103,7 @@ router.get('/dp', function(req, res, next){
   const { search, category } = req.query;
   let categoryId = parseInt(category);
 
-  const {id} = req.query;
+  const { id } = req.query;
   let idItems = parseInt(id);
   //Uses idItems column in Items table to filter out the row of data we want to display
   db.query("SELECT * FROM Items I LEFT JOIN Users U ON I.seller = U.idUsers WHERE idItems =  ?;", [idItems]).then(([Item])=>{
