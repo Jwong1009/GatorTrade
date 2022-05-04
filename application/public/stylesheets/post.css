@@ -53,12 +53,29 @@ form p {
 }
 
 #post_form{
-    background-color: #343a40;
+    justify-content: left;
     padding: 10px 10px;
     border-radius: 5px;
     border: 1px ridge black;
 }
 #post_button_div{
-    text-align: center;
+    text-align: left;
     font-size: 25px;
+}
+
+
+#titleBox{
+    width: 400px;
+}
+
+#categoryBox{
+    width: 200px;
+}
+
+#priceBox{
+    width: 70px;
+}
+
+#descriptionBox{
+    height: 150px;
 }
