@@ -35,7 +35,7 @@ DESCRIPTION: Generates the post page where registered users are allowed to post 
                     <div class="col input-group input-group-sm mb-3">
                         <label class="input-group-text" for="categoryBox">Category</label>
                         <select name="category" class="form-control" id="categoryBox" required>
-                            <option value=0>All</option>
+                            <option value="">Select a Category</option>
                             <% for(var i=0; i<Category.length;i++){%>
                                 <option value=<%=Category[i].idCategories%>><%=Category[i].title%></option>
                             <%}%>
@@ -55,7 +55,7 @@ DESCRIPTION: Generates the post page where registered users are allowed to post 
                 <div class="mb-3" id="image_form">
                     <div>
                         <label for="image_uploads" class="style">Choose images to upload (PNG, JPG)</label>
-                        <input type="file" class="style" id="image_uploads" name="itemImage" accept=".jpg, .jpeg, .png" multiple>
+                        <input type="file" class="style" id="image_uploads" name="itemImage" accept=".jpg, .jpeg, .png" multiple required>
                     </div>
                     <div class="preview">
                         <p>No files currently selected for upload</p>
