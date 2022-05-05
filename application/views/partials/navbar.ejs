@@ -27,8 +27,13 @@ CREATED BY: Joanne & Juan
         <li class="nav-item align-items-center">
             <a class="navbar-brand mx-2" href="/"> <img src="/images/gt_logo.png" width="auto" height="110px"> </a>
         </li>
-
-        <li class="nav-item align-items-center" style="width: 1100px;">
+        <li class="nav-item">
+            <a class="nav-link fs-4 hover" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fs-4 hover" href="/post">Post</a>
+        </li>
+        <li class="nav-item align-items-center me-5" style="width: 1000px;">
             <form action="/results" class="d-flex justify-content-center" id="searchForm">
                 <div class="input-group rounded overflow-hidden" >
                     <select name="category" id="categories" class="bg-secondary border-0 text-light px-2" >
@@ -75,8 +80,6 @@ CREATED BY: Joanne & Juan
                         <a href="" class="text-light"><i class="bi bi-search"></i></a>
                     </button>
                 </div>
-                <a class="nav-link fs-4 hover" href="/about">About</a>
-                <a class="nav-link fs-4 hover" href="/post">Post</a>
             </form>
         </li>
        
@@ -85,7 +88,7 @@ CREATED BY: Joanne & Juan
     <% if(locals.logged) { %>
             <%- include('profile') %>
                 <% } else { %>
-                    <li class="nav-item align-items-center me-5">
+                    <li class="nav-item align-items-center">
                         <a class="nav-link fs-4 hover" href="/login">Login</a>
                     </li>
                     <% } %>
