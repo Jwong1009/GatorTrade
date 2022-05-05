@@ -140,8 +140,9 @@ router.get('/myPage/myPosts', function (req, res, next) {
 router.get('/delete', function (req, res, next) {
   const { id } = req.query;
   let idItems = parseInt(id);
+  const { userId } = req.session;
 
-  db.query("DELETE FROM Items WHERE idItems = ? LIMIT 1;", [idItems]);
+  db.query("DELETE FROM Items WHERE idItems = ? AND seller = ? LIMIT 1;", [idItems, userId]);
   req.flash('success', 'Post was deleted');
 
   res.redirect("myPage/myPosts")
