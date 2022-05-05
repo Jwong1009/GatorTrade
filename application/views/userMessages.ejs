@@ -17,25 +17,15 @@ CREATED BY: Joanne
 <body>
     <%- include('partials/navbar') %>
         <div class="flex-grow-1">
-            <!-- <div class="d-flex justify-content-between">
-                <div class="h1 mt-2 ms-2">
-                    Incoming Messages
-                </div>
-                <div class="h3 m-2">
-                    <a href="/users/myPage" class="link-secondary">
-                        <i class="pt-2 bi bi-arrow-return-left" style="font-size: 40px;"></i>
-                        Return to My Page
-                    </a>
-                </div>
-            </div> -->
+            <!-- Allows user to toggle between their Posts and Messages -->
             <ul class="nav justify-content-evenly">
-                <li class="nav-item m-2">
-                    <a href="/users/myPage/myPosts" class="nav-link fs-3 m-2 text-black">
+                <li class="nav-item">
+                    <a href="/users/myPage/myPosts" class="nav-link fs-3 text-black">
                         My Posts
                     </a>
                 </li>
-                <li class="nav-item m-2">
-                    <a href="/users/myPage/myMessages" class="nav-link active fs-3 m-2 text-black text-decoration-underline">
+                <li class="nav-item">
+                    <a href="/users/myPage/myMessages" class="nav-link active fs-3 text-black text-decoration-underline">
                         My Messages
                     </a>
                 </li>
@@ -44,7 +34,7 @@ CREATED BY: Joanne
             <div class="d-flex flex-wrap justify-content-center">
                 <div class="justify-content-center">
                     <div class="overflow-auto col m-2 border border-dark p-3 mb-2 bg-dark text-white rounded-3"
-                        style="width:800px;">
+                        style="width:1000px;">
                         <!-- checks if the message is empty or not-->
                         <% if (messages.length !=0) { %>
                             <!-- loops through the messages array and generates each message with the proper information-->
@@ -54,7 +44,7 @@ CREATED BY: Joanne
                                         height="auto">
                                     <div class="col">
                                         <div class="d-flex justify-content-between">
-                                            <div class="fs-3 col-sm m-2">
+                                            <div class="fs-4 col-sm m-2">
                                                 Item: <b>
                                                     <%= messages[i].title%>
                                                 </b>
@@ -63,7 +53,7 @@ CREATED BY: Joanne
                                                 Date sent: <%= messages[i].date%>
                                             </div>
                                         </div>
-                                        <div class="fs-4 col-sm m-2">
+                                        <div class="fs-5 col-sm m-2">
                                             <!-- loops around the sender array and matches the id to the proper message-->
                                             <% for (let j=0; j < senderN.length; j++) {%>
                                                 <% if (senderN[j].idUsers === messages[i].sender) { %> 
