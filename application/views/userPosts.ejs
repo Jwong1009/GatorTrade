@@ -50,7 +50,7 @@ CREATED BY: Joanne
                                     </div>
                                     <div class="card-footer d-flex justify-content-between">
                                         <div>
-                                            <h3 class="m-0"><b>$<%=Items[i].price%></b></h3>
+                                            <h3 class="m-0"><b>$<%=Items[i].price.toFixed(2)%></b></h3>
                                         </div>
                                         <a href="/users/delete?id=<%=Items[i].idItems%>" class="btn btn-danger btn-sm">
                                             Delete
