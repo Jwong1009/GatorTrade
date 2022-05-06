@@ -17,36 +17,22 @@ CREATED BY: Joanne
 <body>
     <%- include('partials/navbar') %>
         <div class="flex-grow-1">
-
-            <!-- <div class="d-flex justify-content-between">
-            <div class="h1 mt-2 ms-2">
-                My Posts
-                <div class="justify-center-start fs-6 text-secondary">
-                    Showing <%= Items.length %> out of <%= total%>
-                </div>
-            </div>
-            <div class="h3 m-2">
-                <a href="/users/myPage" class="link-secondary">
-                        <i class="bi bi-arrow-return-left" style="font-size: 40px; margin-top: 20px;"></i>
-                        Return to My Page
-                </a>
-            </div>
-        </div> -->
+            <!-- Allows user to toggle between their Posts and Messages -->
             <ul class="nav justify-content-evenly">
-                <li class="nav-item m-2">
+                <li class="nav-item">
                     <a href="/users/myPage/myPosts"
-                        class="nav-link active fs-3 m-2 text-black text-decoration-underline">
+                        class="nav-link active fs-3 text-black text-decoration-underline">
                         My Posts
                     </a>
                 </li>
-                <li class="nav-item m-2">
-                    <a href="/users/myPage/myMessages" class="nav-link fs-3 m-2 text-black">
+                <li class="nav-item">
+                    <a href="/users/myPage/myMessages" class="nav-link fs-3 text-black">
                         My Messages
                     </a>
                 </li>
             </ul>
 
-            <div class=" m-2 justify-center-start fs-4 text-secondary">
+            <div class="ms-2 mb-2 justify-center-start fs-4 text-secondary">
                 Showing <%= Items.length %> out of <%= total%> results
             </div>
 

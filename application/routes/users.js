@@ -112,36 +112,33 @@ router.post('/login', loginValidator, (req, res, next) => {
     });
 });
 
-/* Get User Dashboard */
-router.get('/myPage', function (req, res, next) {
-  const { search, category } = req.query;
-  const { userId } = req.session; // used to grab the id of the user logged in to grab the appropriate name in db
-  const categoryId = parseInt(category);
-  db.query(`SELECT firstname, lastname FROM Users U WHERE U.idUsers = ${userId};`).then(([results]) => {
-    const usersName = `${results[0].firstname} ${results[0].lastname}`; // creates a string literal to be displayed 
-    res.render('userPage', { title: 'Team 05 My Page', search: search, category: categoryId, name: usersName });
-  }).catch(error => {
-    console.log(error);
-  });
-});
-
 /* Get User Posts List */
 router.get('/myPage/myPosts', function (req, res, next) {
   const { search, category } = req.query;
   const { userId } = req.session; //used to grab the id of the user logged in to grab the posts made by that user to be displayed
   let categoryId = parseInt(category);
-  db.query(`SELECT * FROM Items I WHERE I.seller= ${userId}`).then(([results]) => {
-    res.render('userPosts', { title: 'User Posts', search: search, category: categoryId, Items: results, total: results.length })
+  //grabs all posts made by user
+  db.query(`SELECT * FROM Items I WHERE I.seller= ${userId}`)
+    .then(([results]) => {
+      res.render('userPosts', {
+        title: 'My Posts',
+        search: search,
+        category: categoryId,
+        Items: results,
+        total: results.length
+      })
   }).catch(error => {
     console.log(error);
   });
 });
 
+/* Deletes a post created by user */
 router.get('/delete', function (req, res, next) {
   const { id } = req.query;
   let idItems = parseInt(id);
+  const { userId } = req.session;
 
-  db.query("DELETE FROM Items WHERE idItems = ? LIMIT 1;", [idItems]);
+  db.query("DELETE FROM Items WHERE idItems = ? AND seller = ? LIMIT 1;", [idItems, userId]);
   req.flash('success', 'Post was deleted');
 
   res.redirect("myPage/myPosts")
@@ -154,15 +151,21 @@ router.get('/myPage/myMessages', function (req, res, next) {
   let categoryId = parseInt(category);
   let msgSender = {};
   let msgInfo = [];
-
-  db.query(`SELECT firstname, lastname, idUsers FROM Messages INNER JOIN Users ON sender=idUsers AND sender != ${userId};`).then(([senderName]) => {
-    msgSender = senderName;
-    // console.log({msgSender});
+  // grabs the sender's name of the message sent to the user
+  db.query(`SELECT firstname, lastname, idUsers FROM Messages INNER JOIN Users ON sender=idUsers AND sender != ${userId};`)
+    .then(([senderName]) => {
+      msgSender = senderName;
+    // grabs the message information to display to the user
     return db.query(`SELECT DISTINCT body, receiver, sender, photopath, title, thumbnail, DATE_FORMAT(date,'%Y %M %d') as date FROM Messages LEFT JOIN Items ON item=idItems LEFT JOIN Users on receiver=idUsers WHERE receiver= ${userId}`);
   }).then(([results]) => {
     msgInfo = results;
-    // console.log({ msgInfo });
-    res.render('userMessages', { title: 'Team 05 Messages Page', search: search, category: categoryId, messages: msgInfo, senderN: msgSender })
+    res.render('userMessages', {
+      title: 'My Messages',
+      search: search,
+      category: categoryId,
+      messages: msgInfo,
+      senderN: msgSender
+    })
   }).catch(error => {
     console.log(error);
   });
@@ -197,7 +200,12 @@ router.get('/settings', function (req, res, next) {
   const { search, category } = req.query;
   const categoryId = parseInt(category);
   const { email } = req.session;
-  res.render('userSettings', { title: 'Team 05 My Settings', search: search, category: categoryId, userEmail: email });
+  res.render('userSettings', {
+    title: 'My Settings',
+    search: search,
+    category: categoryId,
+    userEmail: email
+  });
 });
 
 /* LOG OUT */

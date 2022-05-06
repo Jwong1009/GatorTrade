@@ -36,7 +36,7 @@ function updateResults() {
         switch(item.category){
         case 1: categoryName = 'Electronics';
                 break;
-        case 2: categoryName = 'Textbooks';
+        case 2: categoryName = 'Books';
                 break;
         case 3: categoryName = 'Handicraft';
                 break;

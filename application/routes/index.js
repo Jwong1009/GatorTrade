@@ -114,7 +114,7 @@ router.get('/dp', function(req, res, next){
   });
 });
 
-router.get('/post', checkSignIn, function(req,res,next){
+router.get('/post', function(req,res,next){
   db.query("SELECT * FROM Categories").then(([row])=>{
     res.render('post', {title: "Team 05 post page", Category: row});
   })
