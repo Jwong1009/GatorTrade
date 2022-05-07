@@ -25,7 +25,7 @@ DESCRIPTION: Generates the post page where registered users are allowed to post 
             </h1>
         </div>
         <div class="container" id="post_form">
-            <form class="w-100" method="POST" enctype="multipart/form-data" action="/posts/createPost">
+            <form class="w-100" id="form_id" method="POST" enctype="multipart/form-data" action="/posts/createPost">
                 <!-- Title of Item input -->
                 <div class="row" id="rowForm">
                     <div class="col input-group">
@@ -63,9 +63,15 @@ DESCRIPTION: Generates the post page where registered users are allowed to post 
                 </div>
                 <div class="row">
                     <div class="col-2" id="post_button_div">
-                        <button class="style">
-                            Post
-                        </button>
+                        <%if(userEmail){%>
+                            <button type="submit" class="style">
+                                Post
+                            </button>
+                        <%}else{%>
+                            <button type="submit" class="style" id="postButtonId">
+                                Post
+                            </button>
+                        <%}%>
                     </div>
                     <div class="col">
                         <h2>It will take up to 24 hours for your post to be approved.</h2>
@@ -77,8 +83,50 @@ DESCRIPTION: Generates the post page where registered users are allowed to post 
     </div>
 
     <%- include('partials/footer') %>
+    <script>
 
+        const form = document.querySelector("#form_id");
+        var title = document.querySelector("#titleBox");
+        var category = document.querySelector("#categoryBox");
+        var price = document.querySelector("#priceBox");
+        var description = document.querySelector("#descriptionBox");
+
+        //fill input form w/ session storage data if applicable
+        if(sessionStorage.getItem("userTitle")){
+            title.value = sessionStorage.getItem("userTitle");
+        }
+        if(sessionStorage.getItem("userCategory")){
+            category.value = sessionStorage.getItem("userCategory");
+        }
+        if(sessionStorage.getItem("userPrice")){
+            price.value = sessionStorage.getItem("userPrice");
+        }
+        if(sessionStorage.getItem("userDescription")){
+            description.value = sessionStorage.getItem("userDescription");
+        }
+        //Stores title, category, price and description in a session.
+        function saveData(){
+            sessionStorage.setItem("userTitle", title.value);
+            sessionStorage.setItem("userCategory", category.value);
+            sessionStorage.setItem("userPrice", price.value);
+            sessionStorage.setItem("userDescription", description.value);
+        }
+
+        form.addEventListener("submit", (event)=>{
+            //When user is not logged in, save user inputs and redirect to login/register page
+            //otherwise user is logged in and clear session storage data after submission.
+            if(!"<%=userEmail%>") {
+                event.preventDefault();
+                saveData();
+                location.href = "/login";
+            }else{
+                sessionStorage.clear();
+            }
+        });
+
+    </script>
     <script src="/javascripts/bootstrap.bundle.js"></script>
     <script src="/javascripts/search.js"></script>
     <script src="/javascripts/previewImage.js"></script>
+
 </body>

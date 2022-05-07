@@ -115,8 +115,11 @@ router.get('/dp', function(req, res, next){
 });
 
 router.get('/post', function(req,res,next){
+
+    const {email} = req.session;
+    console.log(email)
   db.query("SELECT * FROM Categories").then(([row])=>{
-    res.render('post', {title: "Team 05 post page", Category: row});
+    res.render('post', {title: "Team 05 post page", Category: row, userEmail: email});
   })
 });
 
