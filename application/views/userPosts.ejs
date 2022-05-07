@@ -32,10 +32,6 @@ CREATED BY: Joanne
                 </li>
             </ul>
 
-            <div class="ms-2 mb-2 justify-center-start fs-4 text-secondary">
-                Showing <%= Items.length %> out of <%= total%> results
-            </div>
-
             <div class="container-fluid" id="homepageCategory">
                 <div class="container">
                     <div class="row row-cols-1 row-cols-md-4 g-4">
@@ -54,7 +50,7 @@ CREATED BY: Joanne
                                     </div>
                                     <div class="card-footer d-flex justify-content-between">
                                         <div>
-                                            <h3 class="m-0"><b>$<%=Items[i].price%></b></h3>
+                                            <h3 class="m-0"><b>$<%=Items[i].price.toFixed(2)%></b></h3>
                                         </div>
                                         <a href="/users/delete?id=<%=Items[i].idItems%>" class="btn btn-danger btn-sm">
                                             Delete

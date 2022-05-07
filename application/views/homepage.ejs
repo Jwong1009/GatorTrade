@@ -47,17 +47,6 @@ CREATED BY: Michael
                             <% for(var i=0; i < Items.length; i++){%>
                                 <% if(Items[i].category==Categories[j].idCategories){%>
                                     <div class="col">
-                                        <!-- <div class="card h-100" style="width: 18rem;">
-                            TO DO: Link Individual Item's Detail Page to HREF
-                            <a href="#"><img src="<%=Items[i].photopath%>" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <h5 class="card-title"><%=Items[i].title%></h5>
-                                <p class="card-text"><%=Items[i].description%></p>
-                            </div>
-                                <div class="card-footer">
-                                    <h3 class="text"><b>$<%=Items[i].price%></b></h3>
-                                </div>
-                        </div> -->
                                         <div class="card h-100" style="width: 18rem;">
                                             <a href="/dp?id=<%=Items[i].idItems%>"><img src="<%=Items[i].thumbnail%>"
                                                     class="card-img-top" alt="..."></a>
@@ -70,11 +59,10 @@ CREATED BY: Michael
                                                 <p class="card-text">
                                                     <%=Items[i].description%>
                                                 </p>
-                                                <!-- <span class="border border-primary rounded-2 px-4 pv-2 fs-5">$<%=Items[i].price%></span> -->
                                             </div>
                                             <div class="card-footer d-flex justify-content-between">
                                                 <div>
-                                                    <h3 class="m-0"><b>$<%=Items[i].price%></b></h3>
+                                                    <h3 class="m-0"><b>$<%=Items[i].price.toFixed(2)%></b></h3>
                                                 </div>
                                                 <a href="/dp?id=<%=Items[i].idItems%>#modal"
                                                     class="btn btn-primary btn-sm">

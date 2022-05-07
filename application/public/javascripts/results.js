@@ -61,7 +61,7 @@ function updateResults() {
                                 </div>
                                 <div class="card-footer d-flex justify-content-between">
                                     <div>
-                                        <h3 class="m-0"><b>$${item.price}</b></h3>
+                                        <h3 class="m-0"><b>$${item.price.toFixed(2)}</b></h3>
                                     </div>
                                     <a href="/dp?id=${item.idItems}#modal" class="btn btn-primary btn-sm">
                                         Message Seller
