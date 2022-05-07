@@ -49,6 +49,9 @@ router.post('/createPost', uploader.single("itemImage"), (req, res, next) => {
     // Gets seller's user id from their logged in session:
     let seller = req.session.userId;
 
+    if(seller == undefined){
+        res.redirect("/login");
+    }
     // file: {
     //     fieldname: 'itemImage',
     //     originalname: 'pouring_coffee.png',
@@ -63,39 +66,40 @@ router.post('/createPost', uploader.single("itemImage"), (req, res, next) => {
     // Sharp resizes uploaded image to a thumbnail version of the image
     // with a 200x200 size, then exports to destinationOfThumnail, 
     // in thumbnails folder.
-
-    sharp(fileUploaded)
-    .png()
-    .resize(200, 200, {
-        fit: 'contain',
-        background: { r: 255, g: 255, b: 255, alpha: 0 }
-    })
-    .toFile(destinationOfThumbnail)
-    .then(() => {
-        return PostModel.create(title, categoryId, description, filePath, thumbnailPath, price, seller)
-    })
-    .then((postWasCreated) => {
-        if(postWasCreated) {
-            console.log("Your post was created successfully!");
-            req.flash('success', "Your post was created successfully!");
-            req.session.save( err => {
-                res.redirect('/');
-            });
-        } else {
-            console.log("Your post was NOT created.");
-            throw new PostError('Post could not be created!!', '/post', 200);
-        }
-    })
-    .catch((err) => {
-        if(err instanceof PostError) {
-            errorPrint(err.getMessage());
-            req.flash('error', err.getMessage());
-            res.status(err.getStatus());
-            res.redirect(err.getRedirectURL());
-        } else {
-            next(err);
-        }
-    });
+    else{
+        sharp(fileUploaded)
+        .png()
+        .resize(200, 200, {
+            fit: 'contain',
+            background: { r: 255, g: 255, b: 255, alpha: 0 }
+        })
+        .toFile(destinationOfThumbnail)
+        .then(() => {
+            return PostModel.create(title, categoryId, description, filePath, thumbnailPath, price, seller)
+        })
+        .then((postWasCreated) => {
+            if(postWasCreated) {
+                console.log("Your post was created successfully!");
+                req.flash('success', "Your post was created successfully!");
+                req.session.save( err => {
+                    res.redirect('/');
+                });
+            } else {
+                console.log("Your post was NOT created.");
+                throw new PostError('Post could not be created!!', '/post', 200);
+            }
+        })
+        .catch((err) => {
+            if(err instanceof PostError) {
+                errorPrint(err.getMessage());
+                req.flash('error', err.getMessage());
+                res.status(err.getStatus());
+                res.redirect(err.getRedirectURL());
+            } else {
+                next(err);
+            }
+        });
+    }
 });
 
 module.exports = router;
