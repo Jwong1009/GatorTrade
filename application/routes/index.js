@@ -57,6 +57,7 @@ router.get('/results', function (req, res, next) {
   let categoryId = parseInt(category);
   let totalItemCount = 0;
   
+  // If no category selected:
   // Gets total count of items in database to display on Results (/results) page.
   db.query('SELECT COUNT(*) AS length FROM Items;').then(([results]) => {
     totalItemCount = results[0].length;
@@ -76,14 +77,22 @@ router.get('/results', function (req, res, next) {
     // Filter results based on category chosen.
     else if (categoryId > 0) {
       db.query(`SELECT * FROM Items WHERE title LIKE '%${search}%' AND category=${categoryId};`).then(([results]) => {
+        // If no results found display all database results with "No search results found" message.
         if(results.length == 0){
           db.query(`SELECT * FROM Items;`).then(([results]) => {
             res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId, noResult: 'true'});
           });
 
-        } 
+        }
+        // Else, show found search results out of total items in selected category from database.
         else{
-          res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalItemCount, search:search, category:categoryId, noResult: 'false'});
+          let totalCategoryCount = 0;
+          db.query(`SELECT COUNT(*) AS length FROM Items WHERE category=${categoryId};`).then(([count]) => {
+            totalCategoryCount = count[0].length;
+            res.render('results', { title: 'Team 05 Results', results: results, resultsObj: JSON.stringify(results), total: totalCategoryCount, search:search, category:categoryId, noResult: 'false'});
+          }).catch(error => {
+            console.log(error);
+          });
         }
       });
     }

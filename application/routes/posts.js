@@ -52,16 +52,6 @@ router.post('/createPost', uploader.single("itemImage"), (req, res, next) => {
     if(seller == undefined){
         res.redirect("/login");
     }
-    // file: {
-    //     fieldname: 'itemImage',
-    //     originalname: 'pouring_coffee.png',
-    //     encoding: '7bit',
-    //     mimetype: 'image/png',
-    //     destination: 'public/images',
-    //     filename: '23b58ba9bd5585e5af2818caf18796629a0642dbdcc5.png',
-    //     path: 'public\\images\\23b58ba9bd5585e5af2818caf18796629a0642dbdcc5.png',
-    //     size: 74409
-    //   }
 
     // Sharp resizes uploaded image to a thumbnail version of the image
     // with a 200x200 size, then exports to destinationOfThumnail, 
