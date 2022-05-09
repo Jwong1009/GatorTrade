@@ -83,12 +83,14 @@ router.post('/login', loginValidator, (req, res, next) => {
    */
 
   UserModel.authenticate(email, password)
-    .then((loggedUserId) => {
-      if (loggedUserId > 0) {
+    .then((loggedUser) => {
+      if (loggedUser[0] > 0) {
         // Valid Credentials
         successPrint(`User ${email} is logged in`);
         req.session.email = email;
-        req.session.userId = loggedUserId;
+        req.session.userId = loggedUser[0];
+        req.session.firstname = loggedUser[1];
+        req.session.lastname = loggedUser[2];
         res.locals.logged = true;
         req.flash('success', 'You have been successfully logged in!');
         req.session.save(err => {
@@ -199,12 +201,14 @@ router.get('/reviews', function (req, res, next) {
 router.get('/settings', function (req, res, next) {
   const { search, category } = req.query;
   const categoryId = parseInt(category);
-  const { email } = req.session;
+  const { email,firstname, lastname } = req.session;
   res.render('userSettings', {
     title: 'My Settings',
     search: search,
     category: categoryId,
-    userEmail: email
+    userEmail: email,
+    userFirstName: firstname,
+    userLastName: lastname
   });
 });
 
