@@ -44,7 +44,7 @@ DESCRIPTION: Generates the post page where registered users are allowed to post 
                     <!-- Price of Item input -->
                     <div class="col input-group input-group-sm mb-3">
                         <span class="input-group-text">$</span>
-                        <input type="text" class="col-md-1" placeholder="0.00" name="itemPrice" id="priceBox" required>
+                        <input type="number" class="col-md-1" placeholder="0.00" name="itemPrice" id="priceBox" min ="0.00"  max = "2147483647" step= ".01" required>
                     </div>
                     <!-- Description of Item input -->
                     <div class="input-group mb-3">

@@ -49,6 +49,7 @@ router.post('/createPost', uploader.single("itemImage"), (req, res, next) => {
     // Gets seller's user id from their logged in session:
     let seller = req.session.userId;
 
+    //If user not signed redirect to sign-in/login page
     if(seller == undefined){
         res.redirect("/login");
     }
