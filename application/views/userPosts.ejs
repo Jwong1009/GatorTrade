@@ -20,8 +20,7 @@ CREATED BY: Joanne
             <!-- Allows user to toggle between their Posts and Messages -->
             <ul class="nav justify-content-evenly">
                 <li class="nav-item">
-                    <a href="/users/myPage/myPosts"
-                        class="nav-link active fs-3 text-black text-decoration-underline">
+                    <a href="/users/myPage/myPosts" class="nav-link active fs-3 text-black text-decoration-underline">
                         My Posts
                     </a>
                 </li>
@@ -56,6 +55,11 @@ CREATED BY: Joanne
                                             Delete
                                         </a>
                                     </div>
+                                    <% if( Items[i].approved==0 ){%>
+                                        <div class="d-flex justify-content-center">
+                                            Pending Approval
+                                        </div>
+                                        <% } %>
                                 </div>
                             </div>
                             <% } %>
