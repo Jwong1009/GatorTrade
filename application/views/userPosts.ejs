@@ -16,9 +16,9 @@ CREATED BY: Joanne
 
 <body>
     <%- include('partials/navbar') %>
-        <div class="flex-grow-1">
+        <div>
             <!-- Allows user to toggle between their Posts and Messages -->
-            <ul class="nav justify-content-evenly">
+            <ul class="nav justify-content-evenly my-3">
                 <li class="nav-item">
                     <a href="/users/myPage/myPosts" class="nav-link active fs-3 text-black text-decoration-underline">
                         My Posts
@@ -33,10 +33,15 @@ CREATED BY: Joanne
 
             <div class="container-fluid" id="homepageCategory">
                 <div class="container">
-                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                    <div class="row g-4 d-flex justify-content-center justify-content-sm-start">
                         <% for(let i=0; i < Items.length; i++) { %>
-                            <div class="col">
-                                <div class="card h-100" style="width: 18rem;">
+                            <div class="col-8 col-md-4 col-sm-6 my-4 d-flex justify-content-center">
+                                <div class="card h-100 mw-100" style="width: 18rem;">
+                                    <% if( Items[i].approved==0 ){%>
+                                        <div class="text-center bg-success mb-1">
+                                            Pending Approval
+                                        </div>
+                                    <% } %>
                                     <a href="/dp?id=<%=Items[i].idItems%>"><img src="/<%=Items[i].thumbnail%>"
                                             class="card-img-top" alt="..."></a>
                                     <div class="card-body">
@@ -55,11 +60,6 @@ CREATED BY: Joanne
                                             Delete
                                         </a>
                                     </div>
-                                    <% if( Items[i].approved==0 ){%>
-                                        <div class="d-flex justify-content-center">
-                                            Pending Approval
-                                        </div>
-                                        <% } %>
                                 </div>
                             </div>
                             <% } %>
