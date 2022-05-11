@@ -35,14 +35,14 @@ CREATED BY: Joanne
             <div class="row justify-content-center pv-2">
                 <div class="card shadow-lg w-50 bg-dark text-white" id="loginCard">
                     <div class="card-body">
-                        <form>
+                        <form method="POST" action="/users/updateSettings">
                             <div class="row m-3">
                                 <div class="col">
                                     <label for="email" class="col-form-label">SFSU E-mail</label>
                                 </div>
                                 <div class="col">
                                     <input class="form-control" id="disabledInput" type="text"
-                                    placeholder="<%= userEmail%>" disabled>
+                                        placeholder="<%= userEmail%>" disabled>
                                 </div>
                             </div>
                             
@@ -51,8 +51,8 @@ CREATED BY: Joanne
                                     <label for="firstName" class="col-form-label"> First Name </label>
                                 </div>
                                 <div class="col">
-                                    <input type="firstName" id="firstName" class="form-control" placeholder="<%= userFirstName%>"
-                                    required>
+                                    <input type="firstName" id="firstName" class="form-control" name = "newfname" placeholder="<%= userFirstName%>"
+                                        maxlength="45">
                                 </div>
                             </div>
                             
@@ -61,8 +61,8 @@ CREATED BY: Joanne
                                     <label for="lastName" class="col-form-label">Last Name</label>
                                 </div>
                                 <div class="col">
-                                    <input type="text" id="lastname" class="form-control" placeholder="<%= userLastName%>"
-                                    required>
+                                    <input type="text" id="lastname" class="form-control" name = "newlname"placeholder="<%= userLastName%>"
+                                        maxlength="45">
                                 </div>
                             </div>
                             
@@ -73,7 +73,7 @@ CREATED BY: Joanne
                                 </div>
                                 <div class="col">
                                     <input type="password" id="currentPassword" class="form-control"
-                                    placeholder="Current Password" required>
+                                        name = "currPass" placeholder="Current Password" >
                                 </div>
                             </div>
                             
@@ -82,8 +82,8 @@ CREATED BY: Joanne
                                     <label for="newPassword" class="col-form-label">New Password</label>
                                 </div>
                                 <div class="col">
-                                    <input type="password" id="newPassword" class="form-control"
-                                    placeholder="New Password" required>
+                                    <input type="password" id="newPassword" name="newPass"class="form-control"
+                                     minlength = "10" maxlength ="45" placeholder="New Password" >
                                     <span id="passwordReminder" class="form-text text-white-50">
                                         Must be at least 10 characters long.
                                     </span>
@@ -92,17 +92,17 @@ CREATED BY: Joanne
                             
                             <div class="row m-3">
                                 <div class="col">
-                                    <label for="newPassword" class="col-form-label">Confirm new password</label>
+                                    <label for="newPassword" class="col-form-label" >Confirm new password</label>
                                 </div>
                                 <div class="col">
-                                    <input type="password" id="retypePassword" class="form-control"
-                                    placeholder="confirm new password" required>
+                                    <input type="password" id="retypePassword" name= "conPass" class="form-control"
+                                     maxlength = "45" placeholder="confirm new password" >
                                 </div>
                             </div>
                             
                             <div class="text-center">
                                 <div class="m-2">
-                                    <button class="btn btn-secondary col-3 mx-2" type="button">
+                                    <button class="btn btn-secondary col-3 mx-2" type="submit">
                                         Confirm
                                     </button>
                                     <button class="btn btn-secondary col-3 mx-2" type="button">

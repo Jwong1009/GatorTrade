@@ -11,6 +11,7 @@ var express = require('express');
 const router = express.Router();
 
 const db = require('../db');
+var bcrypt = require('bcryptjs');
 
 const UserModel = require('../models/Users');
 const UserError = require('../helpers/error/UserError');
@@ -210,6 +211,70 @@ router.get('/settings', function (req, res, next) {
     userFirstName: firstname,
     userLastName: lastname
   });
+});
+
+router.post('/updateSettings', function(req,res, next) {
+  const newFirstName = req.body.newfname;
+  const newLastName = req.body.newlname;
+  const email = req.session.email;
+  const currPassword = req.body.currPass;
+  const newPassword = req.body.newPass;
+  const confirmPassword = req.body.conPass;
+  const values = [];
+
+  query = `UPDATE gatortrade.users SET `;
+
+  if(newFirstName != ""){
+    values.push(`firstname = "${newFirstName}"`);
+    req.session.firstname = newFirstName;
+  }
+  if(newLastName != ""){
+    values.push(`lastname = "${newLastName}"`);
+    req.session.lastname = newLastName;
+  }
+  // console.log("New password: " +newPassword);
+  // console.log("Confirm pass: "+ confirmPassword);
+  // console.log("results" +confirmPassword === newPassword);
+  // if(newPassword != "" && confirmPassword != "" && confirmPassword == newPassword){
+
+  //   UserModel.authenticate(email, currPassword)
+  //   .then((returnValues)=> {
+  //     if(returnValues[0] > 0){
+
+  //       return bcrypt.hash(newPassword, 15);
+
+  //     }
+  //   })
+  //   .then((hashedPassword) => {
+  //     values.push(`password = ${hashedPassword}`);
+  //   });
+
+    // bcrypt.hash(newPassword, 15).then((hashedPassword) => {
+    //   values.push(`password = "${hashedPassword}"`);
+    // })
+    // .catch((err) => {console.log(err)});
+  // }
+
+  if(values.length == 0){
+    res.redirect("/users/settings");
+  }
+  else{
+    for(let i=0; i < values.length; i++){
+
+      query += values[i];
+
+      if(i != values.length - 1){
+        query+= ", ";
+      }
+    }
+    query += `WHERE email = "${email}"`
+
+    console.log(query);
+    db.query(query);
+    res.redirect("/users/settings");
+  }
+
+  //`UPDATE table_name SET firstname = ${newFirstName}, lastname = ${newLastName}, password = ${newPassword} WHERE email = ${email};`
 });
 
 /* LOG OUT */
