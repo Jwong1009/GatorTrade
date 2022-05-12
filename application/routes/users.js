@@ -220,7 +220,7 @@ router.post('/updateSettings', function(req,res, next) {
   const currPassword = req.body.currPass;
   const newPassword = req.body.newPass;
   const confirmPassword = req.body.conPass;
-  const values = [];
+  let values = [];
 
   query = `UPDATE gatortrade.users SET `;
 
@@ -232,29 +232,33 @@ router.post('/updateSettings', function(req,res, next) {
     values.push(`lastname = "${newLastName}"`);
     req.session.lastname = newLastName;
   }
-  // console.log("New password: " +newPassword);
-  // console.log("Confirm pass: "+ confirmPassword);
-  // console.log("results" +confirmPassword === newPassword);
-  // if(newPassword != "" && confirmPassword != "" && confirmPassword == newPassword){
+ 
+  if(newPassword != "" && confirmPassword != "" && confirmPassword.localeCompare(newPassword) == 0){
+    UserModel.authenticate(email, currPassword)
+     .then((returnValues)=> {
+       if(returnValues[0] > 0){
 
-  //   UserModel.authenticate(email, currPassword)
-  //   .then((returnValues)=> {
-  //     if(returnValues[0] > 0){
+         return bcrypt.hash(newPassword, 15);
 
-  //       return bcrypt.hash(newPassword, 15);
-
-  //     }
-  //   })
-  //   .then((hashedPassword) => {
-  //     values.push(`password = ${hashedPassword}`);
-  //   });
-
-    // bcrypt.hash(newPassword, 15).then((hashedPassword) => {
-    //   values.push(`password = "${hashedPassword}"`);
-    // })
-    // .catch((err) => {console.log(err)});
-  // }
-
+       }
+     })
+     .then((hashedPassword) => {
+        let baseSQL = `UPDATE gatortrade.users SET password = "${hashedPassword}" WHERE email = "${email}"`;
+        return db.execute(baseSQL);
+     })
+     .then(([results, fields]) => {
+      if(results && results.affectedRows) {
+          return Promise.resolve(results.insertId);
+      } else {
+          // User was not created
+          return Promise.resolve(-1);
+      }
+    })
+    .catch((err) => Promise.reject(err));
+  
+  }
+  
+  console.log(values);
   if(values.length == 0){
     res.redirect("/users/settings");
   }
@@ -274,7 +278,6 @@ router.post('/updateSettings', function(req,res, next) {
     res.redirect("/users/settings");
   }
 
-  //`UPDATE table_name SET firstname = ${newFirstName}, lastname = ${newLastName}, password = ${newPassword} WHERE email = ${email};`
 });
 
 /* LOG OUT */
