@@ -121,7 +121,7 @@ router.get('/myPage/myPosts', function (req, res, next) {
   const { userId } = req.session; //used to grab the id of the user logged in to grab the posts made by that user to be displayed
   let categoryId = parseInt(category);
   //grabs all posts made by user
-  db.query(`SELECT * FROM Items I WHERE I.seller= ${userId}`)
+  db.query(`SELECT * FROM Items I WHERE I.seller= ?`,[userId])
     .then(([results]) => {
       res.render('userPosts', {
         title: 'My Posts',
@@ -155,11 +155,11 @@ router.get('/myPage/myMessages', function (req, res, next) {
   let msgSender = {};
   let msgInfo = [];
   // grabs the sender's name of the message sent to the user
-  db.query(`SELECT firstname, lastname, idUsers FROM Messages INNER JOIN Users ON sender=idUsers AND sender != ${userId};`)
+  db.query(`SELECT firstname, lastname, idUsers FROM Messages INNER JOIN Users ON sender=idUsers AND sender != ?;`,[userId])
     .then(([senderName]) => {
       msgSender = senderName;
     // grabs the message information to display to the user
-    return db.query(`SELECT DISTINCT body, receiver, sender, photopath, title, thumbnail, DATE_FORMAT(date,'%Y %M %d') as date FROM Messages LEFT JOIN Items ON item=idItems LEFT JOIN Users on receiver=idUsers WHERE receiver= ${userId}`);
+    return db.query(`SELECT DISTINCT body, receiver, sender, photopath, title, thumbnail, DATE_FORMAT(date,'%Y %M %d') as date FROM Messages LEFT JOIN Items ON item=idItems LEFT JOIN Users on receiver=idUsers WHERE receiver= ?`,[userId]);
   }).then(([results]) => {
     msgInfo = results;
     res.render('userMessages', {
