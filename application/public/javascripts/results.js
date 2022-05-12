@@ -1,3 +1,9 @@
+/* FILE: public/javascripts/results.js
+
+DESCRIPTION: Manages sorting functionality on search results page.
+
+CREATED BY: Kishan */
+
 const resultsContainer = document.querySelector('#results'); // The div that displays all results
 const results = JSON.parse(resultsContainer.dataset.results); // The results returned as a valid JS object
 const sortSelect = document.querySelector('#sortSelect'); // The select menu for sort options
@@ -100,8 +106,3 @@ sortSelect.addEventListener("change", () => {
     sortResults();
     updateResults();
 });
-
-
-// const noResultsContainer = document.querySelector("#noResults");
-// const noResults = noResultsContainer.dataset.noresults;
-// window.alert(noResults);

@@ -121,7 +121,7 @@ router.get('/myPage/myPosts', function (req, res, next) {
   const { userId } = req.session; //used to grab the id of the user logged in to grab the posts made by that user to be displayed
   let categoryId = parseInt(category);
   //grabs all posts made by user
-  db.query(`SELECT * FROM Items I WHERE I.seller= ${userId}`)
+  db.query(`SELECT * FROM Items I WHERE I.seller= ?`,[userId])
     .then(([results]) => {
       res.render('userPosts', {
         title: 'My Posts',
@@ -155,11 +155,11 @@ router.get('/myPage/myMessages', function (req, res, next) {
   let msgSender = {};
   let msgInfo = [];
   // grabs the sender's name of the message sent to the user
-  db.query(`SELECT firstname, lastname, idUsers FROM Messages INNER JOIN Users ON sender=idUsers AND sender != ${userId};`)
+  db.query(`SELECT firstname, lastname, idUsers FROM Messages INNER JOIN Users ON sender=idUsers AND sender != ?;`,[userId])
     .then(([senderName]) => {
       msgSender = senderName;
     // grabs the message information to display to the user
-    return db.query(`SELECT DISTINCT body, receiver, sender, photopath, title, thumbnail, DATE_FORMAT(date,'%Y %M %d') as date FROM Messages LEFT JOIN Items ON item=idItems LEFT JOIN Users on receiver=idUsers WHERE receiver= ${userId}`);
+    return db.query(`SELECT DISTINCT body, receiver, sender, photopath, title, thumbnail, DATE_FORMAT(date,'%Y %M %d') as date FROM Messages LEFT JOIN Items ON item=idItems LEFT JOIN Users on receiver=idUsers WHERE receiver= ?`,[userId]);
   }).then(([results]) => {
     msgInfo = results;
     res.render('userMessages', {
@@ -220,41 +220,48 @@ router.post('/updateSettings', function(req,res, next) {
   const currPassword = req.body.currPass;
   const newPassword = req.body.newPass;
   const confirmPassword = req.body.conPass;
-  const values = [];
+  let values = [];
+  let parameters = [];
 
-  query = `UPDATE gatortrade.users SET `;
+  query = `UPDATE GatorTrade.Users SET `;
 
   if(newFirstName != ""){
-    values.push(`firstname = "${newFirstName}"`);
+    values.push(`firstname = ?`);
+    parameters.push(newFirstName);
     req.session.firstname = newFirstName;
   }
   if(newLastName != ""){
-    values.push(`lastname = "${newLastName}"`);
+    values.push(`lastname = ?`);
+    parameters.push(newLastName);
     req.session.lastname = newLastName;
   }
-  // console.log("New password: " +newPassword);
-  // console.log("Confirm pass: "+ confirmPassword);
-  // console.log("results" +confirmPassword === newPassword);
-  // if(newPassword != "" && confirmPassword != "" && confirmPassword == newPassword){
+ 
+  if(newPassword != "" && confirmPassword != "" && confirmPassword.localeCompare(newPassword) == 0){
+    UserModel.authenticate(email, currPassword)
+     .then((returnValues)=> {
+       if(returnValues[0] > 0){
 
-  //   UserModel.authenticate(email, currPassword)
-  //   .then((returnValues)=> {
-  //     if(returnValues[0] > 0){
+         return bcrypt.hash(newPassword, 15);
 
-  //       return bcrypt.hash(newPassword, 15);
-
-  //     }
-  //   })
-  //   .then((hashedPassword) => {
-  //     values.push(`password = ${hashedPassword}`);
-  //   });
-
-    // bcrypt.hash(newPassword, 15).then((hashedPassword) => {
-    //   values.push(`password = "${hashedPassword}"`);
-    // })
-    // .catch((err) => {console.log(err)});
-  // }
-
+       }
+     })
+     .then((hashedPassword) => {
+        let baseSQL = `UPDATE GatorTrade.Users SET password = ? WHERE email = ?`;
+        return db.execute(baseSQL, [hashedPassword, email]);
+     })
+     .then(([results, fields]) => {
+      if(results && results.affectedRows) {
+          return Promise.resolve(results.insertId);
+      } else {
+          // User was not created
+          return Promise.resolve(-1);
+      }
+    })
+    .catch((err) => Promise.reject(err));
+  
+  }
+  
+  // console.log(values);
   if(values.length == 0){
     res.redirect("/users/settings");
   }
@@ -267,14 +274,14 @@ router.post('/updateSettings', function(req,res, next) {
         query+= ", ";
       }
     }
-    query += `WHERE email = "${email}"`
+    query += ` WHERE email = ?`
+    parameters.push(email)
 
     console.log(query);
-    db.query(query);
+    db.query(query, parameters);
     res.redirect("/users/settings");
   }
 
-  //`UPDATE table_name SET firstname = ${newFirstName}, lastname = ${newLastName}, password = ${newPassword} WHERE email = ${email};`
 });
 
 /* LOG OUT */
