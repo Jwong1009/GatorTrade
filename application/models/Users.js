@@ -27,7 +27,7 @@ UserModel.create = (password, email, firstname, lastname) => {
 }
 
 UserModel.usernameExists = (username) => {
-    return db.execute("SELECT * FROM GatorTrade.users WHERE username=?", [username])
+    return db.execute("SELECT * FROM GatorTrade.Users WHERE username=?", [username])
     .then(([results, fields]) => {
         return Promise.resolve(!(results && results.length == 0));
     })

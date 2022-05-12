@@ -221,15 +221,18 @@ router.post('/updateSettings', function(req,res, next) {
   const newPassword = req.body.newPass;
   const confirmPassword = req.body.conPass;
   let values = [];
+  let parameters = [];
 
-  query = `UPDATE gatortrade.users SET `;
+  query = `UPDATE GatorTrade.Users SET `;
 
   if(newFirstName != ""){
-    values.push(`firstname = "${newFirstName}"`);
+    values.push(`firstname = ?`);
+    parameters.push(newFirstName);
     req.session.firstname = newFirstName;
   }
   if(newLastName != ""){
-    values.push(`lastname = "${newLastName}"`);
+    values.push(`lastname = ?`);
+    parameters.push(newLastName);
     req.session.lastname = newLastName;
   }
  
@@ -243,8 +246,8 @@ router.post('/updateSettings', function(req,res, next) {
        }
      })
      .then((hashedPassword) => {
-        let baseSQL = `UPDATE gatortrade.users SET password = "${hashedPassword}" WHERE email = "${email}"`;
-        return db.execute(baseSQL);
+        let baseSQL = `UPDATE GatorTrade.Users SET password = ? WHERE email = ?`;
+        return db.execute(baseSQL, [hashedPassword, email]);
      })
      .then(([results, fields]) => {
       if(results && results.affectedRows) {
@@ -258,7 +261,7 @@ router.post('/updateSettings', function(req,res, next) {
   
   }
   
-  console.log(values);
+  // console.log(values);
   if(values.length == 0){
     res.redirect("/users/settings");
   }
@@ -271,10 +274,11 @@ router.post('/updateSettings', function(req,res, next) {
         query+= ", ";
       }
     }
-    query += `WHERE email = "${email}"`
+    query += ` WHERE email = ?`
+    parameters.push(email)
 
     console.log(query);
-    db.query(query);
+    db.query(query, parameters);
     res.redirect("/users/settings");
   }
 
