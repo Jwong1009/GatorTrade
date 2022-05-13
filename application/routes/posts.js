@@ -94,3 +94,9 @@ router.post('/createPost', uploader.single("itemImage"), (req, res, next) => {
 });
 
 module.exports = router;
+
+// KP:  Code Review by Kishan Patel for Milestone 4
+//      1. Header and in-line comments are properly used. Provide all the information required and makes understanding the code really easy.
+//      2. Method and variable names are consistent. The names clearly defines the role of the method or variable.
+//      3. Line 60. Try to put the else part directly below if. Nothing in between.
+//      4. Line 53. Not a big issue. I would just recommend using === instead of ==
