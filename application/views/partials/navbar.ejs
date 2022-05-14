@@ -17,6 +17,15 @@ CREATED BY: Joanne & Juan
     <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/form.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H9KDBVC3JK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-H9KDBVC3JK');
+    </script>
 </head>
 
 <nav class="navbar navbar-expand-sm dropdown-menu-dark navbar-dark flex-column">
@@ -35,57 +44,61 @@ CREATED BY: Joanne & Juan
         </li>
         <li class="nav-item align-items-center me-5" style="width: 1000px;">
             <form action="/results" class="d-flex justify-content-center" id="searchForm">
-                <div class="input-group rounded overflow-hidden" >
-                    <select name="category" id="categories" class="bg-secondary border-0 text-light px-2" >
-                        <% if (category == 0) {%>
-                            <option selected = "selected" value=0>All</option>
-                        <%} else{%>
-                            <option value=0>All</option>
-                        <%}%>
+                <div class="input-group rounded overflow-hidden">
+                    <select name="category" id="categories" class="bg-secondary border-0 text-light px-2">
+                        <% if (category==0) {%>
+                            <option selected="selected" value=0>All</option>
+                            <%} else{%>
+                                <option value=0>All</option>
+                                <%}%>
 
-                        <% if (category == 1) {%>
-                            <option selected = "selected" value=1>Electronics</option>
-                        <%} else{%>
-                            <option value=1>Electronics</option>
-                        <%}%>
+                                    <% if (category==1) {%>
+                                        <option selected="selected" value=1>Electronics</option>
+                                        <%} else{%>
+                                            <option value=1>Electronics</option>
+                                            <%}%>
 
-                        <% if (category == 2) {%>
-                            <option selected = "selected" value=2>Books</option>
-                        <%} else{%>
-                            <option value=2>Books</option>
-                        <%}%>
+                                                <% if (category==2) {%>
+                                                    <option selected="selected" value=2>Books</option>
+                                                    <%} else{%>
+                                                        <option value=2>Books</option>
+                                                        <%}%>
 
-                        <% if (category == 3) {%>
-                            <option selected = "selected" value=3>Handicraft</option>
-                        <%} else{%>
-                            <option value=3>Handicraft</option>
-                        <%}%>
+                                                            <% if (category==3) {%>
+                                                                <option selected="selected" value=3>Handicraft</option>
+                                                                <%} else{%>
+                                                                    <option value=3>Handicraft</option>
+                                                                    <%}%>
 
-                        <% if (category == 4) {%>
-                            <option selected = "selected" value=4>Education Supplies</option>
-                        <%} else{%>
-                            <option value=4>Education Supplies</option>
-                        <%}%>
+                                                                        <% if (category==4) {%>
+                                                                            <option selected="selected" value=4>
+                                                                                Education Supplies</option>
+                                                                            <%} else{%>
+                                                                                <option value=4>Education Supplies
+                                                                                </option>
+                                                                                <%}%>
 
-                        <% if (category == 5) {%>
-                            <option selected = "selected" value=5>Food</option>
-                        <%} else{%>
-                            <option value=5>Food</option>
-                        <%}%>
-                        
+                                                                                    <% if (category==5) {%>
+                                                                                        <option selected="selected"
+                                                                                            value=5>Food</option>
+                                                                                        <%} else{%>
+                                                                                            <option value=5>Food
+                                                                                            </option>
+                                                                                            <%}%>
+
                     </select>
                     <input id="searchInput" name="search" type="search" placeholder="Search"
-                        class="form-control border-0" value ="<%= search %>"/>
+                        class="form-control border-0" value="<%= search %>" />
                     <button type="submit" class="btn btn-primary" id="searchButton">
                         <a href="" class="text-light"><i class="bi bi-search"></i></a>
                     </button>
                 </div>
             </form>
         </li>
-       
 
 
-    <% if(locals.logged) { %>
+
+        <% if(locals.logged) { %>
             <%- include('profile') %>
                 <% } else { %>
                     <li class="nav-item align-items-center">
