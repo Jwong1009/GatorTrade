@@ -30,13 +30,7 @@ const registerValidator = (req, res, next) => {
             res.redirect("/login");
         });
     } 
-    // else if(!checkPassword(password)) {
-    //     // Invalid password
-    //     req.flash('error', "Invalid password!");
-    //     req.session.save(err => {
-    //         res.redirect("/login");
-    //     });
-    // } 
+    
     else if(password !== cpassword) {
         // Invalid password
         req.flash('error', "Passwords don't match!");
@@ -59,13 +53,7 @@ const loginValidator = (req, res, next) => {
             res.redirect("/login");
         });
     } 
-    // else if(!checkPassword(password)) {
-    //     // Invalid password
-    //     req.flash('error', "Invalid password!");
-    //     req.session.save(err => {
-    //         res.redirect("/login");
-    //     });
-    // } 
+    
     else {
         // Valid credentials
         next();

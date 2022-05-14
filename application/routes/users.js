@@ -142,9 +142,9 @@ router.get('/delete', function (req, res, next) {
   const { userId } = req.session;
 
   db.query("DELETE FROM Items WHERE idItems = ? AND seller = ? LIMIT 1;", [idItems, userId]);
-  req.flash('success', 'Post was deleted');
+  // req.flash('success', 'Post was deleted');
 
-  res.redirect("myPage/myPosts")
+  res.redirect(req.get('referer'));
 });
 
 /* Get User Messages */

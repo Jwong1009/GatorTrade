@@ -18,6 +18,7 @@ const { checkSignIn } = require('../middleware/routesFunctions');
 router.get('/', function (req, res, next) {
   //Used to store objects from query
   const view_data = {};
+  
   db.query('SELECT * FROM Categories').then(([category_rows])=>{
     view_data.categories = category_rows;
     return db.query('SELECT * FROM Items WHERE approved = 1');
