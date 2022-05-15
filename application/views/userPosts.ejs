@@ -32,8 +32,18 @@ CREATED BY: Joanne
             </ul>
 
             <div class="container-fluid" id="homepageCategory">
-                <div class="container">
-                    <div class="row g-4 d-flex justify-content-center justify-content-sm-start">
+                <div class="container d-flex flex-column align-items-center w-100">
+                    <div class="d-flex align-items-center w-25 align-self-end mb-3" style="min-width: fit-content;">
+                        <h4 class="w-50">Sort By:</h4>
+                        <select class="form-select" id="sortSelect" aria-label="Sort dropdown">
+                            <option selected value="default">Choose</option>
+                            <option value="price_asc">Price (Low to High)</option>
+                            <option value="price_desc">Price (High to Low)</option>
+                            <option value="title_asc">Title (A-Z)</option>
+                            <option value="title_desc">Title (Z-A)</option>
+                        </select>
+                    </div>
+                    <div class="row g-4 d-flex justify-content-center justify-content-sm-start w-100 mt-3" id="posts" data-posts="<%=postsObj%>">
                         <% for(let i=0; i < Items.length; i++) { %>
                             <div class="col-8 col-md-4 col-sm-6 my-4 d-flex justify-content-center">
                                 <div class="card h-100 mw-100" style="width: 18rem;">
@@ -71,6 +81,7 @@ CREATED BY: Joanne
         <%- include('partials/footer') %>
             <script src="/javascripts/bootstrap.bundle.js"></script>
             <script src="/javascripts/search.js"></script>
+            <script src="/javascripts/userPosts.js"></script>
 </body>
 
 </html>

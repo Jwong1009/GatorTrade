@@ -128,6 +128,7 @@ router.get('/myPage/myPosts', function (req, res, next) {
         search: search,
         category: categoryId,
         Items: results,
+        postsObj: JSON.stringify(results),
         total: results.length
       })
   }).catch(error => {
