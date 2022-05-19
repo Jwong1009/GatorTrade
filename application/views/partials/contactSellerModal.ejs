@@ -1,3 +1,14 @@
+<!--
+FILE: views/partials/contactSellerModal.ejs
+ 
+DESCRIPTION: Generates a pop-up to allow users
+to contact the seller of the item they selected.
+Item title and seller name is autofilled to let 
+the user know they are messaging for the correct item.
+
+CREATED BY: Kishan
+-->
+
 <div class="modal fade" id="messageModal" tabindex="-1" data-bs-backdrop="static"
                             aria-labelledby="messageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -14,8 +25,7 @@
                         <label for="messageTextarea" class="form-label">Custom Message:</label>
                         <textarea class="form-control" name="message" id="messageTextarea" 
                                     placeholder="Don't forget to send your contact info where the seller can reach you."
-                                    rows="6">
-                        </textarea>
+                                    rows="6"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary float-end">Submit</button>
                 </form>
