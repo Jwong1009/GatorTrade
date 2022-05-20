@@ -16,44 +16,72 @@ CREATED BY: Joanne
 
 <body>
     <%- include('partials/navbar') %>
-    <div class="flex-grow-1">
-        <div class="h1 mt-2 ms-2">
-            My Posts
-            <div class="justify-center-start fs-6 text-secondary">
-                Showing <%= Items.length %> out of <%= total%>
-            </div>
-        </div>
+        <div class="flex-grow-1">
+            <!-- Allows user to toggle between their Posts and Messages -->
+            <ul class="nav justify-content-evenly my-3">
+                <li class="nav-item">
+                    <a href="/users/myPage/myPosts" class="nav-link active fs-3 text-black text-decoration-underline">
+                        My Posts
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/users/myPage/myMessages" class="nav-link fs-3 text-black">
+                        My Messages
+                    </a>
+                </li>
+            </ul>
 
-        <div class="container-fluid" id="homepageCategory">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-md-4 g-4">
-                    <% for(let i = 0; i < Items.length; i++) { %>
-                        <div class="col">
-                            <div class="card h-100" style="width: 18rem;">
-                                <a href="/dp?id=<%=Items[i].idItems%>"><img src="<%=Items[i].thumbnail%>"
-                                        class="card-img-top" alt="..."></a>
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <%=Items[i].title%>
-                                    </h5>
-                                    <p class="card-text">
-                                        <%=Items[i].description%>
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <h3 class="text"><b>$<%=Items[i].price%></b></h3>
+            <div class="container-fluid" id="homepageCategory">
+                <div class="container d-flex flex-column align-items-center w-100">
+                    <div class="d-flex align-items-center w-25 align-self-end mb-3" style="min-width: fit-content;">
+                        <h4 class="w-50">Sort By:</h4>
+                        <select class="form-select" id="sortSelect" aria-label="Sort dropdown">
+                            <option selected value="default">Choose</option>
+                            <option value="price_asc">Price (Low to High)</option>
+                            <option value="price_desc">Price (High to Low)</option>
+                            <option value="title_asc">Title (A-Z)</option>
+                            <option value="title_desc">Title (Z-A)</option>
+                        </select>
+                    </div>
+                    <div class="row g-4 d-flex justify-content-center justify-content-sm-start w-100 mt-3" id="posts" data-posts="<%=postsObj%>">
+                        <% for(let i=0; i < Items.length; i++) { %>
+                            <div class="col-8 col-md-4 col-sm-6 my-4 d-flex justify-content-center">
+                                <div class="card h-100 mw-100" style="width: 18rem;">
+                                    <% if( Items[i].approved==0 ){%>
+                                        <div class="text-center bg-success mb-1">
+                                            Pending Approval
+                                        </div>
+                                    <% } %>
+                                    <a href="/dp?id=<%=Items[i].idItems%>"><img src="/<%=Items[i].thumbnail%>"
+                                            class="card-img-top" alt="..."></a>
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <%=Items[i].title%>
+                                        </h5>
+                                        <p class="card-text">
+                                            <%=Items[i].description%>
+                                        </p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between">
+                                        <div>
+                                            <h3 class="m-0"><b>$<%=Items[i].price.toFixed(2)%></b></h3>
+                                        </div>
+                                        <a href="/users/delete?id=<%=Items[i].idItems%>" class="btn btn-danger btn-sm">
+                                            Delete
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <% } %>
+                            <% } %>
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
-    <%- include('partials/footer') %>
-    <script src="/javascripts/bootstrap.bundle.js"></script>
-    <script src="/javascripts/search.js"></script>
+        </div>
+        <%- include('partials/footer') %>
+            <script src="/javascripts/bootstrap.bundle.js"></script>
+            <script src="/javascripts/search.js"></script>
+            <script src="/javascripts/userPosts.js"></script>
 </body>
 
 </html>

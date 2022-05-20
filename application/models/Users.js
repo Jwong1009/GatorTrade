@@ -1,7 +1,7 @@
 /**********************************************************
  * FILE: models/Users.js
  * 
- * DESCRIPTION: uses mySQL users table
+ * DESCRIPTION: Handles any db functionality related to Users.
  * 
  * CREATED BY: Faisal
 **********************************************************/
@@ -27,7 +27,7 @@ UserModel.create = (password, email, firstname, lastname) => {
 }
 
 UserModel.usernameExists = (username) => {
-    return db.execute("SELECT * FROM GatorTrade.users WHERE username=?", [username])
+    return db.execute("SELECT * FROM GatorTrade.Users WHERE username=?", [username])
     .then(([results, fields]) => {
         return Promise.resolve(!(results && results.length == 0));
     })
@@ -43,12 +43,14 @@ UserModel.emailExists = (email) => {
 }
 
 UserModel.authenticate = (email, password) => {
-    let baseSQL = "SELECT idUsers, email, password FROM GatorTrade.Users WHERE email=?;";
+    let baseSQL = "SELECT idUsers, email, firstname, lastname, password FROM GatorTrade.Users WHERE email=?;";
     return db
     .execute(baseSQL,[email])
     .then(([results, fields]) => {
         if(results && results.length == 1) {
             userId = results[0].idUsers;
+            firstName = results[0].firstname;
+            lastName = results[0].lastname;
             return bcrypt.compare(password, results[0].password);
         } else {
             return Promise.resolve(false);
@@ -56,9 +58,9 @@ UserModel.authenticate = (email, password) => {
     })
     .then((passwordsMatch) => {
         if(passwordsMatch) {
-            return Promise.resolve(userId);
+            return Promise.resolve([userId, firstName, lastName]);
         } else {
-            return Promise.resolve(-1);
+            return Promise.resolve([-1]);
         }
     })
     .catch((err) => Promise.reject(err));

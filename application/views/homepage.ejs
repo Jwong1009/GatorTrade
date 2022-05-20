@@ -36,40 +36,38 @@ CREATED BY: Michael
                     <% var numOfItems=0%>
                         <!-- Clicking on each individual categories will take Users to that particular search results page-->
                         <!-- <a href="/results?category=<%=Categories[j].idCategories%>&search="> -->
-                            <h1 class="text my-3">
-                                <a href="/results?category=<%=Categories[j].idCategories%>&search="><%=Categories[j].title%></a>
-                            </h1>
+                        <h1 class="text my-3">
+                            <a href="/results?category=<%=Categories[j].idCategories%>&search=">
+                                <%=Categories[j].title%>
+                            </a>
+                        </h1>
                         <!-- </a> -->
-                        <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
+                        <div class="row g-4 mb-5 d-flex justify-content-center">
                             <!-- Iterate and displays a total of 4 items for each category -->
                             <% for(var i=0; i < Items.length; i++){%>
                                 <% if(Items[i].category==Categories[j].idCategories){%>
-                                    <div class="col">
-                                        <!-- <div class="card h-100" style="width: 18rem;">
-                            TO DO: Link Individual Item's Detail Page to HREF
-                            <a href="#"><img src="<%=Items[i].photopath%>" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <h5 class="card-title"><%=Items[i].title%></h5>
-                                <p class="card-text"><%=Items[i].description%></p>
-                            </div>
-                                <div class="card-footer">
-                                    <h3 class="text"><b>$<%=Items[i].price%></b></h3>
-                                </div>
-                        </div> -->
-                                        <div class="card h-100" style="width: 18rem;">
+                                    <div class="col-10 col-sm-6 col-lg-3 d-flex justify-content-center">
+                                        <div class="card h-100 mw-100" style="width: 18rem;">
                                             <a href="/dp?id=<%=Items[i].idItems%>"><img src="<%=Items[i].thumbnail%>"
                                                     class="card-img-top" alt="..."></a>
                                             <div class="card-body">
                                                 <h5 class="card-title">
-                                                    <a href="/dp?id=<%=Items[i].idItems%>"><%=Items[i].title%></a>
+                                                    <a href="/dp?id=<%=Items[i].idItems%>">
+                                                        <%=Items[i].title%>
+                                                    </a>
                                                 </h5>
                                                 <p class="card-text">
                                                     <%=Items[i].description%>
                                                 </p>
-                                                <!-- <span class="border border-primary rounded-2 px-4 pv-2 fs-5">$<%=Items[i].price%></span> -->
                                             </div>
-                                            <div class="card-footer">
-                                                <h3 class="text"><b>$<%=Items[i].price%></b></h3>
+                                            <div class="card-footer d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h5 class="m-0"><b>$<%=Items[i].price.toFixed(2)%></b></h5>
+                                                </div>
+                                                <a href="/dp?id=<%=Items[i].idItems%>#modal"
+                                                    class="btn btn-primary btn-sm">
+                                                    Message Seller
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

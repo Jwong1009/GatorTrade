@@ -11,15 +11,14 @@ CREATED BY: Joanne
 <html>
 
 <head>
-    <title>About <%= fname %>
-    </title>
+    <title>About <%= fname %></title>
 </head>
 
 <body>
     <%- include('partials/navbar', {search:"", category : 0}) %>
         <div class="container-fluid" id="aboutContainer">
             <div class="row justify-content-center h-100 pv-2">
-                <div class="card shadow-lg w-25 bg-dark text-white" id="aboutCard">
+                <div class="card shadow-lg col-8 col-md-3 bg-dark text-white" id="aboutCard">
                     <img src="<%= image %>" class="m-3" id="aboutImg">
                     <div class="card-body">
                         <h5 class="card-title font-monospace fs-3">

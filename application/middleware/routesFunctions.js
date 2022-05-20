@@ -1,7 +1,9 @@
 /**********************************************************
  * FILE: middleware/routesFunctions.js
  * 
- * DESCRIPTION: 
+ * DESCRIPTION:
+ *
+ * Created by Michael
 **********************************************************/
 
 const checkSignIn = (req,res,next) => {

@@ -20,21 +20,29 @@ CREATED BY: Joanne
 
     <div class="flex-grow-1">
 
-        <div class="h1 mt-2 ms-2">
-            Settings
+        <div class="d-flex justify-content-between">
+            <div class="h1 mt-2 ms-2">
+                Settings
+            </div>
+             <div class="h3 m-2">
+                <a href="myPage/myPosts" class="link-secondary">
+                    <i class="pt-2 bi bi-arrow-return-left" style="font-size: 40px;"></i>
+                    Return to My Page
+                </a>
+            </div>
         </div>
         <div class="container-fluid p-3" id="aboutContainer">
             <div class="row justify-content-center pv-2">
                 <div class="card shadow-lg w-50 bg-dark text-white" id="loginCard">
                     <div class="card-body">
-                        <form>
+                        <form method="POST" action="/users/updateSettings">
                             <div class="row m-3">
                                 <div class="col">
                                     <label for="email" class="col-form-label">SFSU E-mail</label>
                                 </div>
                                 <div class="col">
                                     <input class="form-control" id="disabledInput" type="text"
-                                    placeholder="<%= userEmail%>" disabled>
+                                        placeholder="<%= userEmail%>" disabled>
                                 </div>
                             </div>
                             
@@ -43,8 +51,8 @@ CREATED BY: Joanne
                                     <label for="firstName" class="col-form-label"> First Name </label>
                                 </div>
                                 <div class="col">
-                                    <input type="password" id="firstName" class="form-control" placeholder="First Name"
-                                    required>
+                                    <input type="firstName" id="firstName" class="form-control" name = "newfname" placeholder="<%= userFirstName%>"
+                                        maxlength="45">
                                 </div>
                             </div>
                             
@@ -53,8 +61,8 @@ CREATED BY: Joanne
                                     <label for="lastName" class="col-form-label">Last Name</label>
                                 </div>
                                 <div class="col">
-                                    <input type="text" id="lastname" class="form-control" placeholder="Last Name"
-                                    required>
+                                    <input type="text" id="lastname" class="form-control" name = "newlname"placeholder="<%= userLastName%>"
+                                        maxlength="45">
                                 </div>
                             </div>
                             
@@ -65,7 +73,7 @@ CREATED BY: Joanne
                                 </div>
                                 <div class="col">
                                     <input type="password" id="currentPassword" class="form-control"
-                                    placeholder="Current Password" required>
+                                        name = "currPass" placeholder="Current Password" >
                                 </div>
                             </div>
                             
@@ -74,8 +82,8 @@ CREATED BY: Joanne
                                     <label for="newPassword" class="col-form-label">New Password</label>
                                 </div>
                                 <div class="col">
-                                    <input type="password" id="newPassword" class="form-control"
-                                    placeholder="New Password" required>
+                                    <input type="password" id="newPassword" name="newPass"class="form-control"
+                                     minlength = "10" maxlength ="45" placeholder="New Password" >
                                     <span id="passwordReminder" class="form-text text-white-50">
                                         Must be at least 10 characters long.
                                     </span>
@@ -84,17 +92,17 @@ CREATED BY: Joanne
                             
                             <div class="row m-3">
                                 <div class="col">
-                                    <label for="newPassword" class="col-form-label">Re-Type Password</label>
+                                    <label for="newPassword" class="col-form-label" >Confirm new password</label>
                                 </div>
                                 <div class="col">
-                                    <input type="password" id="retypePassword" class="form-control"
-                                    placeholder="Re-Type Password" required>
+                                    <input type="password" id="retypePassword" name= "conPass" class="form-control"
+                                     maxlength = "45" placeholder="confirm new password" >
                                 </div>
                             </div>
                             
                             <div class="text-center">
                                 <div class="m-2">
-                                    <button class="btn btn-secondary col-3 mx-2" type="button">
+                                    <button class="btn btn-secondary col-3 mx-2" type="submit">
                                         Confirm
                                     </button>
                                     <button class="btn btn-secondary col-3 mx-2" type="button">

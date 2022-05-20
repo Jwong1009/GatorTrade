@@ -6,15 +6,17 @@
  * 
  * CREATED BY: Faisal
 **********************************************************/
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const { successPrint, errorPrint } = require('../helpers/debug/debugprinters');
 var sharp = require('sharp');
 var multer = require('multer');
 var crypto = require('crypto');
 var PostModel = require('../models/Posts');
 var PostError = require('../helpers/error/PostError');
+const Color = require('color');
 
+// Creates storage in public/images folder to store user uploaded images.
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, "public/images");
@@ -26,6 +28,7 @@ var storage = multer.diskStorage({
     }
 });
 
+// Connects established multer storage to upload files.
 var uploader = multer({storage: storage});
 
 router.post('/createPost', uploader.single("itemImage"), (req, res, next) => {
@@ -46,53 +49,54 @@ router.post('/createPost', uploader.single("itemImage"), (req, res, next) => {
     // Gets seller's user id from their logged in session:
     let seller = req.session.userId;
 
-    // file: {
-    //     fieldname: 'itemImage',
-    //     originalname: 'pouring_coffee.png',
-    //     encoding: '7bit',
-    //     mimetype: 'image/png',
-    //     destination: 'public/images',
-    //     filename: '23b58ba9bd5585e5af2818caf18796629a0642dbdcc5.png',
-    //     path: 'public\\images\\23b58ba9bd5585e5af2818caf18796629a0642dbdcc5.png',
-    //     size: 74409
-    //   }
-
-    console.log(req);
-    console.log("Parameters:", title, categoryId, description, fileUploaded, thumbnailPath, price, seller);
-    // res.send('');
+    //If user not signed redirect to sign-in/login page
+    if(seller == undefined){
+        res.redirect("/login");
+    }
 
     // Sharp resizes uploaded image to a thumbnail version of the image
     // with a 200x200 size, then exports to destinationOfThumnail, 
     // in thumbnails folder.
-
-    sharp(fileUploaded)
-    .resize(200)
-    .toFile(destinationOfThumbnail)
-    .then(() => {
-        return PostModel.create(title, categoryId, description, filePath, thumbnailPath, price, seller)
-    })
-    .then((postWasCreated) => {
-        if(postWasCreated) {
-            console.log("Your post was created successfully!");
-            req.flash('success', "Your post was created successfully!");
-            req.session.save( err => {
-                res.redirect('/');
-            });
-        } else {
-            console.log("Your post was NOT created.");
-            throw new PostError('Post could not be created!!', '/post', 200);
-        }
-    })
-    .catch((err) => {
-        if(err instanceof PostError) {
-            errorPrint(err.getMessage());
-            req.flash('error', err.getMessage());
-            res.status(err.getStatus());
-            res.redirect(err.getRedirectURL());
-        } else {
-            next(err);
-        }
-    });
+    else{
+        sharp(fileUploaded)
+        .png()
+        .resize(200, 200, {
+            fit: 'contain',
+            background: { r: 255, g: 255, b: 255, alpha: 0 }
+        })
+        .toFile(destinationOfThumbnail)
+        .then(() => {
+            return PostModel.create(title, categoryId, description, filePath, thumbnailPath, price, seller)
+        })
+        .then((postWasCreated) => {
+            if(postWasCreated) {
+                console.log("Your post was created successfully!");
+                req.flash('success', "Your post was created successfully!");
+                req.session.save( err => {
+                    res.redirect('/');
+                });
+            } else {
+                console.log("Your post was NOT created.");
+                throw new PostError('Post could not be created!!', '/post', 200);
+            }
+        })
+        .catch((err) => {
+            if(err instanceof PostError) {
+                errorPrint(err.getMessage());
+                req.flash('error', err.getMessage());
+                res.status(err.getStatus());
+                res.redirect(err.getRedirectURL());
+            } else {
+                next(err);
+            }
+        });
+    }
 });
 
 module.exports = router;
+
+// KP:  Code Review by Kishan Patel for Milestone 4
+//      1. Header and in-line comments are properly used. Provide all the information required and makes understanding the code really easy.
+//      2. Method and variable names are consistent. The names clearly defines the role of the method or variable.
+//      3. Line 60. Try to put the else part directly below if. Nothing in between.
+//      4. Line 53. Not a big issue. I would just recommend using === instead of ==

@@ -7,67 +7,84 @@ CREATED BY: Joanne
 -->
 <!DOCTYPE html>
 <html>
+  <head>
+    <title><%= title %></title>
+  </head>
 
-<head>
-    <title>
-        <%= title %>
-    </title>
-</head>
-
-<body>
+  <body>
     <%- include('partials/navbar') %>
-        <div class="flex-grow-1">
-            <div class="h1 mt-2 ms-2">
-                Incoming Messages
-            </div>
-            <div class="d-flex flex-wrap justify-content-center">
-                <div class="justify-content-center">
-                    <div class="overflow-auto col m-2 border border-dark p-3 mb-2 bg-dark text-white rounded-3"
-                        style="width:800px;">
-                        <!-- checks if the message is empty or not-->
-                        <% if (messages.length !=0) { %>
-                            <!-- loops through the messages array and generates each message with the proper information-->
-                            <% for (let i=0; i < messages.length; i++) { %>
-                                <div class="col-sm border border-secondary d-flex">
-                                    <img src="/<%=messages[i].thumbnail%>" class="img-thumbnail m-2" width="100px"
-                                        height="auto">
-                                    <div class="col">
-                                        <div class="fs-2 col-sm m-2">
-                                            Item: <b>
-                                                <%= messages[i].title%>
-                                            </b>
-                                        </div>
-                                        <div class="fs-4 col-sm m-2">
-                                            <!-- loops around the sender array and matches the id to the proper message-->
-                                            <% for (let j=0; j < senderN.length; j++) {%>
-                                                <% if (senderN[j].idUsers === messages[i].sender) { %> 
-                                                    From: <%= `${senderN[j].firstname} ${senderN[j].lastname}`%>
-                                                    <%break;%>
-                                                <%}else{%>
-                                                    <%continue;%>
-                                                <%}%>
-                                            <%}%>
-                                        </div>
-                                        <div class="fs-6 col-sm m-2 text-wrap">
-                                            Message: <%= messages[i].body%>
-                                        </div>
-                                    </div>
-                                </div>
-                                <%}%>
-                            <%}else{%>
-                            <div class="h2">
-                                No messages.
-                            </div>
-                            <%}%>
-                    </div>
-                </div>
-            </div>
+    <div class="flex-grow-1">
+      <!-- Allows user to toggle between their Posts and Messages -->
+      <ul class="nav justify-content-evenly my-3">
+        <li class="nav-item">
+          <a href="/users/myPage/myPosts" class="nav-link fs-3 text-black">
+            My Posts
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="/users/myPage/myMessages"
+            class="nav-link active fs-3 text-black text-decoration-underline"
+          >
+            My Messages
+          </a>
+        </li>
+      </ul>
+      <div class="container d-flex flex-column align-items-center w-100">
+        <div class="d-flex align-items-center w-25 align-self-end mb-3" style="min-width: fit-content;">
+            <h4 class="w-50">Sort By:</h4>
+            <select class="form-select" id="sortSelect" aria-label="Sort dropdown">
+              <option selected value="default">Choose</option>
+              <option value="date_desc">Newest to Oldest</option>
+              <option value="date_asc">Oldest to Newest</option>
+              <option value="item_asc">Item (A-Z)</option>
+              <option value="item_desc">Item (Z-A)</option>
+            </select>
         </div>
-        <%- include('partials/footer') %>
+        <!-- checks if the message is empty or not-->
+        <% if (messages.length !=0) { %>
+        <div id="messages" class="w-100 d-flex flex-column align-items-center" data-messages="<%=messagesObj%>" data-senders="<%=sendersObj%>">
+        <!-- loops through the messages array and generates each message with the proper information-->
+        <% for (let i=0; i < messages.length; i++) { %>
+        <div class="d-flex my-3 p-2 bg-white rounded-2 w-75">
+          <img
+            src="/<%=messages[i].thumbnail%>"
+            class="img-thumbnail bg-dark"
+            width="120px"
+            height="auto"
+          />
+          <div class="col">
+            <div class="d-flex justify-content-between">
+              <div class="fs-4 col-sm m-2">
+                Item: <b> <%= messages[i].title%> </b>
+              </div>
+              <div class="d-flex fs-6 col-sm m-2 justify-content-end">
+                Date sent: <%= messages[i].date%>
+              </div>
+            </div>
+            <div class="fs-5 col-sm m-2">
+              <!-- loops around the sender array and matches the id to the proper message-->
+              <% for (let j=0; j < senderN.length; j++) {%> <% if
+              (senderN[j].idUsers === messages[i].sender) { %> From: <%=
+              `${senderN[j].firstname} ${senderN[j].lastname}`%> <%break;%>
+              <%}else{%> <%continue;%> <%}%> <%}%>
+            </div>
+            <div class="fs-6 col-sm m-2 text-wrap">
+              Message: <%= messages[i].body%>
+            </div>
+          </div>
+        </div>
+        <%}%>
+        </div>
+        <%}else{%>
+        <div class="h2">No messages.</div>
+        <%}%>
+      </div>
+    </div>
+    <%- include('partials/footer') %>
 
-
-            <script src="/javascripts/bootstrap.bundle.js"></script>
-            <script src="/javascripts/search.js"></script>
-</body>
-
+    <script src="/javascripts/bootstrap.bundle.js"></script>
+    <script src="/javascripts/search.js"></script>
+    <script src="/javascripts/userMessages.js"></script>
+  </body>
 </html>

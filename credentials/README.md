@@ -8,7 +8,7 @@
 # Below is a list of items required. Missing items will cause points to be deducted from multiple milestone submissions.
 
 1. Server URL or IP
-<br>http://3.84.15.167:3000/
+<br>http://3.84.15.167
 2. SSH username 
 <br>ubuntu
 3. SSH key - included in folder

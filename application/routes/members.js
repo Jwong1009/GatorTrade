@@ -12,7 +12,7 @@ const members = {
     patel: {
         fname: 'Kishan',
         lname: 'Patel',
-        desc: '',
+        desc: "I am a graduate student at SFSU. I'm really passionate about designing and developing new products especially software. I've always had a flair for problem-solving. My hobbies are sports, cooking and reading.",
         email: "kpatel10@sfsu.edu",
         github_id: 'kp-4137',
         github_link: "https://github.com/kp-4137",

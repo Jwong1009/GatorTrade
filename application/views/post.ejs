@@ -3,6 +3,8 @@ FILE: views/post.ejs
 
 DESCRIPTION: Generates the post page where registered users are allowed to post items to sell.
              Registered users must fill in: title, price, description, category and image of item.
+
+             Created by: Michael
 -->
 <!DOCTYPE html>
 <html>
@@ -16,63 +18,117 @@ DESCRIPTION: Generates the post page where registered users are allowed to post 
 
 <body>
 <%- include('partials/navbar', {search:"", category : 0}) %>
-    <!-- Header for post page, tells users to fill out the form to post items for sale -->
-    <div class="container-fluid" id="homeContainer">
-        <div class="container">
-            <div class="border border-4 border-dark p-3 mb-2 bg-dark text-white rounded-3" id="homeHeader">
-                <h1 class="text-center">Fill out the form below to post an item for sale!<br>
-                </h1>
-            </div>
-        </div>
-    </div>
-
     <div class="container-fluid">
-        <div class="container w-50" id="post_form">
-            <form class="w-100" method="POST" enctype="multipart/form-data" action="/posts/createPost">
-                <!-- Category input -->
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">Category</label>
-                    <select name="category" class="form-select" id="inputGroupSelect01" required>
-                        <option value=0>All</option>
-                        <% for(var i=0; i<Category.length;i++){%>
-                            <option value=<%=Category[i].idCategories%>><%=Category[i].title%></option>
-                        <%}%>
-                    </select>
-                </div>
+        <!-- Header for post page, tells users to fill out the form to post items for sale -->
+        <div class="container p-3 mb-2 text-black rounded-3" id="homeHeader">
+            <h1 class="text-center">Fill out the form below to post an item for sale!<br>
+            </h1>
+        </div>
+        <div class="container w-75 mb-3" id="post_form">
+            <form class="w-100" id="form_id" method="POST" enctype="multipart/form-data" action="/posts/createPost">
                 <!-- Title of Item input -->
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Title Of Item" name="itemTitle" required>
-                </div>
-                <!-- Price of Item input -->
-                <div class="input-group mb-3">
-                    <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" placeholder="0.00" name="itemPrice" required>
-                </div>
-                <!-- Description of Item input -->
-                <div class="input-group mb-3">
-                    <textarea class="form-control" placeholder="Description of Item" name="itemDesc" required></textarea>
+                <div class="row" id="rowForm">
+                    <div class="col input-group">
+                        <input type="text"  class="mb-3" placeholder="Title Of Item" maxlength="45" name="itemTitle" id="titleBox" required>
+                    </div>
+                    <!-- Category input -->
+                    <div class="col input-group input-group-sm mb-3">
+                        <label class="input-group-text" for="categoryBox">Category</label>
+                        <select name="category" class="form-control" id="categoryBox" required>
+                            <option value="">Select a Category</option>
+                            <% for(var i=0; i<Category.length;i++){%>
+                                <option value=<%=Category[i].idCategories%>><%=Category[i].title%></option>
+                            <%}%>
+                        </select>
+                    </div>
+                    <!-- Price of Item input -->
+                    <div class="col input-group input-group-sm mb-3">
+                        <span class="input-group-text">$</span>
+                        <input type="number" placeholder="0.00" name="itemPrice" id="priceBox" min ="0.00"  max = "2147483647" step= ".01" required>
+                    </div>
+                    <!-- Description of Item input -->
+                    <div class="input-group mb-3">
+                        <textarea class="form-control" placeholder="Description of Item" name="itemDesc" id="descriptionBox" required></textarea>
+                    </div>
                 </div>
                 <!-- Image input -->
                 <div class="mb-3" id="image_form">
                     <div>
                         <label for="image_uploads" class="style">Choose images to upload (PNG, JPG)</label>
-                        <input type="file" class="style" id="image_uploads" name="itemImage" accept=".jpg, .jpeg, .png" multiple>
+                        <input type="file" class="style" id="image_uploads" name="itemImage" accept=".jpg, .jpeg, .png" multiple required>
                     </div>
                     <div class="preview">
                         <p>No files currently selected for upload</p>
                     </div>
                 </div>
-                <div id="post_button_div">
-                    <button class="style">Post</button>
-                </div>
+                <!-- <div class="row"> -->
+                    <div>
+                        <h5 class="text-danger">*It will take up to 24 hours for your post to be approved.</h5>
+                    </div>
+                    <div class="row w-100 d-flex justify-content-center mt-2">
+                        <div id="post_button_div" style="width: fit-content;">
+                            <%if(userEmail){%>
+                                <button type="submit" class="style">
+                                    Post
+                                </button>
+                            <%}else{%>
+                                <button type="submit" class="style" id="postButtonId">
+                                    Post
+                                </button>
+                            <%}%>
+                        </div>
+                    </div>
+                <!-- </div> -->
 
             </form>
         </div>
     </div>
 
     <%- include('partials/footer') %>
+    <script>
 
+        const form = document.querySelector("#form_id");
+        var title = document.querySelector("#titleBox");
+        var category = document.querySelector("#categoryBox");
+        var price = document.querySelector("#priceBox");
+        var description = document.querySelector("#descriptionBox");
+
+        //fill input form w/ session storage data if applicable
+        if(sessionStorage.getItem("userTitle")){
+            title.value = sessionStorage.getItem("userTitle");
+        }
+        if(sessionStorage.getItem("userCategory")){
+            category.value = sessionStorage.getItem("userCategory");
+        }
+        if(sessionStorage.getItem("userPrice")){
+            price.value = sessionStorage.getItem("userPrice");
+        }
+        if(sessionStorage.getItem("userDescription")){
+            description.value = sessionStorage.getItem("userDescription");
+        }
+        //Stores title, category, price and description in a session.
+        function saveData(){
+            sessionStorage.setItem("userTitle", title.value);
+            sessionStorage.setItem("userCategory", category.value);
+            sessionStorage.setItem("userPrice", price.value);
+            sessionStorage.setItem("userDescription", description.value);
+        }
+
+        form.addEventListener("submit", (event)=>{
+            //When user is not logged in, save user inputs and redirect to login/register page
+            //otherwise user is logged in and clear session storage data after submission.
+            if(!"<%=userEmail%>") {
+                event.preventDefault();
+                saveData();
+                location.href = "/login";
+            }else{
+                sessionStorage.clear();
+            }
+        });
+
+    </script>
     <script src="/javascripts/bootstrap.bundle.js"></script>
     <script src="/javascripts/search.js"></script>
     <script src="/javascripts/previewImage.js"></script>
+
 </body>
