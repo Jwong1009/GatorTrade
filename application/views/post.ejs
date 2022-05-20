@@ -24,7 +24,7 @@ DESCRIPTION: Generates the post page where registered users are allowed to post 
             <h1 class="text-center">Fill out the form below to post an item for sale!<br>
             </h1>
         </div>
-        <div class="container" id="post_form">
+        <div class="container w-75 mb-3" id="post_form">
             <form class="w-100" id="form_id" method="POST" enctype="multipart/form-data" action="/posts/createPost">
                 <!-- Title of Item input -->
                 <div class="row" id="rowForm">
@@ -44,7 +44,7 @@ DESCRIPTION: Generates the post page where registered users are allowed to post 
                     <!-- Price of Item input -->
                     <div class="col input-group input-group-sm mb-3">
                         <span class="input-group-text">$</span>
-                        <input type="number" class="col-md-1" placeholder="0.00" name="itemPrice" id="priceBox" min ="0.00"  max = "2147483647" step= ".01" required>
+                        <input type="number" placeholder="0.00" name="itemPrice" id="priceBox" min ="0.00"  max = "2147483647" step= ".01" required>
                     </div>
                     <!-- Description of Item input -->
                     <div class="input-group mb-3">
@@ -61,22 +61,24 @@ DESCRIPTION: Generates the post page where registered users are allowed to post 
                         <p>No files currently selected for upload</p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-2" id="post_button_div">
-                        <%if(userEmail){%>
-                            <button type="submit" class="style">
-                                Post
-                            </button>
-                        <%}else{%>
-                            <button type="submit" class="style" id="postButtonId">
-                                Post
-                            </button>
-                        <%}%>
+                <!-- <div class="row"> -->
+                    <div>
+                        <h5 class="text-danger">*It will take up to 24 hours for your post to be approved.</h5>
                     </div>
-                    <div class="col">
-                        <h2>It will take up to 24 hours for your post to be approved.</h2>
+                    <div class="row w-100 d-flex justify-content-center mt-2">
+                        <div id="post_button_div" style="width: fit-content;">
+                            <%if(userEmail){%>
+                                <button type="submit" class="style">
+                                    Post
+                                </button>
+                            <%}else{%>
+                                <button type="submit" class="style" id="postButtonId">
+                                    Post
+                                </button>
+                            <%}%>
+                        </div>
                     </div>
-                </div>
+                <!-- </div> -->
 
             </form>
         </div>
